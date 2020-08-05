@@ -1,5 +1,6 @@
 import React from 'react'
 import PageHeader from '../../components/PageHeader'
+import TeacherCard from '../../components/TeacherCard'
 import './styles.css'
 
 function TeachersList() {
@@ -21,6 +22,11 @@ function TeachersList() {
           </div>
         </form>
       </PageHeader>
+      <main>
+        <TeacherCard />
+        <TeacherCard />
+        <TeacherCard />
+      </main>
     </div>
   )
 }

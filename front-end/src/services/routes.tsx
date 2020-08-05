@@ -4,14 +4,12 @@ import Landing from '../pages/Landing'
 import TeachersList from '../pages/TeachersList'
 import TeacherForm from '../pages/TeacherForm'
 
-function Routes() {
-  return (
-    <BrowserRouter>
-      <Route path="/" exact component={Landing} />
-      <Route path="/estudar" component={TeachersList} />
-      <Route path="/lecionar" component={TeacherForm} />
-    </BrowserRouter>
-  )
-}
+const Routes = () => (
+  <BrowserRouter>
+    <Route path="/" exact component={Landing} />
+    <Route path="/estudar" component={TeachersList} />
+    <Route path="/lecionar" component={TeacherForm} />
+  </BrowserRouter>
+)
 
 export default Routes

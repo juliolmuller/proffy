@@ -45,6 +45,11 @@
       "@typescript-eslint"
     ],
     "rules": {
+      "max-len": [
+        "error",
+        120
+      ],
+      "new-cap": "off",
       "no-unused-vars": "off",
       "object-curly-spacing": [
         "error",

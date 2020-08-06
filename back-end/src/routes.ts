@@ -6,6 +6,7 @@ const classCtrl = new ClassController()
 
 routes.get('/', (req, res) => res.json({ message: 'Hello, there!' }))
 
+routes.get('/classes', classCtrl.index)
 routes.post('/classes', classCtrl.create)
 
 export default routes

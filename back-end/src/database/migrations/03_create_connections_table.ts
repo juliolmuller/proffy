@@ -13,7 +13,7 @@ export function up(knex: Knex) {
 
     table.timestamp('created_at')
       .notNullable()
-      .defaultTo('now()')
+      .defaultTo(knex.raw('CURRENT_TIMESTAMP'))
   })
 }
 

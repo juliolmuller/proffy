@@ -8,17 +8,20 @@ routes.get('/', (req, res) => res.json({ message: 'Hello, there!' }))
 
 routes.post('/classes', async (req, res) => {
   const { name, avatar, whatsapp, bio, subject, price, schedule } = req.body
+  const transaction = await database.transaction()
 
   /* eslint-disable camelcase */
-  const [user_id] = await database('users').insert({ name, avatar, whatsapp, bio })
-  const [class_id] = await database('classes').insert({ subject, price, user_id })
+  const [user_id] = await transaction('users').insert({ name, avatar, whatsapp, bio })
+  const [class_id] = await transaction('classes').insert({ subject, price, user_id })
   /* eslint-enable camelcase */
-  await database('class_schedules').insert(schedule.map((sch: any) => ({
+  await transaction('class_schedules').insert(schedule.map((sch: any) => ({
     weekday: sch.weekday,
     from: parseTimeIntoMinutes(sch.from),
     to: parseTimeIntoMinutes(sch.to),
     class_id,
   })))
+
+  await transaction.commit()
 
   res.status(201).send()
 })

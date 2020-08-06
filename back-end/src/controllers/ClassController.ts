@@ -1,4 +1,5 @@
 import { Request, Response } from 'express'
+import HttpStatus from 'http-status-codes'
 import database from '../database/connection'
 import parseTimeIntoMinutes from '../utils/parseTimeIntoMinutes'
 
@@ -30,11 +31,11 @@ class ClassController {
 
       await transaction.commit()
 
-      response.status(201).send()
+      response.status(HttpStatus.CREATED).send()
     } catch (error) {
       transaction.rollback(error)
 
-      response.status(400).json({
+      response.status(HttpStatus.BAD_REQUEST).json({
         error: 'Unexpected error while creating user, class or schedules.',
       })
     }

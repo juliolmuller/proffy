@@ -51,7 +51,7 @@ class ClassController {
     response.status(HttpStatus.OK).json(classes)
   }
 
-  async create(request: Request, response: Response) {
+  async store(request: Request, response: Response) {
     const {
       name, avatar, whatsapp, bio, subject, price, schedule,
     } = request.body

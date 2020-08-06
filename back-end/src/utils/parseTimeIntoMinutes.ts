@@ -1,4 +1,6 @@
 
+const MINUTES_PER_HOUR = 60
+
 function parseTimeIntoMinutes(time: string) {
   const pattern = /\d{1,2}:\d{2}/
 
@@ -7,7 +9,7 @@ function parseTimeIntoMinutes(time: string) {
   }
 
   const [hours, minutes] = time.split(':').map(Number)
-  const timeInMinutes = (hours * 60) + minutes
+  const timeInMinutes = (hours * MINUTES_PER_HOUR) + minutes
 
   return timeInMinutes
 }

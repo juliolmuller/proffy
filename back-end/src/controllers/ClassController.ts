@@ -1,4 +1,4 @@
-import { Request, Response, response } from 'express'
+import { Request, Response } from 'express'
 import database from '../database/connection'
 import parseTimeIntoMinutes from '../utils/parseTimeIntoMinutes'
 
@@ -11,7 +11,9 @@ interface FriendlySchedule {
 class ClassController {
 
   async create(request: Request, response: Response) {
-    const { name, avatar, whatsapp, bio, subject, price, schedule } = request.body
+    const {
+      name, avatar, whatsapp, bio, subject, price, schedule,
+    } = request.body
     const transaction = await database.transaction()
 
     try {

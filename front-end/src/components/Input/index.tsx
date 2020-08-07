@@ -8,8 +8,8 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
 
 const Input: React.FC<InputProps> = ({ name, label, ...attr }) => (
   <div className="input-group">
-    <label htmlFor="{name}">{label}</label>
-    <input id="{name}" {...attr} />
+    <label htmlFor={name}>{label}</label>
+    <input id={name} {...attr} />
   </div>
 )
 

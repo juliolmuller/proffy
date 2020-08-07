@@ -1,6 +1,6 @@
 import React from 'react'
 import PageHeader from '../../components/PageHeader'
-import InputField from '../../components/InputField'
+import Input from '../../components/Input'
 import warningIcon from '../../assets/images/icons/warning.svg'
 import './styles.css'
 
@@ -13,14 +13,14 @@ const TeacherForm = () => (
     <main>
       <fieldset>
         <legend>Seus dados</legend>
-        <InputField type="text" name="name" label="Nome completo:" />
-        <InputField type="text" name="avatar" label="Avatar:" />
-        <InputField type="text" name="whatsapp" label="WhatsApp:" />
+        <Input type="text" name="name" label="Nome completo:" />
+        <Input type="text" name="avatar" label="Avatar:" />
+        <Input type="text" name="whatsapp" label="WhatsApp:" />
       </fieldset>
       <fieldset>
         <legend>Sobre a aula</legend>
-        <InputField type="text" name="subject" label="Matéria:" />
-        <InputField type="text" name="price" label="Valor da sua hora:" />
+        <Input type="text" name="subject" label="Matéria:" />
+        <Input type="text" name="price" label="Valor da sua hora:" />
       </fieldset>
 
       <footer>

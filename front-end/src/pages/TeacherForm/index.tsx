@@ -1,6 +1,8 @@
 import React from 'react'
 import PageHeader from '../../components/PageHeader'
 import Input from '../../components/Input'
+import Select from '../../components/Select'
+import TextArea from '../../components/TextArea'
 import warningIcon from '../../assets/images/icons/warning.svg'
 import './styles.css'
 
@@ -16,10 +18,24 @@ const TeacherForm = () => (
         <Input type="text" name="name" label="Nome completo:" />
         <Input type="text" name="avatar" label="Avatar:" />
         <Input type="text" name="whatsapp" label="WhatsApp:" />
+        <TextArea name="bio" label="Biografia:" />
       </fieldset>
       <fieldset>
         <legend>Sobre a aula</legend>
-        <Input type="text" name="subject" label="Matéria:" />
+        <Select
+          name="subject"
+          label="Matéria:"
+          options={[
+            { value: 'Biologia', label: 'Biologia' },
+            { value: 'Física', label: 'Física' },
+            { value: 'Geografia', label: 'Geografia' },
+            { value: 'História', label: 'História' },
+            { value: 'Lógica', label: 'Lógica' },
+            { value: 'Matemática', label: 'Matemática' },
+            { value: 'Português', label: 'Português' },
+            { value: 'Química', label: 'Química' },
+          ]}
+        />
         <Input type="text" name="price" label="Valor da sua hora:" />
       </fieldset>
 

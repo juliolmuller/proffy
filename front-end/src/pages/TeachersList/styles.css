@@ -17,6 +17,11 @@
 }
 
 @media (min-width: 700px) {
+  #search-teacher .select-group + .select-group,
+  #search-teacher .select-group + .input-group {
+    margin-top: 0;
+  }
+
   #page-teachers-list {
     max-width: 100%;
   }

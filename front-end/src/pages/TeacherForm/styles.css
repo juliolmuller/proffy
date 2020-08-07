@@ -7,6 +7,12 @@
   margin-bottom: 6.4rem;
 }
 
+.input-group + .input-group,
+.input-group + .textarea-group,
+.select-group + .input-group {
+  margin-top: 1.4rem;
+}
+
 #page-teacher-form main {
   background-color: var(--color-box-base);
   width: 100%;

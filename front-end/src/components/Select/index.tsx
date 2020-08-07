@@ -13,7 +13,7 @@ interface SelectProps extends SelectHTMLAttributes<HTMLSelectElement> {
 const Select: React.FC<SelectProps> = ({ name, label, options, ...attr }) => (
   <div className="select-group">
     <label htmlFor={name}>{label}</label>
-    <select id={name} defaultValue="" {...attr}>
+    <select id={name} value="" {...attr}>
       <option value="" disabled hidden>Selecione...</option>
       { options.map(opt => <option key={opt.value} value={opt.value}>{opt.label}</option>) }
     </select>

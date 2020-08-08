@@ -1,31 +1,52 @@
 import React from 'react'
 import whatsAppIcon from '../../assets/images/icons/whatsapp.svg'
+import http from '../../services/http'
 import './styles.css'
 
-const TeacherCard = () => (
-  <article className="teacher-card">
-    <header>
-      <img src="https://scontent.fcwb2-1.fna.fbcdn.net/v/t1.0-9/50813454_2116440445116266_3556690141831495680_n.jpg?_nc_cat=102&_nc_sid=09cbfe&_nc_eui2=AeFuJhy1_MQ1S95iz0khK6lmJHt2e6bmkfske3Z7puaR-065es9qPJK1H14kjSYAC-O1abIv3hEesoS-c5R5zgi4&_nc_ohc=GYRM_5T_ttMAX-v8uSW&_nc_ht=scontent.fcwb2-1.fna&oh=c07c9b25aaff0a3cd9434625512d9b6e&oe=5F4E789C" alt="Foto do professor" />
-      <div className="teacher-card-title">
-        <h3>Julio L. Muller</h3>
-        <span>Excel</span>
+export interface Teacher {
+  id: number
+  name: string
+  avatar: string
+  bio: string
+  whatsapp: string
+  subject: string
+  price: number
+}
+
+interface TeacherCardProps {
+  teacher: Teacher
+}
+
+const TeacherCard: React.FC<TeacherCardProps> = ({ teacher }) => {
+  function handleCreateConnection() {
+    console.log(teacher.id)
+    http.post('/connections', { user: teacher.id })
+  }
+
+  return (
+    <article className="teacher-card">
+      <header>
+        <img src={teacher.avatar} alt={`Foto de ${teacher.name}`} />
+        <div className="teacher-card-title">
+          <h3>{teacher.name}</h3>
+          <span>{teacher.subject}</span>
+        </div>
+      </header>
+      <div>
+        {teacher.bio.split('\n').map((paragraph: string, index) => <p key={index}>{paragraph}</p>)}
       </div>
-    </header>
-    <div>
-      <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit.</p>
-      <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellat, ipsa quis. Praesentium officiis id quis rerum illum nam velit excepturi repellat beatae iusto. Placeat eveniet ducimus voluptatum nemo, facere doloribus!</p>
-    </div>
-    <footer>
-      <p>
-        Preço por hora:
-        <span>R$ 80,00</span>
-      </p>
-      <button type="button">
-        <img src={whatsAppIcon} alt="Ícone do WhatsApp" />
-        Entrar em contato
-      </button>
-    </footer>
-  </article>
-)
+      <footer>
+        <p>
+          Preço por hora:
+          <span>R$ {teacher.price.toFixed(2)}</span>
+        </p>
+        <a href={`https://wa.me/${teacher.whatsapp}`} onClick={handleCreateConnection}>
+          <img src={whatsAppIcon} alt="Ícone do WhatsApp" />
+          Entrar em contato
+        </a>
+      </footer>
+    </article>
+  )
+}
 
 export default TeacherCard

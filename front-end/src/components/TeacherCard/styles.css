@@ -64,7 +64,7 @@
   display: block;
 }
 
-.teacher-card footer button {
+.teacher-card footer a {
   width: 20rem;
   height: 5.6rem;
   background-color: var(--color-secondary);
@@ -72,6 +72,7 @@
   border-radius: 0.8rem;
   font: 700 1.4rem Archivo;
   color: var(--color-button-text);
+  text-decoration: none;
 
   display: flex;
   align-items: center;
@@ -81,7 +82,7 @@
   transition: 0.2s;
 }
 
-.teacher-card footer button:hover {
+.teacher-card footer a:hover {
   background-color: var(--color-secondary-dark);
 }
 
@@ -91,13 +92,13 @@
     margin-left: 1.6rem;
   }
 
-  .teacher-card footer button {
+  .teacher-card footer a {
     width: 24.5rem;
     font-size: 1.6rem;
     justify-content: center;
   }
 
-  .teacher-card footer button img {
+  .teacher-card footer a img {
     margin-right: 1.6rem;
   }
 }

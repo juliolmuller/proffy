@@ -1,6 +1,6 @@
 import React from 'react'
 import { StatusBar } from 'expo-status-bar'
-import Landing from './src/pages/Landing'
+import AppStack from './src/routes/AppStack'
 
 import { AppLoading } from 'expo'
 import { Archivo_400Regular, Archivo_700Bold, useFonts } from '@expo-google-fonts/archivo'
@@ -20,7 +20,7 @@ const App = () => {
 
   return (
     <>
-      <Landing />
+      <AppStack />
       <StatusBar style="light" />
     </>
   )

@@ -23,7 +23,7 @@ const Landing = () => {
       </Text>
 
       <View style={styles.buttonsGroup}>
-        <RectButton onPress={() => navigate('TeachersLIst')} style={[styles.button, styles.buttonPrimary]}>
+        <RectButton onPress={() => navigate('Study')} style={[styles.button, styles.buttonPrimary]}>
           <Image source={studyIcon} />
           <Text style={styles.buttonText}>Estudar</Text>
         </RectButton>

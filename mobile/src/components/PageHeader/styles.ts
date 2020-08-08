@@ -16,7 +16,7 @@ export default StyleSheet.create({
   },
 
   title: {
-    maxWidth: 160,
+    maxWidth: 180,
     marginVertical: 40,
     color: '#fff',
     fontFamily: 'Archivo_700Bold',

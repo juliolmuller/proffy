@@ -1,12 +1,11 @@
 import React from 'react'
 import { View, Text } from 'react-native'
 import styles from './styles'
+import PageHeader from '../../components/PageHeader'
 
 const Favorites = () => (
   <View style={styles.container}>
-    <Text style={styles.headline}>
-      Lista de Professores Favoritados
-    </Text>
+    <PageHeader title="Meus proffys favoritos" />
   </View>
 )
 

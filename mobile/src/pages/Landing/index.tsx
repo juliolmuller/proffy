@@ -6,7 +6,6 @@ import studyIcon from '../../assets/images/icons/study.png'
 import giveClassesIcon from '../../assets/images/icons/give-classes.png'
 import heartIcon from '../../assets/images/icons/heart.png'
 
-
 const Landing = () => (
   <View style={styles.container}>
     <Image source={landingImage} style={styles.banner} />

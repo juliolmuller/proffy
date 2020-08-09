@@ -1,16 +1,26 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { View, Text, TextInput, ScrollView } from 'react-native'
-import { BorderlessButton, RectButton } from 'react-native-gesture-handler'
+import { BorderlessButton } from 'react-native-gesture-handler'
 import { Feather } from '@expo/vector-icons'
 import styles from './styles'
 import PageHeader from '../../components/PageHeader'
 import TeacherCard from '../../components/TeacherCard'
+import http from '../../services/http'
 
 const TeachersList = () => {
   const [isFiltering, isFilteringSetter] = useState(true)
+  const [subject, subjectSetter] = useState('')
+  const [weekday, weekdaySetter] = useState('')
+  const [time, timeSetter] = useState('')
+  const [teachersList, teachersListSetter] = useState([])
 
-  function handleFilter() {
-  }
+  useEffect(() => {
+    if (subject && weekday && time) {
+      http.get('/classes', { params: { subject, weekday, time } })
+        .then(({ data }) => teachersListSetter(data))
+        .catch(() => teachersListSetter([]))
+    }
+  }, [subject, weekday, time])
 
   return (
     <View style={styles.container}>
@@ -29,6 +39,7 @@ const TeachersList = () => {
               style={styles.input}
               placeholder="Qual a matéria?"
               placeholderTextColor="#c1bccc"
+              onChangeText={subjectSetter}
             />
 
             <View style={styles.inputGroup}>
@@ -38,7 +49,8 @@ const TeachersList = () => {
                   style={styles.input}
                   placeholder="Qual o dia?"
                   placeholderTextColor="#c1bccc"
-                />
+                  onChangeText={weekdaySetter}
+              />
               </View>
 
               <View>
@@ -47,29 +59,16 @@ const TeachersList = () => {
                   style={styles.input}
                   placeholder="Que horas?"
                   placeholderTextColor="#c1bccc"
+                  onChangeText={timeSetter}
                 />
               </View>
             </View>
-
-            <RectButton onPress={handleFilter} style={styles.filterButton}>
-              <Text style={styles.filterButtonText}>Buscar</Text>
-            </RectButton>
           </View>
         )}
       </PageHeader>
 
-      <ScrollView
-        style={styles.teachersDeck}
-        contentContainerStyle={{
-          paddingHorizontal: 16,
-          paddingBottom: 24,
-        }}
-      >
-        <TeacherCard />
-        <TeacherCard />
-        <TeacherCard />
-        <TeacherCard />
-        <TeacherCard />
+      <ScrollView style={styles.teachersDeck} contentContainerStyle={{ paddingHorizontal: 16, paddingBottom: 24 }}>
+        {teachersList.map((teacher: any) => <TeacherCard key={teacher.id} />)}
       </ScrollView>
     </View>
   )

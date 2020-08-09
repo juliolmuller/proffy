@@ -17,7 +17,7 @@ const TeachersList = () => {
   useEffect(() => {
     if (subject && weekday && time) {
       http.get('/classes', { params: { subject, weekday, time } })
-        .then(({ data }) => teachersListSetter(data))
+        .then(({ data }) => { teachersListSetter(data); data.length && isFilteringSetter(false) })
         .catch(() => teachersListSetter([]))
     }
   }, [subject, weekday, time])
@@ -40,6 +40,7 @@ const TeachersList = () => {
               placeholder="Qual a matéria?"
               placeholderTextColor="#c1bccc"
               onChangeText={subjectSetter}
+              value={subject}
             />
 
             <View style={styles.inputGroup}>
@@ -50,6 +51,7 @@ const TeachersList = () => {
                   placeholder="Qual o dia?"
                   placeholderTextColor="#c1bccc"
                   onChangeText={weekdaySetter}
+                  value={weekday}
               />
               </View>
 
@@ -60,6 +62,7 @@ const TeachersList = () => {
                   placeholder="Que horas?"
                   placeholderTextColor="#c1bccc"
                   onChangeText={timeSetter}
+                  value={time}
                 />
               </View>
             </View>

@@ -23,4 +23,10 @@ export default StyleSheet.create({
     fontSize: 24,
     lineHeight: 32,
   },
+
+  header: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
 })

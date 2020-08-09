@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { View, Text, TextInput, ScrollView } from 'react-native'
 import { BorderlessButton } from 'react-native-gesture-handler'
+import AsyncStorage from '@react-native-community/async-storage'
 import { Feather } from '@expo/vector-icons'
 import styles from './styles'
 import PageHeader from '../../components/PageHeader'
@@ -13,14 +14,25 @@ const TeachersList = () => {
   const [weekday, weekdaySetter] = useState('')
   const [time, timeSetter] = useState('')
   const [teachersList, teachersListSetter] = useState([])
+  const [favorites, favoritesSetter] = useState<Teacher[]>([])
 
   useEffect(() => {
     if (subject && weekday && time) {
       http.get('/classes', { params: { subject, weekday, time } })
-        .then(({ data }) => { teachersListSetter(data); data.length && isFilteringSetter(false) })
+        .then(({ data }) => {
+          teachersListSetter(data)
+          data.length && isFilteringSetter(false)
+          AsyncStorage.getItem('favorites').then((storage) => {
+            storage && favoritesSetter(JSON.parse(storage))
+          })
+        })
         .catch(() => teachersListSetter([]))
     }
   }, [subject, weekday, time])
+
+  function isFavorite(teacher: Teacher) {
+    return Boolean(favorites.find((favorite) => favorite.id === teacher.id))
+  }
 
   return (
     <View style={styles.container}>
@@ -71,7 +83,7 @@ const TeachersList = () => {
       </PageHeader>
 
       <ScrollView style={styles.teachersDeck} contentContainerStyle={{ paddingHorizontal: 16, paddingBottom: 24 }}>
-        {teachersList.map((teacher: Teacher) => <TeacherCard key={teacher.id} teacher={teacher} />)}
+        {teachersList.map((teacher: Teacher) => <TeacherCard key={teacher.id} teacher={teacher} favorite={isFavorite(teacher)} />)}
       </ScrollView>
     </View>
   )

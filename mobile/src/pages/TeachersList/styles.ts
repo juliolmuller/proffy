@@ -37,23 +37,6 @@ export default StyleSheet.create({
     marginRight: 12,
   },
 
-  filterButton: {
-    flexGrow: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    height: 46,
-    marginTop: 4,
-    marginBottom: 12,
-    backgroundColor: '#04d361',
-    borderRadius: 8,
-  },
-
-  filterButtonText: {
-    color: '#fff',
-    fontFamily: 'Archivo_700Bold',
-    fontSize: 16,
-  },
-
   teachersDeck: {
     marginTop: -40,
   },

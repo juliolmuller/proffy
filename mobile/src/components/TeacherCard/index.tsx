@@ -1,10 +1,11 @@
 import React from 'react'
-import { View, Image, Text } from 'react-native'
+import { View, Image, Text, Linking } from 'react-native'
 import { RectButton } from 'react-native-gesture-handler'
 import styles from './styles'
 import heartOutlineIcon from '../../assets/images/icons/heart-outline.png'
 import unfavoriteIcon from '../../assets/images/icons/unfavorite.png'
 import whatsappIcon from '../../assets/images/icons/whatsapp.png'
+import http from '../../services/http'
 
 export interface Teacher {
   id: number
@@ -21,6 +22,11 @@ interface TeacherCardProps {
 }
 
 const TeacherCard: React.FC<TeacherCardProps> = ({ teacher }) => {
+  function handleLinkToWhatsApp() {
+    http.post('/connections', { user: teacher.id })
+    Linking.openURL(`whatsapp://send?phone=${teacher.whatsapp}`)
+  }
+
   return (
     <View style={styles.container}>
       <View style={styles.profile}>
@@ -47,7 +53,7 @@ const TeacherCard: React.FC<TeacherCardProps> = ({ teacher }) => {
             <Image source={unfavoriteIcon} />
           </RectButton>
 
-          <RectButton style={styles.contactButton}>
+          <RectButton onPress={handleLinkToWhatsApp} style={styles.contactButton}>
             <Image source={whatsappIcon} />
             <Text style={styles.buttonText}>Entrar em contato</Text>
           </RectButton>

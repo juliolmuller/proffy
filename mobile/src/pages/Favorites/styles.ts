@@ -8,6 +8,6 @@ export default StyleSheet.create({
   },
 
   teachersDeck: {
-    marginTop: -60,
+    marginTop: -40,
   },
 })

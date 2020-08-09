@@ -6,34 +6,47 @@ import heartOutlineIcon from '../../assets/images/icons/heart-outline.png'
 import unfavoriteIcon from '../../assets/images/icons/unfavorite.png'
 import whatsappIcon from '../../assets/images/icons/whatsapp.png'
 
-interface TeacherCardProps {}
+export interface Teacher {
+  id: number
+  name: string
+  avatar: string
+  bio: string
+  whatsapp: string
+  subject: string
+  price: number
+}
 
-const TeacherCard: React.FC<TeacherCardProps> = (props) => {
+interface TeacherCardProps {
+  teacher: Teacher
+}
+
+const TeacherCard: React.FC<TeacherCardProps> = ({ teacher }) => {
   return (
     <View style={styles.container}>
       <View style={styles.profile}>
-        <Image style={styles.avatar} source={{ uri: 'https://github.com/juliolmuller.png' }} />
+        <Image style={styles.avatar} source={{ uri: teacher.avatar }} />
 
         <View style={styles.profileInfo}>
-          <Text style={styles.name}>Julio L. Muller</Text>
-          <Text style={styles.subject}>Matemática</Text>
+          <Text style={styles.name}>{teacher.name}</Text>
+          <Text style={styles.subject}>{teacher.subject}</Text>
         </View>
       </View>
       <Text style={styles.bio}>
-        {/* Lorem ipsum dolor sit amet consectetur adipisicing elit. {'\n\n'} */}
-        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        {teacher.bio.replace('\n', '\n\n')}
       </Text>
 
       <View style={styles.cardFooter}>
         <Text style={styles.price}>
           Valor da hora/aula: {'   '}
-          <Text style={styles.priceValue}>R$ 80,00</Text>
+          <Text style={styles.priceValue}>R$ {teacher.price.toFixed(2)}</Text>
         </Text>
 
         <View style={styles.buttonGroup}>
-          <RectButton style={styles.favoriteButton}>
-            <Image source={heartOutlineIcon} />
+          <RectButton style={[styles.favoriteButton, styles.favoriteButtonSelected]}>
+            {/* <Image source={heartOutlineIcon} /> */}
+            <Image source={unfavoriteIcon} />
           </RectButton>
+
           <RectButton style={styles.contactButton}>
             <Image source={whatsappIcon} />
             <Text style={styles.buttonText}>Entrar em contato</Text>

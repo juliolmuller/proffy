@@ -86,6 +86,10 @@ export default StyleSheet.create({
     borderRadius: 8,
   },
 
+  favoriteButtonSelected: {
+    backgroundColor: '#e33d3d',
+  },
+
   contactButton: {
     flexGrow: 1,
     flexDirection: 'row',

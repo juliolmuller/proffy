@@ -4,7 +4,7 @@ import { BorderlessButton } from 'react-native-gesture-handler'
 import { Feather } from '@expo/vector-icons'
 import styles from './styles'
 import PageHeader from '../../components/PageHeader'
-import TeacherCard from '../../components/TeacherCard'
+import TeacherCard, { Teacher } from '../../components/TeacherCard'
 import http from '../../services/http'
 
 const TeachersList = () => {
@@ -71,7 +71,7 @@ const TeachersList = () => {
       </PageHeader>
 
       <ScrollView style={styles.teachersDeck} contentContainerStyle={{ paddingHorizontal: 16, paddingBottom: 24 }}>
-        {teachersList.map((teacher: any) => <TeacherCard key={teacher.id} />)}
+        {teachersList.map((teacher: Teacher) => <TeacherCard key={teacher.id} teacher={teacher} />)}
       </ScrollView>
     </View>
   )

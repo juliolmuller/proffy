@@ -8,7 +8,13 @@ const TeachersList = () => (
   <View style={styles.container}>
     <PageHeader title="Proffys disponíveis" />
 
-    <ScrollView>
+    <ScrollView
+      style={styles.teachersDeck}
+      contentContainerStyle={{
+        paddingHorizontal: 16,
+        paddingBottom: 24,
+      }}
+    >
       <TeacherCard />
       <TeacherCard />
       <TeacherCard />

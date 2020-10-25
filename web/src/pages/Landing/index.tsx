@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { FC, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import logoImg from '../../assets/images/logo.svg'
 import heroImg from '../../assets/images/landing.svg'
@@ -8,7 +8,7 @@ import purpleHeartIcon from '../../assets/images/icons/purple-heart.svg'
 import http from '../../services/http'
 import './styles.css'
 
-const Landing = () => {
+const Landing: FC = () => {
   const [totalConnections, totalConnectionsSetter] = useState(0)
 
   useEffect(() => {

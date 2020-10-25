@@ -1,10 +1,8 @@
-import React from 'react'
-import Routes from './services/routes'
+import React, { FC } from 'react'
+import Routes from './routes'
 
-function App() {
-  return (
-    <Routes />
-  )
-}
+const App: FC = () => (
+  <Routes />
+)
 
 export default App

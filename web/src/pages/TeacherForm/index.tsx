@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { FC, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import PageHeader from '../../components/PageHeader'
 import Input from '../../components/Input'
@@ -8,7 +8,7 @@ import warningIcon from '../../assets/images/icons/warning.svg'
 import http from '../../services/http'
 import './styles.css'
 
-const TeacherForm = () => {
+const TeacherForm: FC = () => {
   const history = useHistory()
 
   const [bio, bioSetter] = useState('')
@@ -21,14 +21,14 @@ const TeacherForm = () => {
     { weekday: 0, from: '', to: '' },
   ])
 
-  function addScheduleItem() {
+  const addScheduleItem = () => {
     scheduleItemsSetter([
       ...scheduleItems,
       { weekday: 0, from: '', to: '' },
     ])
   }
 
-  function onScheduleItemChange(position: number, field: string, value: string) {
+  const onScheduleItemChange = (position: number, field: string, value: string) => {
     scheduleItemsSetter(scheduleItems.map((schItem, index) => {
       if (index === position) {
         return { ...schItem, [field]: value }
@@ -37,12 +37,16 @@ const TeacherForm = () => {
     }))
   }
 
-  function handleFormSubmit() {
+  const handleFormSubmit = () => {
     http.post('/classes', {
-      name, avatar, whatsapp,
-      bio, subject, price,
-      schedule: scheduleItems
-    }).then(()=> {
+      name,
+      avatar,
+      whatsapp,
+      bio,
+      subject,
+      price,
+      schedule: scheduleItems,
+    }).then(() => {
       alert('Cadastrado com sucesso!')
       history.push('/')
     })

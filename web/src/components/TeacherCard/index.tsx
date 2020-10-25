@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { FC } from 'react'
 import whatsAppIcon from '../../assets/images/icons/whatsapp.svg'
 import http from '../../services/http'
 import './styles.css'
@@ -17,9 +17,8 @@ interface TeacherCardProps {
   teacher: Teacher
 }
 
-const TeacherCard: React.FC<TeacherCardProps> = ({ teacher }) => {
-  function handleCreateConnection() {
-    console.log(teacher.id)
+const TeacherCard: FC<TeacherCardProps> = ({ teacher }) => {
+  const handleCreateConnection = () => {
     http.post('/connections', { user: teacher.id })
   }
 

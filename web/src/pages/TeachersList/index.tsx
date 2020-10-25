@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { FC, useEffect, useState } from 'react'
 import PageHeader from '../../components/PageHeader'
 import Input from '../../components/Input'
 import Select from '../../components/Select'
@@ -6,7 +6,7 @@ import TeacherCard, { Teacher } from '../../components/TeacherCard'
 import http from '../../services/http'
 import './styles.css'
 
-const TeachersList = () => {
+const TeachersList: FC = () => {
   const [subject, subjectSetter] = useState('')
   const [weekday, weekdaySetter] = useState('')
   const [time, timeSetter] = useState('')
@@ -14,10 +14,9 @@ const TeachersList = () => {
 
   useEffect(() => {
     if (subject && weekday && time) {
-      http.get('/classes', { params: { subject, weekday, time } })
-      .then(({ data }) => {
-        teachersListSetter(data)
-      })
+      http.get('/classes', {
+        params: { subject, weekday, time },
+      }).then(({ data }) => teachersListSetter(data))
     }
   }, [subject, weekday, time])
 

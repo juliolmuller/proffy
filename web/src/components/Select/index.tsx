@@ -1,4 +1,4 @@
-import React, { SelectHTMLAttributes } from 'react'
+import React, { FC, SelectHTMLAttributes } from 'react'
 import './styles.css'
 
 interface SelectProps extends SelectHTMLAttributes<HTMLSelectElement> {
@@ -10,12 +10,14 @@ interface SelectProps extends SelectHTMLAttributes<HTMLSelectElement> {
   }>
 }
 
-const Select: React.FC<SelectProps> = ({ name, label, options, ...attr }) => (
+const Select: FC<SelectProps> = ({ name, label, options, ...attr }) => (
   <div className="select-group">
     <label htmlFor={name}>{label}</label>
     <select id={name} value="" {...attr}>
       <option value="" disabled hidden>Selecione...</option>
-      { options.map(opt => <option key={opt.value} value={opt.value}>{opt.label}</option>) }
+      { options.map((opt) => (
+        <option key={opt.value} value={opt.value}>{opt.label}</option>
+      ))}
     </select>
   </div>
 )

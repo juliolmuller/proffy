@@ -1,11 +1,10 @@
-import Knex from 'knex'
+import Knex, { SchemaBuilder } from 'knex'
 
-export function up(knex: Knex) {
+export function up(knex: Knex): SchemaBuilder {
   return knex.schema.createTable('classes', (table) => {
     table.bigIncrements('id').primary()
     table.string('subject').notNullable()
     table.decimal('price').notNullable()
-
     table.bigInteger('user_id')
       .notNullable()
       .references('id')
@@ -15,6 +14,6 @@ export function up(knex: Knex) {
   })
 }
 
-export function down(knex: Knex) {
+export function down(knex: Knex): SchemaBuilder {
   return knex.schema.dropTable('classes')
 }

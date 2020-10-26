@@ -1,12 +1,11 @@
-import Knex from 'knex'
+import Knex, { SchemaBuilder } from 'knex'
 
-export function up(knex: Knex) {
+export function up(knex: Knex): SchemaBuilder {
   return knex.schema.createTable('class_schedules', (table) => {
     table.bigIncrements('id').primary()
     table.integer('weekday').notNullable()
     table.integer('from').notNullable()
     table.integer('to').notNullable()
-
     table.bigInteger('class_id')
       .notNullable()
       .references('id')
@@ -16,6 +15,6 @@ export function up(knex: Knex) {
   })
 }
 
-export function down(knex: Knex) {
+export function down(knex: Knex): SchemaBuilder {
   return knex.schema.dropTable('class_schedules')
 }

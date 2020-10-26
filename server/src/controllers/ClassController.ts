@@ -17,7 +17,7 @@ interface FriendlySchedule {
 
 class ClassController {
 
-  async index(request: Request, response: Response) {
+  async index(request: Request, response: Response): Promise<void> {
     const filters: QueryFilters = request.query
     const timeInMinutes = parseTimeIntoMinutes(filters.time as string)
 
@@ -51,17 +51,16 @@ class ClassController {
     response.status(HttpStatus.OK).json(classes)
   }
 
-  async store(request: Request, response: Response) {
+  async store(request: Request, response: Response): Promise<void> {
     const {
       name, avatar, whatsapp, bio, subject, price, schedule,
     } = request.body
     const transaction = await database.transaction()
 
     try {
-      /* eslint-disable camelcase */
       const [user_id] = await transaction('users').insert({ name, avatar, whatsapp, bio })
       const [class_id] = await transaction('classes').insert({ subject, price, user_id })
-      /* eslint-enable camelcase */
+
       await transaction('class_schedules').insert(schedule.map((sch: FriendlySchedule) => ({
         weekday: sch.weekday,
         from: parseTimeIntoMinutes(sch.from),

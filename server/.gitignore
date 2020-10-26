@@ -117,3 +117,6 @@ dist
 
 # Visual Studio Code editor
 .vscode
+
+# sqlite databases
+*.sqlite

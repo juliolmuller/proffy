@@ -4,14 +4,13 @@ import database from '../database/connection'
 
 class ConnectionController {
 
-  async index(request: Request, response: Response) {
+  async index(request: Request, response: Response): Promise<void> {
     const [{ total }] = await database('connections').count('* as total')
 
     response.status(HttpStatus.OK).json({ total })
   }
 
-  async store(request: Request, response: Response) {
-    // eslint-disable-next-line camelcase
+  async store(request: Request, response: Response): Promise<void> {
     const { user: user_id } = request.body
 
     try {
@@ -20,7 +19,6 @@ class ConnectionController {
       response.status(HttpStatus.CREATED).send()
     } catch (error) {
       response.status(HttpStatus.BAD_REQUEST).json({
-        // eslint-disable-next-line camelcase
         error: `Unable to store connection to user with ID #${user_id}.`,
       })
     }

@@ -6,12 +6,10 @@ const routes = express.Router()
 const classCtrl = new ClassController()
 const connectionCtrl = new ConnectionController()
 
-routes.get('/', (req, res) => res.json({ message: 'Hello, there!' }))
+routes.get('/api/classes', classCtrl.index)
+routes.post('/api/classes', classCtrl.store)
 
-routes.get('/classes', classCtrl.index)
-routes.post('/classes', classCtrl.store)
-
-routes.get('/connections', connectionCtrl.index)
-routes.post('/connections', connectionCtrl.store)
+routes.get('/api/connections', connectionCtrl.index)
+routes.post('/api/connections', connectionCtrl.store)
 
 export default routes

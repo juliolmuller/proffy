@@ -1,6 +1,6 @@
-import Knex from 'knex'
+import Knex, { SchemaBuilder } from 'knex'
 
-export function up(knex: Knex) {
+export function up(knex: Knex): SchemaBuilder {
   return knex.schema.createTable('users', (table) => {
     table.bigIncrements('id').primary()
     table.string('name').notNullable()
@@ -10,6 +10,6 @@ export function up(knex: Knex) {
   })
 }
 
-export function down(knex: Knex) {
+export function down(knex: Knex): SchemaBuilder {
   return knex.schema.dropTable('users')
 }

@@ -2,13 +2,13 @@
   "expo": {
     "name": "proffy-mobile",
     "slug": "proffy",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "orientation": "portrait",
-    "icon": "./src/assets/images/icon.png",
+    "icon": "./src/images/favicon.png",
     "splash": {
-      "image": "./src/assets/images/splash.png",
+      "image": "./src/images/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#9871F5"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
@@ -20,7 +20,7 @@
       "supportsTablet": true
     },
     "web": {
-      "favicon": "./src/assets/images/favicon.png"
+      "favicon": "./src/images/favicon.png"
     }
   }
 }

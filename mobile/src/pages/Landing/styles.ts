@@ -19,14 +19,14 @@ export default StyleSheet.create({
     marginTop: 30,
     marginBottom: 50,
     color: '#fff',
-    fontFamily: 'Poppins_400Regular',
+    fontFamily: 'Poppins400',
     fontSize: 20,
     lineHeight: 34,
     textAlign: 'center',
   },
 
   greetingsPrompt: {
-    fontFamily: 'Poppins_600SemiBold',
+    fontFamily: 'Poppins600',
   },
 
   buttonsGroup: {
@@ -56,7 +56,7 @@ export default StyleSheet.create({
 
   buttonText: {
     color: '#fff',
-    fontFamily: 'Archivo_700Bold',
+    fontFamily: 'Archivo700',
     fontSize: 18,
   },
 
@@ -65,7 +65,7 @@ export default StyleSheet.create({
     maxWidth: 210,
     marginTop: 20,
     color: '#d4c2ff',
-    fontFamily: 'Poppins_400Regular',
+    fontFamily: 'Poppins400',
     fontSize: 12,
     textAlign: 'center',
     lineHeight: 20,

@@ -17,7 +17,7 @@ export default StyleSheet.create({
   headline: {
     maxWidth: 200,
     color: '#fff',
-    fontFamily: 'Archivo_700Bold',
+    fontFamily: 'Archivo700',
     fontSize: 45,
     lineHeight: 50,
   },
@@ -25,7 +25,7 @@ export default StyleSheet.create({
   description: {
     marginTop: 24,
     color: '#d4c2ff',
-    fontFamily: 'Poppins_400Regular',
+    fontFamily: 'Poppins400',
     fontSize: 16,
     lineHeight: 26,
   },
@@ -41,7 +41,7 @@ export default StyleSheet.create({
 
   okButtonText: {
     color: '#fff',
-    fontFamily: 'Archivo_700Bold',
+    fontFamily: 'Archivo700',
     fontSize: 16,
   },
 })

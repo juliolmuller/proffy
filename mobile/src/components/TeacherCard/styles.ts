@@ -21,7 +21,7 @@ export default StyleSheet.create({
     height: 64,
     width: 64,
     borderRadius: 32,
-    backgroundColor: '#aaa'
+    backgroundColor: '#aaa',
   },
 
   profileInfo: {
@@ -31,14 +31,14 @@ export default StyleSheet.create({
 
   name: {
     color: '#32264d',
-    fontFamily: 'Archivo_700Bold',
+    fontFamily: 'Archivo700',
     fontSize: 20,
   },
 
   subject: {
     marginTop: 4,
     color: '#6a6180',
-    fontFamily: 'Poppins_400Regular',
+    fontFamily: 'Poppins400',
     fontSize: 12,
 
   },
@@ -46,7 +46,7 @@ export default StyleSheet.create({
   bio: {
     marginHorizontal: 24,
     color: '#6a6180',
-    fontFamily: 'Poppins_400Regular',
+    fontFamily: 'Poppins400',
     fontSize: 16,
     lineHeight: 24,
   },
@@ -60,14 +60,14 @@ export default StyleSheet.create({
 
   price: {
     color: '#6a6180',
-    fontFamily: 'Poppins_400Regular',
+    fontFamily: 'Poppins400',
     fontSize: 14,
   },
 
   priceValue: {
     marginLeft: 16,
     color: '#8257e5',
-    fontFamily: 'Archivo_700Bold',
+    fontFamily: 'Archivo700',
     fontSize: 16,
   },
 
@@ -103,7 +103,7 @@ export default StyleSheet.create({
   buttonText: {
     marginLeft: 16,
     color: '#fff',
-    fontFamily: 'Archivo_700Bold',
+    fontFamily: 'Archivo700',
     fontSize: 16,
   },
 })

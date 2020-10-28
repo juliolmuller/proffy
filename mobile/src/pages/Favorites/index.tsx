@@ -1,12 +1,12 @@
-import React, { useState } from 'react'
+import React, { FC, useState } from 'react'
 import { View, ScrollView } from 'react-native'
 import { useFocusEffect } from '@react-navigation/native'
 import AsyncStorage from '@react-native-community/async-storage'
-import styles from './styles'
 import PageHeader from '../../components/PageHeader'
 import TeacherCard, { Teacher } from '../../components/TeacherCard'
+import styles from './styles'
 
-const Favorites = () => {
+const Favorites: FC = () => {
   const [favorites, favoritesSetter] = useState<Teacher[]>([])
 
   useFocusEffect(() => {
@@ -26,7 +26,12 @@ const Favorites = () => {
           paddingBottom: 24,
         }}
       >
-        {favorites.map((teacher: Teacher) => <TeacherCard key={teacher.id} teacher={teacher} favorite={true} />)}
+        {favorites.map((teacher: Teacher) => {
+          console.log(teacher)
+          return (
+          <TeacherCard key={teacher.id} teacher={teacher} favorite={true} />
+          )
+        })}
       </ScrollView>
     </View>
   )

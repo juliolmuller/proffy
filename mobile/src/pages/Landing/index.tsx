@@ -1,15 +1,15 @@
-import React, { useState, useEffect } from 'react'
-import { View, Image, Text } from 'react-native'
+import React, { FC, useEffect, useState } from 'react'
+import { Image, Text, View } from 'react-native'
 import { RectButton } from 'react-native-gesture-handler'
 import { useNavigation } from '@react-navigation/native'
-import styles from './styles'
-import landingImage from '../../assets/images/landing.png'
-import studyIcon from '../../assets/images/icons/study.png'
-import giveClassesIcon from '../../assets/images/icons/give-classes.png'
-import heartIcon from '../../assets/images/icons/heart.png'
+import landingImage from '../../images/landing.png'
+import studyIcon from '../../images/icons/study.png'
+import heartIcon from '../../images/icons/heart.png'
+import giveClassesIcon from '../../images/icons/give-classes.png'
 import http from '../../services/http'
+import styles from './styles'
 
-const Landing = () => {
+const Landing: FC = () => {
   const { navigate } = useNavigation()
   const [totalConnections, totalConnectionsSetter] = useState(0)
 

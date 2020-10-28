@@ -1,11 +1,11 @@
-import React, { useState } from 'react'
-import { View, Image, Text, Linking } from 'react-native'
+import React, { FC, useState } from 'react'
+import { Linking, Image, Text, View } from 'react-native'
 import { RectButton } from 'react-native-gesture-handler'
 import AsyncStorage from '@react-native-community/async-storage'
 import styles from './styles'
-import heartOutlineIcon from '../../assets/images/icons/heart-outline.png'
-import unfavoriteIcon from '../../assets/images/icons/unfavorite.png'
-import whatsappIcon from '../../assets/images/icons/whatsapp.png'
+import heartOutlineIcon from '../../images/icons/heart-outline.png'
+import unfavoriteIcon from '../../images/icons/unfavorite.png'
+import whatsappIcon from '../../images/icons/whatsapp.png'
 import http from '../../services/http'
 
 export interface Teacher {
@@ -23,15 +23,15 @@ interface TeacherCardProps {
   favorite: boolean
 }
 
-const TeacherCard: React.FC<TeacherCardProps> = ({ teacher, favorite }) => {
+const TeacherCard: FC<TeacherCardProps> = ({ teacher, favorite }) => {
   const [favoriteState, favoriteStateSetter] = useState(favorite)
 
-  function handleLinkToWhatsApp() {
+  const handleLinkToWhatsApp = () => {
     http.post('/connections', { user: teacher.id })
     Linking.openURL(`whatsapp://send?phone=${teacher.whatsapp}`)
   }
 
-  async function handleToggleFavorite() {
+  const handleToggleFavorite = async () => {
     const storage = await AsyncStorage.getItem('favorites') || '[]'
     const favorites: Teacher[] = JSON.parse(storage)
 

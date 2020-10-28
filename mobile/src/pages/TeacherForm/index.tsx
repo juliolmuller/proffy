@@ -1,11 +1,11 @@
-import React from 'react'
-import { View, Text, ImageBackground } from 'react-native'
+import React, { FC } from 'react'
+import { ImageBackground, Text, View } from 'react-native'
 import { RectButton } from 'react-native-gesture-handler'
 import { useNavigation } from '@react-navigation/native'
+import giveClassesBackground from '../../images/give-classes-background.png'
 import styles from './styles'
-import giveClassesBackground from '../../assets/images/give-classes-background.png'
 
-const TeacherForm = () => {
+const TeacherForm: FC = () => {
   const { goBack } = useNavigation()
 
   return (

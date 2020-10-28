@@ -1,12 +1,12 @@
-import React from 'react'
+import React, { FC } from 'react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { Ionicons } from '@expo/vector-icons'
 import Favorites from '../pages/Favorites'
 import TeachersList from '../pages/TeachersList'
 
-const { Navigator, Screen} = createBottomTabNavigator()
+const { Navigator, Screen } = createBottomTabNavigator()
 
-const StudyTabs = () => (
+const StudyTabs: FC = () => (
   <Navigator
     tabBarOptions={{
       style: {
@@ -26,7 +26,7 @@ const StudyTabs = () => (
       },
       labelStyle: {
         marginLeft: 24,
-        fontFamily: 'Archivo_700Bold',
+        fontFamily: 'Archivo700',
         fontSize: 13,
       },
       inactiveBackgroundColor: '#fafafc',
@@ -42,7 +42,7 @@ const StudyTabs = () => (
         tabBarLabel: 'Proffys',
         tabBarIcon: ({ size, color, focused }) => (
           <Ionicons name="ios-easel" size={size} color={focused ? '#8257e5' : color} />
-        )
+        ),
       }}
     />
     <Screen
@@ -52,7 +52,7 @@ const StudyTabs = () => (
         tabBarLabel: 'Favoritos',
         tabBarIcon: ({ size, color, focused }) => (
           <Ionicons name="ios-heart" size={size} color={focused ? '#8257e5' : color} />
-        )
+        ),
       }}
     />
   </Navigator>

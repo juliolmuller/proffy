@@ -13,7 +13,7 @@ export default StyleSheet.create({
 
   label: {
     color: '#d4c2ff',
-    fontFamily: 'Poppins_400Regular',
+    fontFamily: 'Poppins400',
   },
 
   input: {

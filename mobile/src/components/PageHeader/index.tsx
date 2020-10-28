@@ -1,17 +1,17 @@
-import React, { ReactNode } from 'react'
-import { View, Text, Image } from 'react-native'
+import React, { FC, ReactNode } from 'react'
+import { Image, Text, View } from 'react-native'
 import { BorderlessButton } from 'react-native-gesture-handler'
 import { useNavigation } from '@react-navigation/native'
+import backIcon from '../../images/icons/back.png'
+import logoImage from '../../images/logo.png'
 import styles from './styles'
-import backIcon from '../../assets/images/icons/back.png'
-import logoImage from '../../assets/images/logo.png'
 
 interface PageHeaderProps {
   title: string
   headerRight?: ReactNode
 }
 
-const PageHeader: React.FC<PageHeaderProps> = (props) => {
+const PageHeader: FC<PageHeaderProps> = (props) => {
   const { navigate } = useNavigation()
 
   return (

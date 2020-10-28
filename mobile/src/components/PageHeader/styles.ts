@@ -19,7 +19,7 @@ export default StyleSheet.create({
     maxWidth: 180,
     marginVertical: 40,
     color: '#fff',
-    fontFamily: 'Archivo_700Bold',
+    fontFamily: 'Archivo700',
     fontSize: 24,
     lineHeight: 32,
   },

@@ -147,4 +147,4 @@ Besides, both v1.0 and v2.0 have their layouts available at **[Figma](http://fig
 
 ---
 
-Also checkout the project developed in [NLW #3](https://github.com/juliolmuller/proffy)
+Also checkout the project developed in [NLW #3](https://github.com/juliolmuller/happy)

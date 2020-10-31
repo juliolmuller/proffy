@@ -1,6 +1,7 @@
 {
   "name": "proffy-web",
   "version": "1.0.1",
+  "private": true,
   "license": "MIT",
   "homepage": "https://proffy-app-nlw.herokuapp.com/",
   "scripts": {

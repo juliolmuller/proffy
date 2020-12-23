@@ -2,8 +2,7 @@ module.exports = {
   root: true,
   extends: [
     'react-app',
-    'react-app/jest',
-    '@lacussoft/standard',
+    '@lacussoft',
     'plugin:@typescript-eslint/recommended',
     'plugin:jest/recommended',
   ],
@@ -21,7 +20,6 @@ module.exports = {
     },
   },
   rules: {
-    '@typescript-eslint/no-use-before-define': 'off',
     'no-use-before-define': 'off',
   },
 }

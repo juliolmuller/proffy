@@ -7,7 +7,7 @@ module.exports = {
   extends: [
     'plugin:@typescript-eslint/eslint-recommended',
     'plugin:@typescript-eslint/recommended',
-    '@lacussoft/standard',
+    '@lacussoft',
   ],
   plugins: [
     '@typescript-eslint',
@@ -18,7 +18,7 @@ module.exports = {
     ecmaVersion: 2020,
   },
   rules: {
-    'camelcase': ['error', { allow: ['user_id', 'class_id'] }],
+    'camelcase': ['error', { allow: ['purge_dotenv', 'user_id', 'class_id'] }],
     'class-methods-use-this': 'off',
     'func-style': 'off',
     'no-console': 'off',

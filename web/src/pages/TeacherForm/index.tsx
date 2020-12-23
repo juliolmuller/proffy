@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react'
+import { FC, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import PageHeader from '../../components/PageHeader'
 import Input from '../../components/Input'
@@ -33,6 +33,7 @@ const TeacherForm: FC = () => {
       if (index === position) {
         return { ...schItem, [field]: value }
       }
+
       return schItem
     }))
   }

@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import { FC } from 'react'
 import whatsAppIcon from '../../assets/images/icons/whatsapp.svg'
 import http from '../../services/http'
 import './styles.css'

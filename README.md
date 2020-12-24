@@ -66,8 +66,9 @@ Make sure to have **Node.js 10+** installed in your machine and its **npm** avai
 ```bash
   # Server
 $ cd server
-$ npm run migrate:up   # setup database schema
-$ npm run dev          # start development Server
+$ npm run migrations   # setup database schema
+$ npm run seeds        # pre-populate database
+$ npm start            # start development Server
 
   # Web App
 $ cd web
@@ -141,9 +142,11 @@ Besides, both v1.0 and v2.0 have their layouts available at **[Figma](http://fig
 - Server
   - [x] Set up linting tools;
   - [ ] Forms data validation;
+  - [x] Switch from SQLite to PostgreSQL;
   - [ ] Create authentication system;
   - [ ] Implement file upload system;
   - [ ] Automated tests;
+  - [x] Deploy project in a public URL;
 
 ---
 

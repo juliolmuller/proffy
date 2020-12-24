@@ -1,7 +1,9 @@
 import Knex, { SchemaBuilder } from 'knex'
 
+export const TABLE_NAME = 'connections'
+
 export function up(knex: Knex): SchemaBuilder {
-  return knex.schema.createTable('connections', (table) => {
+  return knex.schema.createTable(TABLE_NAME, (table) => {
     table.bigIncrements('id').primary()
     table.bigInteger('user_id')
       .notNullable()
@@ -16,5 +18,5 @@ export function up(knex: Knex): SchemaBuilder {
 }
 
 export function down(knex: Knex): SchemaBuilder {
-  return knex.schema.dropTable('connections')
+  return knex.schema.dropTable(TABLE_NAME)
 }

@@ -42,10 +42,10 @@ class ClassController {
       .whereExists((query) => {
         query.select('class_schedules.*')
           .from('class_schedules')
-          .whereRaw('`class_schedules`.`class_id` = `classes`.`id`')
-          .whereRaw('`class_schedules`.`weekday` = ??', [Number(filters.weekday)])
-          .whereRaw('`class_schedules`.`from` <= ??', [timeInMinutes])
-          .whereRaw('`class_schedules`.`to` > ??', [timeInMinutes])
+          .whereRaw('"class_schedules"."class_id" = "classes"."id"')
+          .whereRaw('"class_schedules"."weekday" = ??', [Number(filters.weekday)])
+          .whereRaw('"class_schedules"."from" <= ??', [timeInMinutes])
+          .whereRaw('"class_schedules"."to" > ??', [timeInMinutes])
       })
 
     response.status(HttpStatus.OK).json(classes)

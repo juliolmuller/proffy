@@ -1,14 +1,15 @@
 {
   "name": "proffy-server",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "private": true,
   "license": "MIT",
   "author": "Julio L. Muller",
   "scripts": {
-    "migration": "knex --knexfile knexfile.ts migrate:latest",
-    "migration:up": "knex --knexfile knexfile.ts migrate:up",
-    "migration:down": "knex --knexfile knexfile.ts migrate:down",
-    "migration:rollback": "knex --knexfile knexfile.ts migrate:latest",
+    "seeds": "knex seed:run",
+    "migrations": "knex migrate:latest",
+    "migrations:seed": "npm run migrations && npm run seeds",
+    "migrations:reset": "knex migrate:rollback --all && npm run migrations",
+    "migrations:reset:seed": "npm run migrations:reset && npm run seeds",
     "start": "tsnd src/index.ts --clear --respawn --transpile-only --ignore node_modules",
     "build": "rm -rf build/ && tsc -p ."
   },

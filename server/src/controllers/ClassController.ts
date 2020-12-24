@@ -73,10 +73,7 @@ class ClassController {
       response.status(HttpStatus.CREATED).send()
     } catch (error) {
       transaction.rollback(error)
-
-      response.status(HttpStatus.BAD_REQUEST).json({
-        error: 'Unexpected error while creating user, class or schedules.',
-      })
+      throw error
     }
   }
 }

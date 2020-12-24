@@ -5,10 +5,10 @@
   "license": "MIT",
   "author": "Julio L. Muller",
   "scripts": {
-    "seeds": "knex seed:run",
-    "migrations": "knex migrate:latest",
+    "seeds": "knex seed:run --knexfile src/config.ts",
+    "migrations": "knex migrate:latest --knexfile src/config.ts",
     "migrations:seed": "npm run migrations && npm run seeds",
-    "migrations:reset": "knex migrate:rollback --all && npm run migrations",
+    "migrations:reset": "knex migrate:rollback --all --knexfile src/config.ts && npm run migrations",
     "migrations:reset:seed": "npm run migrations:reset && npm run seeds",
     "start": "tsnd src/index.ts --clear --respawn --transpile-only --ignore node_modules",
     "build": "rm -rf build/ && tsc -p ."

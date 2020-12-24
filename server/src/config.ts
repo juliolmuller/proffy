@@ -1,10 +1,11 @@
 import dotenv from 'dotenv-flow'
+import path from 'path'
 import pg from 'pg'
 
 /**
  * Setup environment variables
  */
-const config = dotenv.config({ purge_dotenv: true })
+const config = dotenv.config({ path: '../', purge_dotenv: true })
 
 if (config.error && process.env.NODE_ENV !== 'production') {
   throw config.error
@@ -19,3 +20,24 @@ const parser = (value: string) => (value === null ? null : Number(value))
 pg.types.setTypeParser(types.INT4, parser)
 pg.types.setTypeParser(types.INT8, parser)
 pg.types.setTypeParser(types.NUMERIC, parser)
+
+/**
+ * Configure Knex Query Builder
+ */
+module.exports = {
+  client: process.env.DB_CONNECTION,
+  connection: process.env.DATABASE_URL || {
+    host: process.env.DB_HOST,
+    port: process.env.DB_PORT,
+    database: process.env.DB_DATABASE,
+    user: process.env.DB_USERNAME,
+    password: process.env.DB_PASSWORD,
+  },
+  migrations: {
+    directory: path.resolve(__dirname, 'database', 'migrations'),
+  },
+  seeds: {
+    directory: path.resolve(__dirname, 'database', 'seeds'),
+  },
+  useNullAsDefault: true,
+}

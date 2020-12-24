@@ -58,8 +58,8 @@ class ClassController {
     const transaction = await database.transaction()
 
     try {
-      const [user_id] = await transaction('users').insert({ name, avatar, whatsapp, bio })
-      const [class_id] = await transaction('classes').insert({ subject, price, user_id })
+      const [user_id] = await transaction('users').insert({ name, avatar, whatsapp, bio }, 'id')
+      const [class_id] = await transaction('classes').insert({ subject, price, user_id }, 'id')
 
       await transaction('class_schedules').insert(schedule.map((sch: FriendlySchedule) => ({
         weekday: sch.weekday,

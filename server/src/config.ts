@@ -5,10 +5,15 @@ import pg from 'pg'
 /**
  * Setup environment variables
  */
-const config = dotenv.config({ path: '../', purge_dotenv: true })
+if (process.env.NODE_ENV !== 'production') {
+  const result = dotenv.config({
+    path: path.join(__dirname, '..'),
+    purge_dotenv: true,
+  })
 
-if (config.error && process.env.NODE_ENV !== 'production') {
-  throw config.error
+  if (result.error) {
+    throw result.error
+  }
 }
 
 /**

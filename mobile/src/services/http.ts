@@ -1,7 +1,8 @@
 import axios from 'axios'
+import Constants from 'expo-constants'
 
 const http = axios.create({
-  baseURL: 'http://192.168.15.1:3030/api',
+  baseURL: Constants.manifest.extra.API_URL,
 })
 
 export default http

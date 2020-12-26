@@ -1,7 +1,7 @@
 import React, { FC, useState } from 'react'
 import { Linking, Image, Text, View } from 'react-native'
 import { RectButton } from 'react-native-gesture-handler'
-import AsyncStorage from '@react-native-community/async-storage'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 import styles from './styles'
 import heartOutlineIcon from '../../images/icons/heart-outline.png'
 import unfavoriteIcon from '../../images/icons/unfavorite.png'

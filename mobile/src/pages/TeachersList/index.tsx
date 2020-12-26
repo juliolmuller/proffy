@@ -1,7 +1,7 @@
 import React, { FC, useEffect, useState } from 'react'
 import { ScrollView, Text, TextInput, View } from 'react-native'
 import { BorderlessButton } from 'react-native-gesture-handler'
-import AsyncStorage from '@react-native-community/async-storage'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 import { Feather } from '@expo/vector-icons'
 import PageHeader from '../../components/PageHeader'
 import TeacherCard, { Teacher } from '../../components/TeacherCard'

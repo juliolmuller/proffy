@@ -1,14 +1,14 @@
 module.exports = {
   root: true,
   env: {
-    node: true,
+    'react-native/react-native': true,
   },
   extends: [
-    '@lacussoft/standard',
+    '@lacussoft',
     'plugin:@typescript-eslint/recommended',
   ],
-  plugins: [
-    '@typescript-eslint',
+  ignorePatterns: [
+    '!babel.config*',
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
@@ -18,9 +18,13 @@ module.exports = {
       jsx: true,
     },
   },
+  plugins: [
+    '@typescript-eslint',
+    'react',
+    'react-hooks',
+    'react-native',
+  ],
   rules: {
-    '@typescript-eslint/no-use-before-define': 'off',
-    'arrow-body-style': 'off',
     'no-use-before-define': 'off',
     'object-curly-newline': ['error', { ImportDeclaration: { multiline: true, minProperties: 9 } }],
   },

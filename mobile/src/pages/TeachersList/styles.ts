@@ -39,5 +39,6 @@ export default StyleSheet.create({
 
   teachersDeck: {
     marginTop: -40,
+    paddingHorizontal: 16,
   },
 })

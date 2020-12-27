@@ -37,7 +37,7 @@ const TeachersList: FC = () => {
   }
 
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       <PageHeader
         title="Proffys disponíveis"
         headerRight={(
@@ -84,12 +84,12 @@ const TeachersList: FC = () => {
         )}
       </PageHeader>
 
-      <ScrollView style={styles.teachersDeck} contentContainerStyle={{ paddingHorizontal: 16, paddingBottom: 24 }}>
+      <View style={styles.teachersDeck}>
         {teachersList.map((teacher: Teacher) => (
           <TeacherCard key={teacher.id} teacher={teacher} favorite={isFavorite(teacher)} />
         ))}
-      </ScrollView>
-    </View>
+      </View>
+    </ScrollView>
   )
 }
 

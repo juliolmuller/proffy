@@ -1,5 +1,5 @@
 import React, { FC, useState } from 'react'
-import { View, ScrollView } from 'react-native'
+import { ScrollView, View } from 'react-native'
 import { useFocusEffect } from '@react-navigation/native'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import PageHeader from '../../components/PageHeader'
@@ -16,24 +16,18 @@ const Favorites: FC = () => {
   })
 
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       <PageHeader title="Meus proffys favoritos" />
 
-      <ScrollView
-        style={styles.teachersDeck}
-        contentContainerStyle={{
-          paddingHorizontal: 16,
-          paddingBottom: 24,
-        }}
-      >
+      <View style={styles.teachersDeck}>
         {favorites.map((teacher: Teacher) => {
           console.log(teacher)
           return (
           <TeacherCard key={teacher.id} teacher={teacher} favorite={true} />
           )
         })}
-      </ScrollView>
-    </View>
+      </View>
+    </ScrollView>
   )
 }
 

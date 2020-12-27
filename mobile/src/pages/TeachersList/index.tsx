@@ -1,11 +1,13 @@
 import React, { FC, useEffect, useState } from 'react'
-import { ScrollView, Text, TextInput, View } from 'react-native'
+import { ScrollView, Text, View } from 'react-native'
 import { BorderlessButton } from 'react-native-gesture-handler'
+import { Picker } from '@react-native-picker/picker'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { Feather } from '@expo/vector-icons'
 import PageHeader from '../../components/PageHeader'
 import TeacherCard, { Teacher } from '../../components/TeacherCard'
 import http from '../../services/http'
+import formData from './form-data'
 import styles from './styles'
 
 const TeachersList: FC = () => {
@@ -54,37 +56,55 @@ const TeachersList: FC = () => {
       >
         { isFiltering && (
           <View style={styles.searchForm}>
-            <Text style={styles.label}>Matéria</Text>
-            <TextInput
-              style={styles.input}
-              placeholder="Qual a matéria?"
-              placeholderTextColor="#c1bccc"
-              onChangeText={setSubject}
-              value={subject}
-            />
+            <Text style={styles.label}>Matéria:</Text>
+            <View style={styles.input}>
+              <Picker
+                selectedValue={subject}
+                onValueChange={(value) => setSubject(value.toString())}
+              >
+                <Picker.Item label="Selecione..." value="" color="#c1bccc" />
+                {formData.subjects.map((subjectItem, index) => (
+                  <Picker.Item
+                    key={index}
+                    label={subjectItem.label}
+                    value={subjectItem.value}
+                  />
+                ))}
+              </Picker>
+            </View>
 
-            <View style={styles.inputGroup}>
-              <View style={styles.inputGrow}>
-                <Text style={styles.label}>Dia da Semana</Text>
-                <TextInput
-                  style={styles.input}
-                  placeholder="Qual o dia?"
-                  placeholderTextColor="#c1bccc"
-                  onChangeText={setWeekday}
-                  value={weekday}
-              />
-              </View>
+            <Text style={styles.label}>Dia da Semana:</Text>
+            <View style={styles.input}>
+              <Picker
+                selectedValue={weekday}
+                onValueChange={(value) => setWeekday(value.toString())}
+              >
+                <Picker.Item label="Selecione..." value="" color="#c1bccc" />
+                {formData.weekdays.map((weekdayItem, index) => (
+                  <Picker.Item
+                    key={index}
+                    label={weekdayItem.label}
+                    value={weekdayItem.value}
+                  />
+                ))}
+              </Picker>
+            </View>
 
-              <View>
-                <Text style={styles.label}>Horário</Text>
-                <TextInput
-                  style={styles.input}
-                  placeholder="Que horas?"
-                  placeholderTextColor="#c1bccc"
-                  onChangeText={setTime}
-                  value={time}
-                />
-              </View>
+            <Text style={styles.label}>Horário:</Text>
+            <View style={styles.input}>
+              <Picker
+                selectedValue={time}
+                onValueChange={(value) => setTime(value.toString())}
+              >
+                <Picker.Item label="Selecione..." value="" color="#c1bccc" />
+                {formData.times.map((timeItem, index) => (
+                  <Picker.Item
+                    key={index}
+                    label={timeItem.label}
+                    value={timeItem.value}
+                  />
+                ))}
+              </Picker>
             </View>
           </View>
         )}

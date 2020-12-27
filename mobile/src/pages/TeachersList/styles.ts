@@ -20,21 +20,12 @@ export default StyleSheet.create({
     flexGrow: 1,
     height: 46,
     marginTop: 4,
-    marginBottom: 12,
+    marginBottom: 16,
     paddingHorizontal: 16,
     backgroundColor: '#fff',
     borderRadius: 8,
     justifyContent: 'center',
-  },
-
-  inputGroup: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-  },
-
-  inputGrow: {
-    flexGrow: 1,
-    marginRight: 12,
+    overflow: 'hidden',
   },
 
   teachersDeck: {

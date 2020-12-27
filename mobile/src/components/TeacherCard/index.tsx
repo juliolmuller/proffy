@@ -26,6 +26,8 @@ interface TeacherCardProps {
 const TeacherCard: FC<TeacherCardProps> = ({ teacher, favorite }) => {
   const [favoriteState, favoriteStateSetter] = useState(favorite)
 
+  console.log(favorite, teacher)
+
   const handleLinkToWhatsApp = () => {
     http.post('/connections', { user: teacher.id })
     Linking.openURL(`whatsapp://send?phone=${teacher.whatsapp}`)

@@ -11,13 +11,12 @@ import styles from './styles'
 
 const Landing: FC = () => {
   const { navigate } = useNavigation()
-  const [totalConnections, totalConnectionsSetter] = useState(0)
+  const [connectionsCount, setConnectionsCount] = useState(0)
 
   useEffect(() => {
-    http.get('/connections')
-      .then(({ data: { total } }) => {
-        totalConnectionsSetter(total)
-      })
+    http
+      .get('/connections')
+      .then(({ data }) => setConnectionsCount(data.total))
   }, [])
 
   return (
@@ -44,7 +43,7 @@ const Landing: FC = () => {
       </View>
 
       <Text style={styles.totalConnections}>
-        Total de {totalConnections} conexões já realizadas {' '}
+        Total de {connectionsCount} conexões já realizadas {' '}
         <Image source={heartIcon} />
       </Text>
     </View>

@@ -9,39 +9,45 @@ import http from '../../services/http'
 import styles from './styles'
 
 const TeachersList: FC = () => {
-  const [isFiltering, isFilteringSetter] = useState(true)
-  const [subject, subjectSetter] = useState('')
-  const [weekday, weekdaySetter] = useState('')
-  const [time, timeSetter] = useState('')
-  const [teachersList, teachersListSetter] = useState([])
-  const [favorites, favoritesSetter] = useState<Teacher[]>([])
+  const [isFiltering, setFiltering] = useState(true)
+  const [subject, setSubject] = useState('')
+  const [weekday, setWeekday] = useState('')
+  const [time, setTime] = useState('')
+  const [teachersList, setTeachersList] = useState([])
+  const [favorites, setFavorites] = useState<Teacher[]>([])
+
+  const isFavorite = (teacher: Teacher) => {
+    return !!favorites.find((favorite) => favorite.id === teacher.id)
+  }
+
+  const handleFilers = async () => {
+    try {
+      const params = { subject, weekday, time }
+      const [response, storage] = await Promise.all([
+        http.get('/classes', { params }),
+        AsyncStorage.getItem('favorites'),
+      ])
+
+      storage && setFavorites(JSON.parse(storage))
+      response.data.length && setFiltering(false)
+      setTeachersList(response.data)
+    } catch {
+      setTeachersList([])
+    }
+  }
 
   useEffect(() => {
     if (subject && weekday && time) {
-      http.get('/classes', { params: { subject, weekday, time } })
-        .then(({ data }) => {
-          teachersListSetter(data)
-          data.length && isFilteringSetter(false)
-          AsyncStorage.getItem('favorites').then((storage) => {
-            storage && favoritesSetter(JSON.parse(storage))
-          })
-        })
-        .catch(() => teachersListSetter([]))
+      handleFilers()
     }
   }, [subject, weekday, time])
-
-  const isFavorite = (teacher: Teacher) => {
-    return Boolean(favorites.find((favorite) => {
-      return favorite.id === teacher.id
-    }))
-  }
 
   return (
     <ScrollView style={styles.container}>
       <PageHeader
         title="Proffys disponíveis"
         headerRight={(
-          <BorderlessButton onPress={() => isFilteringSetter(!isFiltering)}>
+          <BorderlessButton onPress={() => setFiltering(!isFiltering)}>
             <Feather name="filter" size={20} color="#fff" />
           </BorderlessButton>
         )}
@@ -53,7 +59,7 @@ const TeachersList: FC = () => {
               style={styles.input}
               placeholder="Qual a matéria?"
               placeholderTextColor="#c1bccc"
-              onChangeText={subjectSetter}
+              onChangeText={setSubject}
               value={subject}
             />
 
@@ -64,7 +70,7 @@ const TeachersList: FC = () => {
                   style={styles.input}
                   placeholder="Qual o dia?"
                   placeholderTextColor="#c1bccc"
-                  onChangeText={weekdaySetter}
+                  onChangeText={setWeekday}
                   value={weekday}
               />
               </View>
@@ -75,7 +81,7 @@ const TeachersList: FC = () => {
                   style={styles.input}
                   placeholder="Que horas?"
                   placeholderTextColor="#c1bccc"
-                  onChangeText={timeSetter}
+                  onChangeText={setTime}
                   value={time}
                 />
               </View>

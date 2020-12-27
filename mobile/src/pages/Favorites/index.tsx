@@ -7,12 +7,16 @@ import TeacherCard, { Teacher } from '../../components/TeacherCard'
 import styles from './styles'
 
 const Favorites: FC = () => {
-  const [favorites, favoritesSetter] = useState<Teacher[]>([])
+  const [favoritesString, setFavoritesString] = useState('[]')
+  const favorites: Teacher[] = JSON.parse(favoritesString)
+
+  const restoreStorage = async () => {
+    const storage = await AsyncStorage.getItem('favorites')
+    storage && setFavoritesString(storage)
+  }
 
   useFocusEffect(() => {
-    AsyncStorage.getItem('favorites').then((storage) => {
-      storage && favoritesSetter(JSON.parse(storage))
-    })
+    restoreStorage()
   })
 
   return (
@@ -20,12 +24,9 @@ const Favorites: FC = () => {
       <PageHeader title="Meus proffys favoritos" />
 
       <View style={styles.teachersDeck}>
-        {favorites.map((teacher: Teacher) => {
-          console.log(teacher)
-          return (
+        {favorites.map((teacher: Teacher) => (
           <TeacherCard key={teacher.id} teacher={teacher} favorite={true} />
-          )
-        })}
+        ))}
       </View>
     </ScrollView>
   )

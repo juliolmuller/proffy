@@ -1,35 +1,37 @@
-import { FC, useState } from 'react'
-import { useHistory } from 'react-router-dom'
-import PageHeader from '../../components/PageHeader'
-import Input from '../../components/Input'
-import Select from '../../components/Select'
-import TextArea from '../../components/TextArea'
-import warningIcon from '../../assets/images/icons/warning.svg'
-import http from '../../services/http'
-import './styles.css'
+/* eslint-disable react/jsx-child-element-spacing */
+import { useState } from 'react'
+import { useRouter } from 'next/router'
+import DocumentHead from 'next/head'
+import Header from '@/components/Header'
+import Input from '@/components/Input'
+import Select from '@/components/Select'
+import TextArea from '@/components/TextArea'
+import http from '@/services/http'
+import { ScheduleItem, Teacher } from '@/types'
+import './styles.module.scss'
 
-const TeacherForm: FC = () => {
-  const history = useHistory()
+function TeachersFormPage() {
+  const router = useRouter()
 
-  const [bio, bioSetter] = useState('')
-  const [name, nameSetter] = useState('')
-  const [price, priceSetter] = useState('')
-  const [avatar, avatarSetter] = useState('')
-  const [subject, subjectSetter] = useState('')
-  const [whatsapp, whatsappSetter] = useState('')
-  const [scheduleItems, scheduleItemsSetter] = useState([
-    { weekday: 0, from: '', to: '' },
+  const [bio, setBio] = useState('')
+  const [name, setName] = useState('')
+  const [price, setPrice] = useState('')
+  const [avatar, setAvatar] = useState('')
+  const [subject, setSubject] = useState('')
+  const [whatsapp, setWhatsapp] = useState('')
+  const [scheduleItems, setScheduleItems] = useState<ScheduleItem[]>([
+    { weekday: '', from: '', to: '' },
   ])
 
-  const addScheduleItem = () => {
-    scheduleItemsSetter([
+  function addScheduleItem() {
+    setScheduleItems([
       ...scheduleItems,
-      { weekday: 0, from: '', to: '' },
+      { weekday: '', from: '', to: '' },
     ])
   }
 
-  const onScheduleItemChange = (position: number, field: string, value: string) => {
-    scheduleItemsSetter(scheduleItems.map((schItem, index) => {
+  function onScheduleItemChange(position: number, field: keyof ScheduleItem, value: string) {
+    setScheduleItems(scheduleItems.map((schItem, index) => {
       if (index === position) {
         return { ...schItem, [field]: value }
       }
@@ -38,8 +40,8 @@ const TeacherForm: FC = () => {
     }))
   }
 
-  const handleFormSubmit = () => {
-    http.post('/classes', {
+  async function handleFormSubmit() {
+    await http.post('/classes', {
       name,
       avatar,
       whatsapp,
@@ -47,15 +49,19 @@ const TeacherForm: FC = () => {
       subject,
       price,
       schedule: scheduleItems,
-    }).then(() => {
-      alert('Cadastrado com sucesso!')
-      history.push('/')
-    })
+    } as unknown as Partial<Teacher>)
+
+    alert('Cadastrado com sucesso!')
+    router.replace('/')
   }
 
   return (
     <div id="page-teacher-form" className="container">
-      <PageHeader
+      <DocumentHead>
+        <title>Proffy | Cadastrar Professor e Aulas</title>
+      </DocumentHead>
+
+      <Header
         title="Que incrível que você quer dar aulas!"
         description="O primeiro passo é preencher este formulário de inscrição"
       />
@@ -68,24 +74,24 @@ const TeacherForm: FC = () => {
               type="text"
               name="name"
               label="Nome completo"
-              onChange={(ev) => nameSetter(ev.target.value)}
+              onChange={(ev) => setName(ev.target.value)}
             />
             <Input
               type="text"
               name="avatar"
               label="Avatar"
-              onChange={(ev) => avatarSetter(ev.target.value)}
+              onChange={(ev) => setAvatar(ev.target.value)}
             />
             <Input
               type="text"
               name="whatsapp"
               label="WhatsApp"
-              onChange={(ev) => whatsappSetter(ev.target.value)}
+              onChange={(ev) => setWhatsapp(ev.target.value)}
             />
             <TextArea
               name="bio"
               label="Biografia"
-              onChange={(ev) => bioSetter(ev.target.value)}
+              onChange={(ev) => setBio(ev.target.value)}
             />
           </fieldset>
 
@@ -95,7 +101,7 @@ const TeacherForm: FC = () => {
               name="subject"
               label="Matéria"
               value={subject}
-              onChange={(ev) => subjectSetter(ev.target.value)}
+              onChange={(ev) => setSubject(ev.target.value)}
               options={[
                 { value: 'Biologia', label: 'Biologia' },
                 { value: 'Física', label: 'Física' },
@@ -112,7 +118,7 @@ const TeacherForm: FC = () => {
               name="price"
               label="Valor da sua hora"
               value={price}
-              onChange={(ev) => priceSetter(ev.target.value)}
+              onChange={(ev) => setPrice(ev.target.value)}
             />
           </fieldset>
 
@@ -158,7 +164,7 @@ const TeacherForm: FC = () => {
 
           <footer>
             <p>
-              <img src={warningIcon} alt="Alerta" />
+              <img src="/img/icons/warning.svg" alt="Alerta" />
               Importante! <br/>
               Preencha todos os dados.
             </p>
@@ -172,4 +178,4 @@ const TeacherForm: FC = () => {
   )
 }
 
-export default TeacherForm
+export default TeachersFormPage

@@ -1,16 +1,18 @@
-import { FC, InputHTMLAttributes } from 'react'
-import './styles.css'
+import { InputHTMLAttributes } from 'react'
+import './styles.module.scss'
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
-  name: string
   label: string
+  name: string
 }
 
-const Input: FC<InputProps> = ({ name, label, ...attr }) => (
-  <div className="input-group">
-    <label htmlFor={name}>{label}</label>
-    <input id={name} {...attr} />
-  </div>
-)
+function Input({ name, label, ...attr }: InputProps) {
+  return (
+    <div className="input-group">
+      <label htmlFor={name}>{label}</label>
+      <input id={name} {...attr} />
+    </div>
+  )
+}
 
 export default Input

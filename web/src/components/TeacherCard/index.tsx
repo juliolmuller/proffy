@@ -1,23 +1,12 @@
-import { FC } from 'react'
-import whatsAppIcon from '../../assets/images/icons/whatsapp.svg'
-import http from '../../services/http'
-import './styles.css'
-
-export interface Teacher {
-  id: number
-  name: string
-  avatar: string
-  bio: string
-  whatsapp: string
-  subject: string
-  price: number
-}
+import http from '@/services/http'
+import { Teacher } from '@/types'
+import './styles.module.scss'
 
 interface TeacherCardProps {
   teacher: Teacher
 }
 
-const TeacherCard: FC<TeacherCardProps> = ({ teacher }) => {
+function TeacherCard({ teacher }: TeacherCardProps) {
   const handleCreateConnection = () => {
     http.post('/connections', { user: teacher.id })
   }
@@ -40,7 +29,7 @@ const TeacherCard: FC<TeacherCardProps> = ({ teacher }) => {
           <span>R$ {teacher.price.toFixed(2)}</span>
         </p>
         <a href={`https://wa.me/${teacher.whatsapp}`} onClick={handleCreateConnection}>
-          <img src={whatsAppIcon} alt="Ícone do WhatsApp" />
+          <img src="/img/icons/whatsapp.svg" alt="Ícone do WhatsApp" />
           Entrar em contato
         </a>
       </footer>

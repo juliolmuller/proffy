@@ -18,12 +18,21 @@
   height: 2rem;
 }
 
-.page-header .top-bar-container a {
+.page-header .top-bar-container button {
   height: 3.2rem;
+  width: 3.2rem;
+  border-radius: 50%;
+  background-color: transparent;
+  font-size: 0;
+
   transition: opacity 0.2s;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.page-header .top-bar-container a:hover {
+.page-header .top-bar-container button:hover {
   opacity: 0.6;
 }
 

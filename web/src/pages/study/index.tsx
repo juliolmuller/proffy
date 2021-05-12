@@ -1,34 +1,40 @@
-import { FC, useEffect, useState } from 'react'
-import PageHeader from '../../components/PageHeader'
-import Input from '../../components/Input'
-import Select from '../../components/Select'
-import TeacherCard, { Teacher } from '../../components/TeacherCard'
-import http from '../../services/http'
-import './styles.css'
+import { useEffect, useState } from 'react'
+import DocumentHead from 'next/head'
+import Header from '@/components/Header'
+import Input from '@/components/Input'
+import Select from '@/components/Select'
+import TeacherCard from '@/components/TeacherCard'
+import http from '@/services/http'
+import { Teacher } from '@/types'
+import './styles.module.scss'
 
-const TeachersList: FC = () => {
-  const [subject, subjectSetter] = useState('')
-  const [weekday, weekdaySetter] = useState('')
-  const [time, timeSetter] = useState('')
-  const [teachersList, teachersListSetter] = useState([])
+function TeachersSearchPage() {
+  const [time, setTime] = useState('')
+  const [weekday, setWeekday] = useState('')
+  const [subject, setSubject] = useState('')
+  const [teachersList, setTeachersList] = useState<Teacher[]>([])
 
   useEffect(() => {
     if (subject && weekday && time) {
       http.get('/classes', {
         params: { subject, weekday, time },
-      }).then(({ data }) => teachersListSetter(data))
+      }).then(({ data }) => setTeachersList(data))
     }
   }, [subject, weekday, time])
 
   return (
     <div id="page-teachers-list" className="container">
-      <PageHeader title="Estes são os proffys disponíveis:">
+      <DocumentHead>
+        <title>Proffy | Buscar Professores e Instrutores</title>
+      </DocumentHead>
+
+      <Header title="Estes são os proffys disponíveis:">
         <form id="search-teacher">
           <Select
             name="subject"
             label="Matéria:"
             value={subject}
-            onChange={(ev) => subjectSetter(ev.target.value)}
+            onChange={(ev) => setSubject(ev.target.value)}
             options={[
               { value: 'Biologia', label: 'Biologia' },
               { value: 'Física', label: 'Física' },
@@ -44,7 +50,7 @@ const TeachersList: FC = () => {
             name="weekday"
             label="Dia da Semana"
             value={weekday}
-            onChange={(ev) => weekdaySetter(ev.target.value)}
+            onChange={(ev) => setWeekday(ev.target.value)}
             options={[
               { value: '0', label: 'Domingo' },
               { value: '1', label: 'Segunda-feira' },
@@ -59,15 +65,21 @@ const TeachersList: FC = () => {
             type="time"
             name="time"
             label="Horário"
-            onChange={(ev) => timeSetter(ev.target.value)}
+            onChange={(ev) => setTime(ev.target.value)}
           />
         </form>
-      </PageHeader>
+      </Header>
+
       <main>
-        {teachersList.map((teacher: Teacher) => <TeacherCard key={teacher.id} teacher={teacher} />)}
+        {teachersList.map((teacher) => (
+          <TeacherCard
+            key={teacher.id}
+            teacher={teacher}
+          />
+        ))}
       </main>
     </div>
   )
 }
 
-export default TeachersList
+export default TeachersSearchPage

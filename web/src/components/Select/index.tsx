@@ -1,5 +1,5 @@
 import { SelectHTMLAttributes } from 'react'
-import './styles.module.scss'
+import styles from './styles.module.scss'
 
 interface SelectProps extends SelectHTMLAttributes<HTMLSelectElement> {
   name: string
@@ -12,7 +12,7 @@ interface SelectProps extends SelectHTMLAttributes<HTMLSelectElement> {
 
 function Select({ name, label, options, ...attr }: SelectProps) {
   return (
-    <div className="select-group">
+    <div className={styles.selectContainer}>
       <label htmlFor={name}>{label}</label>
       <select id={name} value="" {...attr}>
         <option value="" disabled hidden>Selecione...</option>

@@ -1,96 +1,106 @@
-#page-landing {
+
+.pageWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   width: 100%;
   height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  background: var(--color-primary);
+
   color: var(--color-text-in-primary);
-  background-color: var(--color-primary);
-}
 
-.logo-container {
-  text-align: center;
-  margin-bottom: 3.2rem;
-}
+  .container {
+    width: 90%;
+    max-width: 1000px;
+    font: 500 1.6rem Poppins;
+  }
 
-.logo-container img {
-  height: 10rem;
-}
+  .logo {
+    margin-bottom: 3.2rem;
 
-.logo-container h2 {
-  font-weight: 500;
-  font-size: 2.4rem;
-  line-height: 4.6rem;
-  margin-top: 0.8rem;
-}
+    text-align: center;
 
-.hero-image {
-  width: 100%;
-}
+    img {
+      height: 10rem;
+    }
 
-.buttons-container {
-  display: flex;
-  justify-content: center;
-  margin: 3.2rem 0;
-}
+    h2 {
+      margin-top: 0.8rem;
 
-.buttons-container a {
-  width: 30rem;
-  height: 10.4rem;
+      font-size: 2.4rem;
+      font-weight: 500;
+      line-height: 4.6rem;
+    }
+  }
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  .heroImage {
+    width: 100%;
+  }
 
-  border-radius: 0.8rem;
-  font: 700 2rem Archivo;
-  text-decoration: none;
-  color: var(--color-button-text);
+  .buttonsGroup {
+    display: flex;
+    justify-content: center;
 
-  transition: background-color 0.2s;
-}
+    margin: 3.2rem 0;
 
-.buttons-container a:first-child {
-  margin-right: 1.6rem;
-}
+    a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
 
-.buttons-container a img {
-  width: 4rem;
-  margin-right: 0.8rem;
-}
+      width: 30rem;
+      height: 10.4rem;
+      border-radius: 0.8rem;
 
-.buttons-container a.study {
-  background-color: var(--color-primary-lighter);
-}
+      color: var(--color-button-text);
+      font: 700 2rem Archivo;
+      text-decoration: none;
 
-.buttons-container a.teach {
-  background-color: var(--color-secondary);
-}
+      transition: background-color 0.2s;
 
-.buttons-container a.study:hover {
-  background-color: var(--color-primary-light);
-}
+      &:first-child {
+        margin-right: 1.6rem;
+      }
 
-.buttons-container a.teach:hover {
-  background-color: var(--color-secondary-dark);
-}
+      &.studyRoute {
+        background: var(--color-primary-lighter);
 
-#total-connections {
-  display: flex;
-  align-content: center;
-  justify-content: center;
+        &:hover {
+          background: var(--color-primary-light);
+        }
+      }
 
-  font-size: 1.4rem;
-}
+      &.teachRoute {
+        background: var(--color-secondary);
 
-#total-connections img {
-  margin-left: 0.8rem;
+        &:hover {
+          background: var(--color-secondary-dark);
+        }
+      }
+
+      img {
+        width: 4rem;
+        margin-right: 0.8rem;
+      }
+    }
+  }
+
+  .connectionsCount {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+
+    font-size: 1.4rem;
+
+    img {
+      margin-left: 0.8rem;
+    }
+  }
 }
 
 @media (min-width: 1100px) {
-  #page-landing-content {
-    max-width: 1100px;
-
+  .container {
     display: grid;
     grid-template-rows: 350px 1fr;
     grid-template-columns: 2fr 1fr 1fr;
@@ -98,39 +108,42 @@
       'logo hero hero'
       'buttons buttons total'
     ;
+    max-width: 1100px;
   }
 
-  .logo-container {
+  .logo {
     grid-area: logo;
     align-self: center;
+
     margin-bottom: 0;
+
     text-align: left;
+
+    img {
+      height: 100%;
+    }
+
+    h2 {
+      font-size: 3.6rem;
+      text-align: initial;
+    }
   }
 
-  .logo-container img {
-    height: 100%;
-  }
-
-  .logo-container h2 {
-    text-align: initial;
-    font-size: 3.6rem;
-  }
-
-  .hero-image {
+  .heroImage {
     grid-area: hero;
     justify-self: end;
   }
 
-  .buttons-container {
+  .buttonsGroup {
     grid-area: buttons;
     justify-content: flex-start;
+
+    a {
+      font-size: 2.4rem;
+    }
   }
 
-  .buttons-container a {
-    font-size: 2.4rem;
-  }
-
-  #total-connections {
+  .connectionsCount {
     grid-area: total;
     justify-self: end;
   }

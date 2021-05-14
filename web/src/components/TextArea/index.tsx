@@ -1,5 +1,5 @@
 import { TextareaHTMLAttributes } from 'react'
-import './styles.module.scss'
+import styles from './styles.module.scss'
 
 interface TextAreaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
   name: string
@@ -8,7 +8,7 @@ interface TextAreaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
 
 function TextArea({ name, label, ...attr }: TextAreaProps) {
   return (
-    <div className="textarea-group">
+    <div className={styles.textareaContainer}>
       <label htmlFor={name}>{label}</label>
       <textarea id={name} {...attr} />
     </div>

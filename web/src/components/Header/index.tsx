@@ -1,6 +1,6 @@
 import { ReactNode } from 'react'
 import { useRouter } from 'next/router'
-import './styles.module.scss'
+import styles from './styles.module.scss'
 
 interface PageHeaderProps {
   title: string
@@ -12,15 +12,16 @@ function Header({ title, description, children }: PageHeaderProps) {
   const router = useRouter()
 
   return (
-    <header className="page-header">
-      <div className="top-bar-container">
+    <header className={styles.pageHeader}>
+      <nav className={styles.topBar}>
         <button type="button" onClick={() => router.back()}>
           <img src="/img/icons/back.svg" alt="Ícone de retornar" />
         </button>
 
         <img src="/img/logo.svg" alt="Logo da Proffy" />
-      </div>
-      <div className="header-content">
+      </nav>
+
+      <div className={styles.content}>
         <h2>{title}</h2>
         {description && <p>{description}</p>}
         <div>

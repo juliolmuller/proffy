@@ -1,6 +1,6 @@
 import http from '@/services/http'
 import { Teacher } from '@/types'
-import './styles.module.scss'
+import styles from './styles.module.scss'
 
 interface TeacherCardProps {
   teacher: Teacher
@@ -12,10 +12,10 @@ function TeacherCard({ teacher }: TeacherCardProps) {
   }
 
   return (
-    <article className="teacher-card">
+    <article className={styles.card}>
       <header>
         <img src={teacher.avatar} alt={`Foto de ${teacher.name}`} />
-        <div className="teacher-card-title">
+        <div>
           <h3>{teacher.name}</h3>
           <span>{teacher.subject}</span>
         </div>

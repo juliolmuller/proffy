@@ -6,7 +6,7 @@ import Select from '@/components/Select'
 import TeacherCard from '@/components/TeacherCard'
 import http from '@/services/http'
 import { Teacher } from '@/types'
-import './styles.module.scss'
+import styles from './styles.module.scss'
 
 function TeachersSearchPage() {
   const [time, setTime] = useState('')
@@ -23,13 +23,13 @@ function TeachersSearchPage() {
   }, [subject, weekday, time])
 
   return (
-    <div id="page-teachers-list" className="container">
+    <div className={styles.pageWrapper}>
       <DocumentHead>
         <title>Proffy | Buscar Professores e Instrutores</title>
       </DocumentHead>
 
       <Header title="Estes são os proffys disponíveis:">
-        <form id="search-teacher">
+        <form className={styles.searchForm}>
           <Select
             name="subject"
             label="Matéria:"

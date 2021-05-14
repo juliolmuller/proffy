@@ -8,7 +8,7 @@ import Select from '@/components/Select'
 import TextArea from '@/components/TextArea'
 import http from '@/services/http'
 import { ScheduleItem, Teacher } from '@/types'
-import './styles.module.scss'
+import styles from './styles.module.scss'
 
 function TeachersFormPage() {
   const router = useRouter()
@@ -56,7 +56,7 @@ function TeachersFormPage() {
   }
 
   return (
-    <div id="page-teacher-form" className="container">
+    <div className={styles.pageWrapper}>
       <DocumentHead>
         <title>Proffy | Cadastrar Professor e Aulas</title>
       </DocumentHead>
@@ -130,7 +130,7 @@ function TeachersFormPage() {
               </button>
             </legend>
             {scheduleItems.map((schItem, index) => (
-              <div key={index} className="schedule-item">
+              <div key={index} className={styles.scheduleItem}>
                 <Select
                   name="weekday"
                   label="Dia da Semana"

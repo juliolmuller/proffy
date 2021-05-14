@@ -28,28 +28,27 @@
   box-sizing: border-box;
 }
 
-html, body, #root {
-  height: 100%;
+html, body, #__next {
+  height: 100vh;
 }
 
 body {
-  background-color: var(--color-background);
+  background: var(--color-background);
 }
 
-#root {
+#__next {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 body, input, button, textarea {
-  font: 500 1.6rem Poppins;
   color: var(--color-text-base);
+  font: 500 1.6rem Poppins;
 }
 
-.container {
-  width: 90%;
-  max-width: 700px;
+a, button {
+  cursor: pointer;
 }
 
 @media (min-width: 700px) {

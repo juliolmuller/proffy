@@ -2,7 +2,7 @@ import { GetStaticProps } from 'next'
 import DocumentHead from 'next/head'
 import Link from 'next/link'
 import http from '@/services/http'
-import './styles.module.scss'
+import styles from './styles.module.scss'
 
 interface LandingPageProps {
   totalConnections: number
@@ -10,39 +10,39 @@ interface LandingPageProps {
 
 function LandingPage({ totalConnections = 0 }: LandingPageProps) {
   return (
-    <div id="page-landing">
+    <div className={styles.pageWrapper}>
       <DocumentHead>
         <title>Proffy | Home</title>
       </DocumentHead>
 
-      <div id="page-landing-content" className="container">
-        <div className="logo-container">
-          <img src="/img/logo.svg" alt="Logo da Proffy" />
+      <div className={styles.container}>
+        <div className={styles.logo}>
+          <img src="/img/logo.svg" alt="logo da Proffy" />
           <h2>Sua plataforma de estudos online.</h2>
         </div>
 
         <img
           src="/img/landing.svg"
           alt="Capa do sistema Proffy"
-          className="hero-image"
+          className={styles.heroImage}
         />
 
-        <div className="buttons-container">
+        <div className={styles.buttonsGroup}>
           <Link href="/study">
-            <a className="study">
+            <a className={styles.studyRoute}>
               <img src="/img/icons/study.svg" alt="ícone de estudo" /> Estudar
             </a>
           </Link>
           <Link href="/teach">
-            <a className="teach">
+            <a className={styles.teachRoute}>
               <img src="/img/icons/teach.svg" alt="ícone de ensino" /> Lecionar
             </a>
           </Link>
         </div>
 
-        <span id="total-connections">
+        <span className={styles.connectionsCount}>
           Total de {totalConnections} conexões já realizadas.
-          <img src="/img/icons/purple-heart.svg" alt="Ícone de coneções" />
+          <img src="/img/icons/purple-heart.svg" alt="ícone de conexões" />
         </span>
       </div>
     </div>

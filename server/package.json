@@ -7,17 +7,17 @@
   "scripts": {
     "postinstall": "node -e \"require('fs').existsSync('.env') || require('fs').copyFileSync('.env.example', '.env')\"",
     "seed": "knex seed:run --knexfile src/config.ts",
-    "migration": "knex migrate:latest --knexfile src/config.ts",
-    "migration:seed": "npm run migrations && npm run seeds",
-    "migration:reset": "knex migrate:rollback --all --knexfile src/config.ts && npm run migrations",
-    "migration:reset:seed": "npm run migrations:reset && npm run seeds",
+    "migrate": "knex migrate:latest --knexfile src/config.ts",
+    "migrate:seed": "npm run migrate && npm run seed",
+    "migrate:reset": "knex migrate:rollback --all --knexfile src/config.ts && npm run migrate",
+    "migrate:reset:seed": "npm run migrate:reset && npm run seed",
     "dev": "tsnd src/ --clear --respawn --transpile-only --ignore node_modules",
     "development": "npm run dev",
     "prod": "node build/",
     "production": "npm run prod",
-    "start": "npm run prod",
     "build": "rm -rf build/ && tsc -p .",
-    "lint": "eslint src/ --fix"
+    "lint": "eslint src/ --fix",
+    "start": "npm run migrate:reset:seed && npm run prod"
   },
   "dependencies": {
     "cors": "^2.8.5",

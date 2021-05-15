@@ -3,7 +3,6 @@ import HttpStatus from 'http-status-codes'
 import database from '../database/connection'
 
 class ConnectionController {
-
   async index(request: Request, response: Response): Promise<void> {
     const [{ total }] = await database('connections').count('* as total')
 

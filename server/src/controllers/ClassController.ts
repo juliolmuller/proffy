@@ -16,7 +16,6 @@ interface FriendlySchedule {
 }
 
 class ClassController {
-
   async index(request: Request, response: Response): Promise<void> {
     const filters: QueryFilters = request.query
     const timeInMinutes = parseTimeIntoMinutes(filters.time as string)

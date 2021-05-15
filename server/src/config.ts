@@ -31,7 +31,7 @@ pg.types.setTypeParser(types.NUMERIC, parser)
  */
 module.exports = {
   client: process.env.DB_CONNECTION,
-  connection: process.env.DATABASE_URL || {
+  connection: process.env.DB_URL || {
     host: process.env.DB_HOST,
     port: process.env.DB_PORT,
     database: process.env.DB_DATABASE,

@@ -27,7 +27,7 @@
     "http-status-codes": "^2.1.4",
     "knex": "~0.95.5",
     "morgan": "^1.10.0",
-    "pg": "^8.6.0"
+    "mysql": "^2.18.1"
   },
   "devDependencies": {
     "@types/cors": "^2.8.10",
@@ -35,7 +35,6 @@
     "@types/express": "^4.17.11",
     "@types/morgan": "^1.9.2",
     "@types/node": "^14.14.40",
-    "@types/pg": "^7.14.11",
     "eslint": "^7.26.0",
     "eslint-config-lacussoft": "^2.0.1",
     "ts-node-dev": "^1.1.6",

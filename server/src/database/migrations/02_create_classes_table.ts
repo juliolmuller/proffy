@@ -1,8 +1,9 @@
-import Knex, { SchemaBuilder } from 'knex'
+import { Knex } from 'knex'
 
 export const TABLE_NAME = 'classes'
 
-export function up(knex: Knex): SchemaBuilder {
+// eslint-disable-next-line require-await
+export async function up(knex: Knex) {
   return knex.schema.createTable(TABLE_NAME, (table) => {
     table.bigIncrements('id').primary()
     table.string('subject').notNullable()
@@ -16,6 +17,7 @@ export function up(knex: Knex): SchemaBuilder {
   })
 }
 
-export function down(knex: Knex): SchemaBuilder {
+// eslint-disable-next-line require-await
+export async function down(knex: Knex) {
   return knex.schema.dropTable(TABLE_NAME)
 }

@@ -1,13 +1,6 @@
-/* eslint-disable no-multi-spaces, no-use-before-define */
-import Knex from 'knex'
+/* eslint-disable no-multi-spaces */
+import { Knex } from 'knex'
 import { TABLE_NAME } from '../migrations/02_create_classes_table'
-
-export const seed = async (knex: Knex): Promise<void> => {
-  await knex(TABLE_NAME).del()
-  const ids = await knex(TABLE_NAME).insert(data, 'id')
-
-  data.forEach((clazz, index) => Object.assign(clazz, { id: Number(ids[index]) }))
-}
 
 export const data = [
   { subject: 'Biologia',   price: 79.90, user_id: 1 },
@@ -83,3 +76,10 @@ export const data = [
   { subject: 'Português',  price: 79.90, user_id: 9 },
   { subject: 'Química',    price: 79.90, user_id: 9 },
 ]
+
+export async function seed(knex: Knex) {
+  await knex(TABLE_NAME).del()
+  const ids = await knex(TABLE_NAME).insert(data, 'id')
+
+  data.forEach((clazz, index) => Object.assign(clazz, { id: Number(ids[index]) }))
+}

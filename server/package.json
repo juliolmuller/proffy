@@ -17,7 +17,7 @@
     "production": "npm run prod",
     "build": "rm -rf build/ && tsc -p .",
     "lint": "eslint src/ --fix",
-    "start": "npm run migrate:reset:seed && npm run prod"
+    "start": "knex migrate:rollback --all --knexfile build/config.js && knex migrate:latest --knexfile build/config.js && knex seed:run --knexfile build/config.js && npm run prod"
   },
   "dependencies": {
     "cors": "^2.8.5",

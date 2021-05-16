@@ -4,7 +4,7 @@ import { TABLE_NAME } from '../migrations/01_create_users_table'
 
 const whatsapp = '+5541999888777'
 const bio = 'Lorem ipsum dolor sit amet consectetur adipisicing elit.Beatae consequatur, deserunt quibusdam nesciunt nobis voluptatum. Dicta error, vero, itaque numquam voluptates laudantium quod quasi commodi ea omnis officiis illum eos!'
-export const data = [
+const data = [
   { name: 'Alex Kutzke',          avatar: 'https://github.com/alexkutzke.png',       whatsapp, bio },
   { name: 'André K. Antunes',     avatar: 'https://github.com/andrekantunes.png',    whatsapp, bio },
   { name: 'Aurelio S. Matsunaga', avatar: 'https://github.com/aureliomatsunaga.png', whatsapp, bio },
@@ -18,7 +18,5 @@ export const data = [
 
 export async function seed(knex: Knex) {
   await knex(TABLE_NAME).del()
-  const ids = await knex(TABLE_NAME).insert(data, 'id')
-
-  data.forEach((user, index) => Object.assign(user, { id: Number(ids[index]) }))
+  await knex(TABLE_NAME).insert(data, 'id')
 }

@@ -79,7 +79,8 @@ export const data = [
 
 export async function seed(knex: Knex) {
   await knex(TABLE_NAME).del()
-  const ids = await knex(TABLE_NAME).insert(data, 'id')
+  await knex(TABLE_NAME).insert(data)
+  const classesIds = await knex.select('id').from(TABLE_NAME)
 
-  data.forEach((clazz, index) => Object.assign(clazz, { id: Number(ids[index]) }))
+  data.forEach((clazz, index) => Object.assign(clazz, { id: classesIds[index].id }))
 }

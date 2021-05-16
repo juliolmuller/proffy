@@ -55,7 +55,7 @@ const getStaticProps: GetStaticProps<LandingPageProps> = async () => {
   return {
     revalidate: 300, // revalidate every 300 seconds (5 minutes)
     props: {
-      totalConnections: Number(data.data) || 0,
+      totalConnections: Number(data.total) || 0,
     },
   }
 }

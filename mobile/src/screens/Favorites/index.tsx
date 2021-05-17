@@ -2,8 +2,8 @@ import React, { useState } from 'react'
 import { ScrollView, View } from 'react-native'
 import { useFocusEffect } from '@react-navigation/native'
 import AsyncStorage from '@react-native-async-storage/async-storage'
-import PageHeader from '../../components/PageHeader'
-import TeacherCard from '../../components/TeacherCard'
+import PageHeader from '@/components/PageHeader'
+import TeacherCard from '@/components/TeacherCard'
 import styles from './styles'
 
 function Favorites() {

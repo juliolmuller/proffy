@@ -1,31 +1,18 @@
+/* eslint-env node */
 module.exports = {
   root: true,
-  env: {
-    'react-native/react-native': true,
-  },
   extends: [
-    '@lacussoft',
-    'plugin:@typescript-eslint/recommended',
+    'lacussoft',
+    'lacussoft/react-native',
+    'lacussoft/typescript',
   ],
   ignorePatterns: [
     '!babel.config*',
   ],
-  parser: '@typescript-eslint/parser',
-  parserOptions: {
-    sourceType: 'module',
-    ecmaVersion: 2020,
-    ecmaFeatures: {
-      jsx: true,
-    },
-  },
-  plugins: [
-    '@typescript-eslint',
-    'react',
-    'react-hooks',
-    'react-native',
-  ],
   rules: {
+    '@typescript-eslint/no-use-before-define': 'error',
     'no-use-before-define': 'off',
-    'object-curly-newline': ['error', { ImportDeclaration: { multiline: true, minProperties: 9 } }],
+    'react-native/no-raw-text': 'off',
+    'react-native/no-single-element-style-arrays': 'off',
   },
 }

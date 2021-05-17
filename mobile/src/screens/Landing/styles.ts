@@ -1,14 +1,15 @@
 import { StyleSheet } from 'react-native'
 
 export default StyleSheet.create({
-  container: {
-    flexGrow: 1,
+  screenWrapper: {
+    flex: 1,
     backgroundColor: '#8257e5',
     justifyContent: 'center',
     padding: 40,
   },
 
   banner: {
+    flex: 1,
     width: '100%',
     resizeMode: 'contain',
   },
@@ -29,7 +30,7 @@ export default StyleSheet.create({
   },
 
   buttonsGroup: {
-    flexGrow: 1,
+    flex: 1,
     flexDirection: 'row',
     justifyContent: 'space-between',
   },

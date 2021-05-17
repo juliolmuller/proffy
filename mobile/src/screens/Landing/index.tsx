@@ -20,7 +20,7 @@ function Landing() {
   }, [])
 
   return (
-    <View style={styles.container}>
+    <View style={styles.screenWrapper}>
       <Image source={landingImage} style={styles.banner} />
 
       <Text style={styles.greetings}>

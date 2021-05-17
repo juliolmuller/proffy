@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native'
 
 export default StyleSheet.create({
-  container: {
+  screenWrapper: {
     flexGrow: 1,
     backgroundColor: '#8257e5',
     justifyContent: 'center',

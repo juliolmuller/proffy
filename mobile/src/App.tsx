@@ -10,7 +10,7 @@ import {
   Poppins_400Regular as Poppins400,
   Poppins_600SemiBold as Poppins600,
 } from '@expo-google-fonts/poppins'
-import AppStack from './routes/AppStack'
+import RootNavigation from './navigation/AppStack'
 
 function App() {
   const [fontsLoaded] = useFonts({ Archivo400, Archivo700, Poppins400, Poppins600 })
@@ -21,7 +21,7 @@ function App() {
 
   return (
     <>
-      <AppStack />
+      <RootNavigation />
       <StatusBar style="light" />
     </>
   )

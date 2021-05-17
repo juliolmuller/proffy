@@ -20,7 +20,7 @@ function Favorites() {
   })
 
   return (
-    <ScrollView style={styles.container}>
+    <ScrollView style={styles.screenWrapper}>
       <PageHeader title="Meus proffys favoritos" />
 
       <View style={styles.teachersDeck}>

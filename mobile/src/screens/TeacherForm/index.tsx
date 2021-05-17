@@ -6,7 +6,7 @@ import styles from './styles'
 
 function TeacherForm() {
   return (
-    <View style={styles.container}>
+    <View style={styles.screenWrapper}>
       <ImageBackground
         source={giveClassesBackground}
         style={styles.content}

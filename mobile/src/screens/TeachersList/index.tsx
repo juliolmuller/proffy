@@ -45,7 +45,7 @@ function TeachersList() {
   }, [subject, weekday, time]) // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
-    <ScrollView style={styles.container}>
+    <ScrollView style={styles.screenWrapper}>
       <PageHeader
         title="Proffys disponíveis"
         headerRight={(

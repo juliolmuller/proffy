@@ -37,6 +37,7 @@ Application developed during the second edition of the [Next Level Week](https:/
 - Building a scalable backend application with Express and SQLite;
 - React Native and Expo framework;
 - Yarn package manager
+- Upgrading from a Create-React-App to Next.js;
 
 ## :rocket: Technologies & Resources
 
@@ -66,18 +67,18 @@ Make sure to have **Node.js 10+** installed in your machine and its **npm** avai
 ```bash
   # Server
 $ cd server
-$ npm run migrations   # setup database schema
-$ npm run seeds        # pre-populate database
-$ npm start            # start development Server
+$ npm run migrate   # setup database schema
+$ npm run seed      # pre-populate database
+$ npm run dev       # start development Server
 
   # Web App
 $ cd web
-$ npm start            # start development server
-$ npm run build        # build files for production
+$ npm run dev       # start development server
+$ npm run build     # build files for production
 
   # Mobile App
 $ cd mobile
-$ npm start            # build and serve the application via Expo mobile app
+$ npm run dev       # build and serve the application via Expo mobile app
 ```
 
 ## :zap: Features Implementations
@@ -119,6 +120,7 @@ Besides, both v1.0 and v2.0 have their layouts available at **[Figma](http://fig
 - Web
   - [x] Set up linting tools;
   - [x] Upgrade to React 17;
+  - [x] Switch from Create-React-App to Next;
   - [ ] Create form for logging into the service;
   - [ ] Create form for signing up to the service;
   - [ ] Create form for retrieving account access;
@@ -129,6 +131,7 @@ Besides, both v1.0 and v2.0 have their layouts available at **[Figma](http://fig
   - [ ] Create screen to list favorite classes and teachers;
   - [ ] Forms validation and notification;
   - [ ] Automated tests (unit and E2E);
+  - [x] Deploy app to Vercel cloud service;
 - Mobile
   - [x] Set up linting tools;
   - [x] Add splash screen;
@@ -142,12 +145,13 @@ Besides, both v1.0 and v2.0 have their layouts available at **[Figma](http://fig
 - Server
   - [x] Set up linting tools;
   - [ ] Forms data validation;
-  - [x] Switch from SQLite to PostgreSQL;
+  - [x] ~~ Switch from SQLite to PostgreSQL~~;
+  - [x] Switch from SQLite to MySQL, due to Heroku restrictions;
   - [ ] Create authentication system;
   - [ ] Implement file upload system;
   - [ ] Automated tests;
-  - [x] Deploy project in a public URL;
+  - [x] Deploy API to Heroku cloud service;
 
 ---
 
-Also checkout the project developed in [NLW #3](https://github.com/juliolmuller/happy)
+Also checkout the project developed in [NLW #3](https://github.com/juliolmuller/happy), [NLW #4](https://github.com/juliolmuller/move.id) and [NLW #5](https://github.com/juliolmuller/podcastr).

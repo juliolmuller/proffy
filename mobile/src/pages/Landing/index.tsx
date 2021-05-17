@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Image, Text, View } from 'react-native'
 import { RectButton } from 'react-native-gesture-handler'
 import { useNavigation } from '@react-navigation/native'
@@ -9,7 +9,7 @@ import giveClassesIcon from '../../images/icons/give-classes.png'
 import http from '../../services/http'
 import styles from './styles'
 
-const Landing: FC = () => {
+function Landing() {
   const { navigate } = useNavigation()
   const [connectionsCount, setConnectionsCount] = useState(0)
 

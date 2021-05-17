@@ -1,7 +1,6 @@
 import { StyleSheet } from 'react-native'
 
 export default StyleSheet.create({
-
   container: {
     marginBottom: 16,
     backgroundColor: '#fff',
@@ -40,7 +39,6 @@ export default StyleSheet.create({
     color: '#6a6180',
     fontFamily: 'Poppins400',
     fontSize: 12,
-
   },
 
   bio: {

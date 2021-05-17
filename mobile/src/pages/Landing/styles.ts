@@ -1,7 +1,6 @@
 import { StyleSheet } from 'react-native'
 
 export default StyleSheet.create({
-
   container: {
     flexGrow: 1,
     backgroundColor: '#8257e5',
@@ -32,7 +31,6 @@ export default StyleSheet.create({
   buttonsGroup: {
     flexGrow: 1,
     flexDirection: 'row',
-    // marginTop: 40,
     justifyContent: 'space-between',
   },
 

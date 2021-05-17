@@ -1,16 +1,16 @@
-import React, { FC, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { ScrollView, Text, View } from 'react-native'
 import { BorderlessButton } from 'react-native-gesture-handler'
 import { Picker } from '@react-native-picker/picker'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { Feather } from '@expo/vector-icons'
 import PageHeader from '../../components/PageHeader'
-import TeacherCard, { Teacher } from '../../components/TeacherCard'
+import TeacherCard from '../../components/TeacherCard'
 import http from '../../services/http'
 import formData from './form-data'
 import styles from './styles'
 
-const TeachersList: FC = () => {
+function TeachersList() {
   const [isFiltering, setFiltering] = useState(true)
   const [subject, setSubject] = useState('')
   const [weekday, setWeekday] = useState('')
@@ -18,11 +18,11 @@ const TeachersList: FC = () => {
   const [teachersList, setTeachersList] = useState([])
   const [favorites, setFavorites] = useState<Teacher[]>([])
 
-  const isFavorite = (teacher: Teacher) => {
+  function isFavorite(teacher: Teacher) {
     return !!favorites.find((favorite) => favorite.id === teacher.id)
   }
 
-  const handleFilers = async () => {
+  async function handleFilers() {
     try {
       const params = { subject, weekday, time }
       const [response, storage] = await Promise.all([
@@ -42,7 +42,7 @@ const TeachersList: FC = () => {
     if (subject && weekday && time) {
       handleFilers()
     }
-  }, [subject, weekday, time])
+  }, [subject, weekday, time]) // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <ScrollView style={styles.container}>

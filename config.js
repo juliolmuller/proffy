@@ -8,7 +8,7 @@ const os = require('os')
 const REFERENCE_ENV = '.env.example'
 const DEVELOPMENT_ENV = '.env'
 const PRODUCTION_ENV = '.env.production'
-const SERVER_PORT = 3030
+const SERVER_PORT = 8081
 
 function getIPs() {
   const interfaces = os.networkInterfaces()
@@ -28,10 +28,10 @@ function getIPs() {
 async function selectIP(...ips) {
   switch (ips.length) {
     case 0:
-      return Promise.resolve(undefined)
+      return undefined
 
     case 1:
-      return Promise.resolve(ips[0])
+      return ips[0]
 
     default:
       console.log('\n')
@@ -86,7 +86,7 @@ function configureMobile(ip) {
 
 function configureWeb(ip) {
   configure('web', true, true, ip && {
-    REACT_APP_API_URL: `http://${ip}:${SERVER_PORT}/api`,
+    NEXT_PUBLIC_API_URL: `http://${ip}:${SERVER_PORT}/api`,
   })
 }
 

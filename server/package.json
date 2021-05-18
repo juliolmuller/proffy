@@ -14,7 +14,7 @@
     "dev": "tsnd src/ --clear --respawn --transpile-only --ignore node_modules",
     "development": "npm run dev",
     "build": "rm -rf build/ && tsc -p .",
-    "postbuild": "npm run migrate:reset:seed",
+    "heroku-postbuild": "knex migrate:rollback --all --knexfile build/config.js && knex migrate:latest --knexfile build/config.js && knex seed:run --knexfile build/config.js",
     "prod": "node build/",
     "production": "npm run prod",
     "lint": "eslint src/ --fix",

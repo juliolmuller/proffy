@@ -3,26 +3,30 @@ import { StyleSheet } from 'react-native'
 export default StyleSheet.create({
   screenWrapper: {
     flex: 1,
-    backgroundColor: '#8257e5',
     justifyContent: 'center',
+
+    backgroundColor: '#8257e5',
     padding: 40,
   },
 
   banner: {
     flex: 1,
+
     width: '100%',
+    marginTop: 30,
+
     resizeMode: 'contain',
   },
 
   greetings: {
-    alignSelf: 'center',
     marginTop: 30,
-    marginBottom: 50,
+    marginBottom: 20,
+
+    textAlign: 'center',
     color: '#fff',
     fontFamily: 'Poppins400',
-    fontSize: 20,
-    lineHeight: 34,
-    textAlign: 'center',
+    fontSize: 18,
+    lineHeight: 36,
   },
 
   greetingsPrompt: {
@@ -30,19 +34,21 @@ export default StyleSheet.create({
   },
 
   buttonsGroup: {
-    flex: 1,
     flexDirection: 'row',
     justifyContent: 'space-between',
+
+    marginVertical: 40,
   },
 
   button: {
-    height: 150,
     flexBasis: '48%',
-    backgroundColor: '#333',
-    borderRadius: 8,
-    padding: 24,
     alignItems: 'center',
     justifyContent: 'space-around',
+
+    height: 150,
+    borderRadius: 8,
+    backgroundColor: '#333',
+    padding: 24,
   },
 
   buttonPrimary: {
@@ -62,11 +68,12 @@ export default StyleSheet.create({
   totalConnections: {
     alignSelf: 'center',
     maxWidth: 210,
-    marginTop: 20,
+    marginHorizontal: 18,
+
     color: '#d4c2ff',
     fontFamily: 'Poppins400',
-    fontSize: 12,
+    fontSize: 14,
     textAlign: 'center',
-    lineHeight: 20,
+    lineHeight: 24,
   },
 })

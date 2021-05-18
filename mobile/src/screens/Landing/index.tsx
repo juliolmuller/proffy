@@ -3,13 +3,13 @@ import { Image, Text, View } from 'react-native'
 import { RectButton } from 'react-native-gesture-handler'
 import { useNavigation } from '@react-navigation/native'
 import landingImage from '@/assets/img/landing.png'
+import teachIcon from '@/assets/icons/give-classes.png'
 import studyIcon from '@/assets/icons/study.png'
 import heartIcon from '@/assets/icons/heart.png'
-import giveClassesIcon from '@/assets/icons/give-classes.png'
 import http from '@/services/http'
 import styles from './styles'
 
-function Landing() {
+function LandingScreen() {
   const { navigate } = useNavigation()
   const [connectionsCount, setConnectionsCount] = useState(0)
 
@@ -17,6 +17,7 @@ function Landing() {
     http
       .get('/connections')
       .then(({ data }) => setConnectionsCount(data.total))
+      .catch(({ message }) => alert(message))
   }, [])
 
   return (
@@ -37,7 +38,7 @@ function Landing() {
         </RectButton>
 
         <RectButton onPress={() => navigate('TeacherForm')} style={[styles.button, styles.buttonSecondary]}>
-          <Image source={giveClassesIcon} />
+          <Image source={teachIcon} />
           <Text style={styles.buttonText}>Lecionar</Text>
         </RectButton>
       </View>
@@ -50,4 +51,4 @@ function Landing() {
   )
 }
 
-export default Landing
+export default LandingScreen

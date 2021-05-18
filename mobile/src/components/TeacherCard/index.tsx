@@ -3,9 +3,9 @@ import { Linking, Image, Text, View } from 'react-native'
 import { RectButton } from 'react-native-gesture-handler'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import http from '@/services/http'
-import heartOutlineIcon from '@/images/icons/heart-outline.png'
-import unfavoriteIcon from '@/images/icons/unfavorite.png'
-import whatsappIcon from '@/images/icons/whatsapp.png'
+import heartOutlineIcon from '@/assets/icons/heart-outline.png'
+import unfavoriteIcon from '@/assets/icons/unfavorite.png'
+import whatsappIcon from '@/assets/icons/whatsapp.png'
 import styles from './styles'
 
 interface TeacherCardProps {

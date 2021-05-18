@@ -30,19 +30,19 @@ function LandingPage({ totalConnections = 0 }: LandingPageProps) {
         <div className={styles.buttonsGroup}>
           <Link href="/study">
             <a className={styles.studyRoute}>
-              <img src="/img/icons/study.svg" alt="ícone de estudo" /> Estudar
+              <img src="/icons/study.svg" alt="ícone de estudo" /> Estudar
             </a>
           </Link>
           <Link href="/teach">
             <a className={styles.teachRoute}>
-              <img src="/img/icons/teach.svg" alt="ícone de ensino" /> Lecionar
+              <img src="/icons/teach.svg" alt="ícone de ensino" /> Lecionar
             </a>
           </Link>
         </div>
 
         <span className={styles.connectionsCount}>
           Total de {totalConnections} conexões já realizadas.
-          <img src="/img/icons/purple-heart.svg" alt="ícone de conexões" />
+          <img src="/icons/purple-heart.svg" alt="ícone de conexões" />
         </span>
       </div>
     </div>

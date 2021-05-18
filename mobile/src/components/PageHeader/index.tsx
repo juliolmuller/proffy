@@ -2,8 +2,8 @@ import React, { ReactNode } from 'react'
 import { Image, Text, View } from 'react-native'
 import { BorderlessButton } from 'react-native-gesture-handler'
 import { useNavigation } from '@react-navigation/native'
-import backIcon from '@/images/icons/back.png'
-import logoImage from '@/images/logo.png'
+import backIcon from '@/assets/icons/back.png'
+import logoImage from '@/assets/img/logo.png'
 import styles from './styles'
 
 interface PageHeaderProps {

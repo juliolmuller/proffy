@@ -15,7 +15,7 @@ function Header({ title, description, children }: PageHeaderProps) {
     <header className={styles.pageHeader}>
       <nav className={styles.topBar}>
         <button type="button" onClick={() => router.back()}>
-          <img src="/img/icons/back.svg" alt="Ícone de retornar" />
+          <img src="/icons/back.svg" alt="Ícone de retornar" />
         </button>
 
         <img src="/img/logo.svg" alt="Logo da Proffy" />

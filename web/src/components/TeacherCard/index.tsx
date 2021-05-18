@@ -29,7 +29,7 @@ function TeacherCard({ teacher }: TeacherCardProps) {
           <span>R$ {teacher.price.toFixed(2)}</span>
         </p>
         <a href={`https://wa.me/${teacher.whatsapp}`} onClick={handleCreateConnection}>
-          <img src="/img/icons/whatsapp.svg" alt="Ícone do WhatsApp" />
+          <img src="/icons/whatsapp.svg" alt="Ícone do WhatsApp" />
           Entrar em contato
         </a>
       </footer>

@@ -1,7 +1,7 @@
 import React from 'react'
 import { ImageBackground, Linking, Text, View } from 'react-native'
 import { RectButton } from 'react-native-gesture-handler'
-import giveClassesBackground from '@/images/give-classes-background.png'
+import giveClassesBackground from '@/assets/img/give-classes-background.png'
 import styles from './styles'
 
 function TeacherForm() {

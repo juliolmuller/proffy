@@ -164,7 +164,7 @@ function TeachersFormPage() {
 
           <footer>
             <p>
-              <img src="/img/icons/warning.svg" alt="Alerta" />
+              <img src="/icons/warning.svg" alt="Alerta" />
               Importante! <br/>
               Preencha todos os dados.
             </p>

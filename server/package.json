@@ -13,11 +13,12 @@
     "migrate:reset:seed": "npm run migrate:reset && npm run seed",
     "dev": "tsnd src/ --clear --respawn --transpile-only --ignore node_modules",
     "development": "npm run dev",
+    "build": "rm -rf build/ && tsc -p .",
+    "heroku-postbuild": "npm run migrate:reset:seed",
     "prod": "node build/",
     "production": "npm run prod",
-    "build": "rm -rf build/ && tsc -p .",
     "lint": "eslint src/ --fix",
-    "start": "knex migrate:rollback --all --knexfile build/config.js && knex migrate:latest --knexfile build/config.js && knex seed:run --knexfile build/config.js && npm run prod"
+    "start": "npm run prod"
   },
   "dependencies": {
     "cors": "^2.8.5",

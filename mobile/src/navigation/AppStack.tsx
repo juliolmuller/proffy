@@ -1,8 +1,8 @@
 import React from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
-import Landing from '@/screens/Landing'
-import TeacherForm from '@/screens/TeacherForm'
+import Landing from '~/screens/Landing'
+import TeacherForm from '~/screens/TeacherForm'
 import StudyTabs from './StudyTabs'
 
 const { Navigator, Screen } = createStackNavigator()

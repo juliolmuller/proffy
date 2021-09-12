@@ -7,9 +7,10 @@ module.exports = {
     'lacussoft',
     'lacussoft/react',
     'lacussoft/typescript',
+    'next/core-web-vitals',
   ],
   rules: {
+    '@next/next/no-img-element': 'off',
     'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
-    'no-debug': process.env.NODE_ENV === 'production' ? 'error' : 'off',
   },
 }

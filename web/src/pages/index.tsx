@@ -1,7 +1,7 @@
 import { GetStaticProps } from 'next'
 import DocumentHead from 'next/head'
 import Link from 'next/link'
-import http from '@/services/http'
+import http from '~/services/http'
 import styles from './styles.module.scss'
 
 interface LandingPageProps {

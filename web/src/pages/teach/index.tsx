@@ -2,12 +2,12 @@
 import { useState } from 'react'
 import { useRouter } from 'next/router'
 import DocumentHead from 'next/head'
-import Header from '@/components/Header'
-import Input from '@/components/Input'
-import Select from '@/components/Select'
-import TextArea from '@/components/TextArea'
-import http from '@/services/http'
-import { ScheduleItem, Teacher } from '@/types'
+import Header from '~/components/Header'
+import Input from '~/components/Input'
+import Select from '~/components/Select'
+import TextArea from '~/components/TextArea'
+import http from '~/services/http'
+import { ScheduleItem, Teacher } from '~/types'
 import styles from './styles.module.scss'
 
 function TeachersFormPage() {

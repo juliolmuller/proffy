@@ -1,5 +1,5 @@
-import http from '@/services/http'
-import { Teacher } from '@/types'
+import http from '~/services/http'
+import { Teacher } from '~/types'
 import styles from './styles.module.scss'
 
 interface TeacherCardProps {

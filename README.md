@@ -27,7 +27,7 @@
 
 Application developed during the second edition of the [Next Level Week](https://nextlevelweek.com/), promoted by [RocketSeat](https://rocketseat.com.br/). The objective is to build a multi-platform application to connect people that want to study and share knowledge - teachers and students. The event chose the JavaScript stack to be used all over the implementation, using **React** in web version, **React Native** in mobile and **Node.js** as the REST API server.
 
-[Check out the application running!](https://proffy-app-nlw.herokuapp.com/)
+[Check out the application running!](https://jlm-proffy.vercel.app/)
 
 ## :trophy: Lessons Learned
 
@@ -67,17 +67,21 @@ Make sure to have **Node.js 10+** installed in your machine and its **npm** avai
 ```bash
   # Server
 $ cd server
+$ npm install       # install required dependencies
 $ npm run migrate   # setup database schema
 $ npm run seed      # pre-populate database
 $ npm run dev       # start development Server
+$ npm run build     # transpile source files for deployment
 
   # Web App
 $ cd web
+$ npm install       # install required dependencies
 $ npm run dev       # start development server
 $ npm run build     # build files for production
 
   # Mobile App
 $ cd mobile
+$ npm install       # install required dependencies
 $ npm run dev       # build and serve the application via Expo mobile app
 ```
 
@@ -154,4 +158,4 @@ Besides, both v1.0 and v2.0 have their layouts available at **[Figma](http://fig
 
 ---
 
-Also checkout the project developed in [NLW #3](https://github.com/juliolmuller/happy), [NLW #4](https://github.com/juliolmuller/move.id) and [NLW #5](https://github.com/juliolmuller/podcastr).
+Also checkout the project developed in [NLW #3](https://github.com/juliolmuller/happy), [NLW #4](https://github.com/juliolmuller/move.id), [NLW #5](https://github.com/juliolmuller/podcastr) and [NLW #6](https://github.com/juliolmuller/letmeask).

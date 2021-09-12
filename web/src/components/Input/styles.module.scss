@@ -2,6 +2,10 @@
 .inputContainer {
   position: relative;
 
+  * + & {
+    margin-top: 3.2rem;
+  }
+
   label {
     padding-left: 0.6rem;
 

@@ -8,10 +8,12 @@ module.exports = {
     'lacussoft',
     'lacussoft/typescript',
   ],
+  ignorePatterns: [
+    'build/',
+  ],
   rules: {
     'camelcase': ['error', { allow: ['purge_dotenv', 'user_id', 'class_id'] }],
     'class-methods-use-this': 'off',
-    'func-style': 'off',
     'no-console': 'off',
     'no-magic-numbers': ['error', { ignore: [8081] }],
   },

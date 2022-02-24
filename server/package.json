@@ -6,6 +6,7 @@
   "author": "Julio L. Muller",
   "scripts": {
     "postinstall": "node -e \"require('fs').existsSync('.env') || require('fs').copyFileSync('.env.example', '.env')\"",
+    "commit": "cd .. && npm run commit",
     "seed": "knex seed:run --knexfile src/config.ts",
     "migrate": "knex migrate:latest --knexfile src/config.ts",
     "migrate:seed": "npm run migrate && npm run seed",

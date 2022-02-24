@@ -6,6 +6,7 @@
   "author": "Julio L. Muller",
   "scripts": {
     "postinstall": "node -e \"require('fs').existsSync('.env') || require('fs').copyFileSync('.env.example', '.env')\"",
+    "commit": "cd .. && npm run commit",
     "dev": "next dev --port 8080",
     "development": "npm run dev",
     "prod": "next start --port 8080",

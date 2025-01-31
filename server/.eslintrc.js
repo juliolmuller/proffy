@@ -10,6 +10,7 @@ module.exports = {
   ],
   ignorePatterns: [
     'build/',
+    'dist/',
   ],
   rules: {
     'camelcase': ['error', { allow: ['purge_dotenv', 'user_id', 'class_id'] }],

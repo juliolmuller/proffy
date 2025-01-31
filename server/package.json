@@ -14,11 +14,11 @@
     "migrate:reset:seed": "npm run migrate:reset && npm run seed",
     "dev": "tsnd src/ --clear --respawn --transpile-only --ignore node_modules",
     "development": "npm run dev",
-    "build": "rm -rf build/ && tsc -p .",
-    "prod": "node build/",
+    "build": "rm -rf dist/ && tsc -p .",
+    "prod": "node dist/",
     "production": "npm run prod",
     "lint": "eslint src/ --fix",
-    "prestart": "knex migrate:rollback --all --knexfile build/config.js && knex migrate:latest --knexfile build/config.js && knex seed:run --knexfile build/config.js",
+    "prestart": "knex migrate:rollback --all --knexfile dist/config.js && knex migrate:latest --knexfile dist/config.js && knex seed:run --knexfile dist/config.js",
     "start": "npm run prod"
   },
   "dependencies": {

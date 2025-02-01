@@ -1,16 +1,15 @@
 import './config'
-import express from 'express'
 import 'express-async-errors'
-import cors from 'cors'
-import morgan from 'morgan'
+import express from 'express'
 
+import { registerCORS, registerJsonParser, registerLogger } from '../middlewares'
 import { registerErrorHandler, registerRoutes } from './http'
 
 const app = express()
 
-app.use(cors())
-app.use(morgan('dev'))
-app.use(express.json())
+registerCORS(app)
+registerLogger(app)
+registerJsonParser(app)
 
 registerRoutes(app)
 registerErrorHandler(app)

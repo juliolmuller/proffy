@@ -1,7 +1,21 @@
+import figlet from 'figlet'
+
 import app from './app'
 
-app.listen(process.env.PORT, () => {
-  console.log('Application running at')
-  console.log(`    http://localhost:${process.env.PORT}`)
-  console.log(`    ${process.env.APP_ROOT}\n`)
+const port = Number(process.env.PORT)
+const networkIp = process.env.APP_ROOT
+
+app.listen(port, () => {
+  console.info(
+    '\n',
+    figlet.textSync('proffy _ API'),
+    '\n',
+    '\n',
+    'Application running at',
+    '\n',
+    `    http://localhost:${port}`,
+    '\n',
+    `    ${networkIp}`,
+    '\n',
+  )
 })

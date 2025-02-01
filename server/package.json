@@ -12,7 +12,7 @@
     "migrate:seed": "npm run migrate && npm run seed",
     "migrate:reset": "knex migrate:rollback --all --knexfile src/config.ts && npm run migrate",
     "migrate:reset:seed": "npm run migrate:reset && npm run seed",
-    "dev": "tsnd src/ --clear --respawn --transpile-only --ignore node_modules",
+    "dev": "tsx watch src/",
     "development": "npm run dev",
     "build": "rm -rf dist/ && tsc -p .",
     "prod": "node dist/",
@@ -39,7 +39,7 @@
     "@types/node": "^22.12.0",
     "eslint": "^7.32.0",
     "eslint-config-lacussoft": "^2.3.0",
-    "ts-node-dev": "^2.0.0",
+    "tsx": "^4.19.2",
     "typescript": "^5.7.3"
   }
 }

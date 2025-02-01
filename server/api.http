@@ -1,0 +1,45 @@
+@BASE_URL = http://localhost:8081/api
+@CONTENT_TYPE_HEADER = Content-Type: application/json
+
+###
+
+GET {{BASE_URL}}/classes
+  ?subject=Geografia
+  &weekday=5
+  &time=10:00
+{{CONTENT_TYPE_HEADER}}
+
+###
+
+POST {{BASE_URL}}/classes
+{{CONTENT_TYPE_HEADER}}
+
+{
+  "name": "Josnei",
+  "avatar": "https://github.com/juliolmuller.png",
+  "whatsapp": "41985187730",
+  "bio": "",
+  "subject": "Programação",
+  "price": 100,
+  "schedule": [
+    {
+      "weekday": 1,
+      "from": "08:00",
+      "to": "12:00"
+    }
+  ]
+}
+
+###
+
+GET {{BASE_URL}}/connections
+{{CONTENT_TYPE_HEADER}}
+
+###
+
+POST {{BASE_URL}}/connections
+{{CONTENT_TYPE_HEADER}}
+
+{
+  "user": 1
+}

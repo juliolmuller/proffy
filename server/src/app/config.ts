@@ -6,7 +6,7 @@ import path from 'path'
  */
 if (process.env.NODE_ENV !== 'production') {
   const result = dotenv.config({
-    path: path.join(__dirname, '..'),
+    path: process.cwd(),
     purge_dotenv: true,
   })
 

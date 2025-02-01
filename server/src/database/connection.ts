@@ -1,5 +1,6 @@
 import knex from 'knex'
-import * as config from '../config'
+
+import * as config from '../app/config'
 
 const connection = knex(config)
 

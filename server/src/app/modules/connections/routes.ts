@@ -1,13 +1,13 @@
 import express from 'express'
 
-import ConnectionController from '../../../controllers/ConnectionController'
+import { createConnectionController } from './create'
+import { getConnectionsCountController } from './getCount'
 
 function register(prefix: string, appRouter: express.Router) {
   const router = express.Router()
-  const connectionCtrl = new ConnectionController()
 
-  router.get('/', connectionCtrl.index)
-  router.post('/', connectionCtrl.store)
+  router.get('/', getConnectionsCountController)
+  router.post('/', createConnectionController)
 
   appRouter.use(prefix, router)
 }

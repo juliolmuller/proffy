@@ -1,6 +1,6 @@
 import express from 'express'
 
-import ConnectionController from '../../controllers/ConnectionController'
+import ConnectionController from '../../../controllers/ConnectionController'
 
 function register(prefix: string, appRouter: express.Router) {
   const router = express.Router()

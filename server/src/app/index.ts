@@ -1,5 +1,4 @@
 import './config'
-import 'express-async-errors'
 import express from 'express'
 
 import { registerCORS, registerJsonParser, registerLogger } from '../middlewares'

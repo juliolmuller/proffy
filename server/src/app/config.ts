@@ -6,7 +6,7 @@ import path from 'path'
  */
 if (process.env.NODE_ENV !== 'production') {
   const result = dotenv.config({
-    path: process.cwd(),
+    path: path.resolve(__dirname, '..', '..'),
     purge_dotenv: true,
   })
 
@@ -28,10 +28,10 @@ module.exports = {
     password: process.env.DB_PASSWORD,
   },
   migrations: {
-    directory: path.resolve(__dirname, 'database', 'migrations'),
+    directory: path.resolve(__dirname, '..', 'database', 'migrations'),
   },
   seeds: {
-    directory: path.resolve(__dirname, 'database', 'seeds'),
+    directory: path.resolve(__dirname, '..', 'database', 'seeds'),
   },
   useNullAsDefault: true,
 }

@@ -20,7 +20,7 @@
     "build": "rm -rf dist/ && tsc -p .",
     "prod": "node dist/bootstrap.js",
     "production": "npm run prod",
-    "lint": "eslint --fix src/",
+    "lint": "eslint --fix src/ eslint.config.mjs",
     "prestart": "knex migrate:rollback --all --knexfile dist/app/config.js && knex migrate:latest --knexfile dist/app/config.js && knex seed:run --knexfile dist/app/config.js",
     "start": "npm run prod"
   },
@@ -41,8 +41,9 @@
     "@types/figlet": "^1.7.0",
     "@types/morgan": "^1.9.9",
     "@types/node": "^22.15.3",
-    "eslint": "^7.32.0",
-    "eslint-config-lacussoft": "^2.3.0",
+    "eslint": "^9.25.1",
+    "eslint-config-any": "^1.1.0",
+    "prettier": "^3.5.3",
     "ts-node": "^10.9.2",
     "tsx": "^4.19.3",
     "typescript": "^5.8.3"

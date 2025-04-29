@@ -1,0 +1,8 @@
+packages:
+  - mobile/
+  - server/
+  - web/
+onlyBuiltDependencies:
+  - '@parcel/watcher'
+  - core-js
+  - esbuild

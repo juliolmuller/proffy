@@ -1,9 +1,12 @@
 {
-  "name": "proffy-mobile",
+  "name": "@proffy/mobile",
   "version": "1.0.4",
   "private": true,
   "license": "MIT",
-  "author": "Julio L. Muller",
+  "authors": [
+    "RocketSeat",
+    "Julio L. Muller"
+  ],
   "main": "src/main.js",
   "scripts": {
     "postinstall": "node -e \"require('fs').existsSync('.env') || require('fs').copyFileSync('.env.example', '.env')\"",

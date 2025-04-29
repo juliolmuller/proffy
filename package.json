@@ -4,9 +4,9 @@
   "homepage": "https://jlm-proffy.vercel.app/",
   "packageManager": "pnpm@10.6.0",
   "scripts": {
-    "prepare": "husky",
+    "prepare": "husky || true",
+    "commit": "commit",
     "config": "node config.js",
-    "commit": "git-cz",
     "build": "npm run build --prefix server/ && npm run build --prefix web/",
     "mobile": "npm run dev --prefix mobile/",
     "server": "npm run dev --prefix server/",
@@ -15,10 +15,11 @@
   "devDependencies": {
     "@commitlint/cli": "^19.6.1",
     "@commitlint/config-conventional": "^19.6.0",
+    "@commitlint/config-workspace-scopes": "^19.8.0",
+    "@commitlint/prompt-cli": "^19.8.0",
     "colors": "^1.4.0",
-    "commitizen": "^4.3.1",
-    "cz-conventional-changelog": "^3.3.0",
     "envfile": "^7.1.0",
+    "eslint": "^7.32.0",
     "husky": "^9.1.7",
     "lint-staged": "^15.4.3",
     "prompts": "^2.4.2"
@@ -27,15 +28,9 @@
     "*.{js,jsx,ts,tsx,vue}": "eslint --fix"
   },
   "commitlint": {
-    "extends": "@commitlint/config-conventional"
-  },
-  "config": {
-    "commitizen": {
-      "path": "cz-conventional-changelog"
-    }
-  },
-  "dependencies": {
-    "eslint": "^7.32.0"
-  },
-  "packageManager": "pnpm@10.6.1+sha512.40ee09af407fa9fbb5fbfb8e1cb40fbb74c0af0c3e10e9224d7b53c7658528615b2c92450e74cfad91e3a2dcafe3ce4050d80bda71d757756d2ce2b66213e9a3"
+    "extends": [
+      "@commitlint/config-conventional",
+      "@commitlint/config-workspace-scopes"
+    ]
+  }
 }

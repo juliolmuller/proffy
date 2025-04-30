@@ -1,6 +1,6 @@
 const MINUTES_PER_HOUR = 60;
 
-function parseTimeIntoMinutes(time: string): null | number {
+export function parseTimeIntoMinutes(time: string): null | number {
   const pattern = /\d{1,2}:\d{2}/;
 
   if (!pattern.test(time)) {
@@ -12,5 +12,3 @@ function parseTimeIntoMinutes(time: string): null | number {
 
   return timeInMinutes;
 }
-
-export default parseTimeIntoMinutes;

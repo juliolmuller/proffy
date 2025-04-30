@@ -1,1 +1,1 @@
-export { default as createConnectionController } from './createConnection.controller';
+export * from './create-connection-controller';

@@ -1,7 +1,7 @@
 import type express from 'express';
 import { ReasonPhrases, StatusCodes } from 'http-status-codes';
 
-function registerHandler(app: express.Application): void {
+export function registerErrorHandler(app: express.Application): void {
   app.use(((error, _req, res, _next): void => {
     console.error(error);
 
@@ -10,5 +10,3 @@ function registerHandler(app: express.Application): void {
       .json({ message: ReasonPhrases.INTERNAL_SERVER_ERROR });
   }) satisfies express.ErrorRequestHandler);
 }
-
-export default registerHandler;

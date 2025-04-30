@@ -1,15 +1,13 @@
 import express from 'express';
 
+import { countConnectionsController } from './count';
 import { createConnectionController } from './create';
-import { getConnectionsCountController } from './getCount';
 
-function register(prefix: string, appRouter: express.Router): void {
+export function register(prefix: string, appRouter: express.Router): void {
   const router = express.Router();
 
-  router.get('/', getConnectionsCountController);
+  router.get('/', countConnectionsController);
   router.post('/', createConnectionController);
 
   appRouter.use(prefix, router);
 }
-
-export default register;

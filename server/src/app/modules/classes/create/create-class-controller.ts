@@ -1,7 +1,7 @@
 import HttpStatus from 'http-status-codes';
 
 import database from '../../../../database/connection';
-import parseTimeIntoMinutes from '../../../../utils/parseTimeIntoMinutes';
+import { parseTimeIntoMinutes } from '../../../../utils';
 import { type Controller } from '../../../http';
 
 interface FriendlySchedule {
@@ -10,7 +10,7 @@ interface FriendlySchedule {
   weekday: number;
 }
 
-const createClassController: Controller = async (request, response) => {
+export const createClassController: Controller = async (request, response) => {
   const { name, avatar, whatsapp, bio, subject, price, schedule } = request.body;
   const transaction = await database.transaction();
 
@@ -35,5 +35,3 @@ const createClassController: Controller = async (request, response) => {
     throw error;
   }
 };
-
-export default createClassController;

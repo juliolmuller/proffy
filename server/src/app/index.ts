@@ -1,10 +1,15 @@
 import './config';
 import express from 'express';
 
-import { registerCORS, registerJsonParser, registerLogger } from '../middlewares';
-import { registerErrorHandler, registerRoutes } from './http';
+import {
+  registerCORS,
+  registerErrorHandler,
+  registerJsonParser,
+  registerLogger,
+  registerRoutes,
+} from './http';
 
-const app = express();
+export const app = express();
 
 registerCORS(app);
 registerLogger(app);

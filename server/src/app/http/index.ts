@@ -1,3 +1,4 @@
 export * from './controller';
-export { default as registerErrorHandler } from './errorHandler';
-export { default as registerRoutes } from './routes';
+export * from './error-handler';
+export * from './middlewares';
+export * from './routes';

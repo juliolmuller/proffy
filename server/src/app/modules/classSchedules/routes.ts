@@ -2,12 +2,10 @@ import express from 'express';
 
 import { listClassSchedulesController } from './list';
 
-function register(prefix: string, appRouter: express.Router): void {
+export function register(prefix: string, appRouter: express.Router): void {
   const router = express.Router();
 
   router.get('/', listClassSchedulesController);
 
   appRouter.use(prefix, router);
 }
-
-export default register;

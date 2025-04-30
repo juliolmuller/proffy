@@ -1,19 +1,17 @@
 import express from 'express';
 
-import registerClassesRoutes from '../modules/classes/routes';
-import registerClassSchedulesRoutes from '../modules/classSchedules/routes';
-import connectionsRoutes from '../modules/connections/routes';
-import usersRoutes from '../modules/users/routes';
+import { registerClassesRoutes } from '../modules/classes';
+import { registerClassSchedulesRoutes } from '../modules/classSchedules';
+import { registerConnectionsRoutes } from '../modules/connections';
+import { registerUsersRoutes } from '../modules/users';
 
-function register(app: express.Application): void {
+export function registerRoutes(app: express.Application): void {
   const router = express.Router();
 
-  registerClassSchedulesRoutes('class-schedules', router);
+  registerUsersRoutes('/users', router);
   registerClassesRoutes('/classes', router);
-  connectionsRoutes('/connections', router);
-  usersRoutes('/users', router);
+  registerConnectionsRoutes('/connections', router);
+  registerClassSchedulesRoutes('class-schedules', router);
 
   app.use('/api', router);
 }
-
-export default register;

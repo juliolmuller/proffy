@@ -2,7 +2,7 @@ import express from 'express';
 
 import { createClassController } from './create';
 
-function register(prefix: string, appRouter: express.Router): void {
+export function register(prefix: string, appRouter: express.Router): void {
   const router = express.Router();
 
   router.post('/', createClassController);

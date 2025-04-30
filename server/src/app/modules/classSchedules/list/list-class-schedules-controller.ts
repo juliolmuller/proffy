@@ -1,7 +1,7 @@
 import HttpStatus from 'http-status-codes';
 
 import database from '../../../../database/connection';
-import parseTimeIntoMinutes from '../../../../utils/parseTimeIntoMinutes';
+import { parseTimeIntoMinutes } from '../../../../utils';
 import { type Controller } from '../../../http';
 
 interface QueryFilters {
@@ -10,7 +10,7 @@ interface QueryFilters {
   weekday?: string;
 }
 
-const listClassSchedulesController: Controller = async (request, response) => {
+export const listClassSchedulesController: Controller = async (request, response) => {
   const filters: QueryFilters = request.query;
   const timeInMinutes = parseTimeIntoMinutes(filters.time as string);
 
@@ -44,5 +44,3 @@ const listClassSchedulesController: Controller = async (request, response) => {
 
   response.status(HttpStatus.OK).json(classes);
 };
-
-export default listClassSchedulesController;

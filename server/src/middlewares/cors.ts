@@ -1,8 +1,8 @@
-import cors from 'cors'
-import express from 'express'
+import cors from 'cors';
+import type express from 'express';
 
-function register(app: express.Application) {
-  app.use(cors())
+function register(app: express.Application): void {
+  app.use(cors());
 }
 
-export default register
+export default register;

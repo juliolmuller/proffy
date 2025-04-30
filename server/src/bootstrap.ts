@@ -1,9 +1,9 @@
-import figlet from 'figlet'
+import figlet from 'figlet';
 
-import app from './app'
+import app from './app';
 
-const port = Number(process.env.PORT)
-const networkIp = process.env.APP_ROOT
+const port = Number(process.env.PORT);
+const networkIp = process.env.APP_ROOT;
 
 app.listen(port, () => {
   console.info(
@@ -17,5 +17,5 @@ app.listen(port, () => {
     '\n',
     `    ${networkIp}`,
     '\n',
-  )
-})
+  );
+});

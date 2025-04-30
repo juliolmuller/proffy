@@ -1,7 +1,7 @@
-import express from 'express'
+import express from 'express';
 
-function register(app: express.Application) {
-  app.use(express.json())
+function register(app: express.Application): void {
+  app.use(express.json());
 }
 
-export default register
+export default register;

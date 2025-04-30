@@ -1,1 +1,1 @@
-export { default as createClassController } from './createClass.controller'
+export { default as createClassController } from './createClass.controller';

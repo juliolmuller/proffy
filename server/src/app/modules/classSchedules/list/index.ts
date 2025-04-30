@@ -1,1 +1,1 @@
-export { default as listClassSchedulesController } from './listClassSchedules.controller'
+export { default as listClassSchedulesController } from './listClassSchedules.controller';

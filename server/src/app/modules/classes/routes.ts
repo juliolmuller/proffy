@@ -1,13 +1,13 @@
-import express from 'express'
+import express from 'express';
 
-import { createClassController } from './create'
+import { createClassController } from './create';
 
-function register(prefix: string, appRouter: express.Router) {
-  const router = express.Router()
+function register(prefix: string, appRouter: express.Router): void {
+  const router = express.Router();
 
-  router.post('/', createClassController)
+  router.post('/', createClassController);
 
-  appRouter.use(prefix, router)
+  appRouter.use(prefix, router);
 }
 
-export default register
+export default register;

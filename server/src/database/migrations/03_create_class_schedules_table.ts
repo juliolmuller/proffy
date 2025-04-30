@@ -1,23 +1,24 @@
-import { Knex } from 'knex'
+import { type Knex } from 'knex';
 
-export const TABLE_NAME = 'class_schedules'
+export const TABLE_NAME = 'class_schedules';
 
-// eslint-disable-next-line require-await
-export async function up(knex: Knex) {
+export async function up(knex: Knex): Promise<void> {
   return knex.schema.createTable(TABLE_NAME, (table) => {
-    table.bigIncrements('id').primary()
-    table.integer('weekday').notNullable()
-    table.integer('from').notNullable()
-    table.integer('to').notNullable()
-    table.bigInteger('class_id').notNullable().unsigned()
+    table.bigIncrements('id').primary();
+    table.integer('weekday').notNullable();
+    table.integer('from').notNullable();
+    table.integer('to').notNullable();
+    table
+      .bigInteger('class_id')
+      .notNullable()
+      .unsigned()
       .references('id')
       .inTable('classes')
       .onUpdate('cascade')
-      .onDelete('cascade')
-  })
+      .onDelete('cascade');
+  });
 }
 
-// eslint-disable-next-line require-await
-export async function down(knex: Knex) {
-  return knex.schema.dropTable(TABLE_NAME)
+export async function down(knex: Knex): Promise<void> {
+  return knex.schema.dropTable(TABLE_NAME);
 }

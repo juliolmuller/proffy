@@ -1,16 +1,16 @@
-import './config'
-import express from 'express'
+import './config';
+import express from 'express';
 
-import { registerCORS, registerJsonParser, registerLogger } from '../middlewares'
-import { registerErrorHandler, registerRoutes } from './http'
+import { registerCORS, registerJsonParser, registerLogger } from '../middlewares';
+import { registerErrorHandler, registerRoutes } from './http';
 
-const app = express()
+const app = express();
 
-registerCORS(app)
-registerLogger(app)
-registerJsonParser(app)
+registerCORS(app);
+registerLogger(app);
+registerJsonParser(app);
 
-registerRoutes(app)
-registerErrorHandler(app)
+registerRoutes(app);
+registerErrorHandler(app);
 
-export default app
+export default app;

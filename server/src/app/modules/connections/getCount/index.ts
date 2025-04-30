@@ -1,1 +1,1 @@
-export { default as getConnectionsCountController } from './getConnectionsCount.controller'
+export { default as getConnectionsCountController } from './getConnectionsCount.controller';

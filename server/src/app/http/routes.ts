@@ -11,7 +11,7 @@ export function registerRoutes(app: express.Application): void {
   registerUsersRoutes('/users', router);
   registerClassesRoutes('/classes', router);
   registerConnectionsRoutes('/connections', router);
-  registerClassSchedulesRoutes('class-schedules', router);
+  registerClassSchedulesRoutes('/class-schedules', router);
 
   app.use('/api', router);
 }

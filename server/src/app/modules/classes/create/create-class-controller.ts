@@ -1,6 +1,6 @@
 import HttpStatus from 'http-status-codes';
 
-import { knexClient as database } from '../../../../database/connection';
+import { prismaClient as database } from '../../../../database/connection';
 import { parseTimeIntoMinutes } from '../../../../utils';
 import { type Controller } from '../../../http';
 
@@ -12,26 +12,33 @@ interface FriendlySchedule {
 
 export const createClassController: Controller = async (request, response) => {
   const { name, avatar, whatsapp, bio, subject, price, schedule } = request.body;
-  const transaction = await database.transaction();
 
-  try {
-    const [user_id] = await transaction('users').insert({ name, avatar, whatsapp, bio }, 'id');
-    const [class_id] = await transaction('classes').insert({ subject, price, user_id }, 'id');
+  await database.$transaction(async (database) => {
+    const createdUser = await database.user.create({
+      data: {
+        name,
+        avatar,
+        whatsapp,
+        bio,
+      },
+    });
+    const createdClass = await database.class.create({
+      data: {
+        userId: createdUser.id,
+        subject,
+        price,
+      },
+    });
 
-    await transaction('class_schedules').insert(
-      schedule.map((sch: FriendlySchedule) => ({
+    await database.classSchedule.createMany({
+      data: schedule.map((sch: FriendlySchedule) => ({
+        classId: createdClass.id,
         weekday: sch.weekday,
         from: parseTimeIntoMinutes(sch.from),
         to: parseTimeIntoMinutes(sch.to),
-        class_id,
       })),
-    );
+    });
+  });
 
-    await transaction.commit();
-
-    response.status(HttpStatus.CREATED).send();
-  } catch (error) {
-    transaction.rollback(error);
-    throw error;
-  }
+  response.status(HttpStatus.CREATED).send();
 };

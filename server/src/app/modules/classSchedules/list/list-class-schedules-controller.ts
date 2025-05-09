@@ -1,6 +1,6 @@
 import HttpStatus from 'http-status-codes';
 
-import { knexClient as database } from '../../../../database/connection';
+import { prismaClient as prisma } from '../../../../database/connection';
 import { parseTimeIntoMinutes } from '../../../../utils';
 import { type Controller } from '../../../http';
 
@@ -28,19 +28,40 @@ export const listClassSchedulesController: Controller = async (request, response
     return;
   }
 
-  const classes = await database('classes')
-    .where('classes.subject', '=', filters.subject)
-    .select(['classes.*', 'users.*'])
-    .join('users', 'classes.user_id', '=', 'users.id')
-    .whereExists((query) => {
-      query
-        .select('class_schedules.*')
-        .from('class_schedules')
-        .whereRaw('class_schedules.class_id = classes.id')
-        .whereRaw('class_schedules.weekday = ??', [Number(filters.weekday)])
-        .whereRaw('class_schedules.from <= ??', [timeInMinutes])
-        .whereRaw('class_schedules.to > ??', [timeInMinutes]);
-    });
+  const classes = await prisma.class.findMany({
+    where: {
+      subject: filters.subject,
+      classSchedules: {
+        some: {
+          weekday: Number(filters.weekday),
+          from: {
+            lte: timeInMinutes,
+          },
+          to: {
+            gt: timeInMinutes,
+          },
+        },
+      },
+    },
+    include: {
+      user: true,
+    },
+  });
 
-  response.status(HttpStatus.OK).json(classes);
+  response.status(HttpStatus.OK).send(
+    JSON.stringify(
+      classes.map((clazz) => ({
+        id: clazz.id,
+        subject: clazz.subject,
+        price: clazz.price,
+        user_id: clazz.userId,
+        name: clazz.user.name,
+        avatar: clazz.user.avatar,
+        whatsapp: clazz.user.whatsapp,
+        bio: clazz.user.bio,
+      })),
+      (_, v) => (typeof v === 'bigint' ? Number(v) : v),
+      2,
+    ),
+  );
 };

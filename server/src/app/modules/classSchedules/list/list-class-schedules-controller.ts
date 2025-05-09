@@ -1,6 +1,6 @@
 import HttpStatus from 'http-status-codes';
 
-import database from '../../../../database/connection';
+import { knexClient as database } from '../../../../database/connection';
 import { parseTimeIntoMinutes } from '../../../../utils';
 import { type Controller } from '../../../http';
 

@@ -1,0 +1,54 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model ClassSchedule {
+  id      BigInt @id @default(autoincrement()) @db.UnsignedBigInt
+  weekday Int
+  from    Int
+  to      Int
+  classId BigInt @map("class_id") @db.UnsignedBigInt
+  classes Class  @relation(fields: [classId], references: [id], onDelete: Cascade, map: "class_schedules_class_id_foreign")
+
+  @@index([classId], map: "class_schedules_class_id_foreign")
+  @@map("class_schedules")
+}
+
+model Class {
+  id             BigInt          @id @default(autoincrement()) @db.UnsignedBigInt
+  subject        String          @db.VarChar(255)
+  price          Decimal         @db.Decimal(8, 2)
+  userId         BigInt          @map("user_id") @db.UnsignedBigInt
+  classSchedules ClassSchedule[]
+  user           User            @relation(fields: [userId], references: [id], onDelete: Cascade, map: "classes_user_id_foreign")
+
+  @@index([userId], map: "classes_user_id_foreign")
+  @@map("classes")
+}
+
+model Connection {
+  id        BigInt   @id @default(autoincrement()) @db.UnsignedBigInt
+  userId    BigInt   @map("user_id") @db.UnsignedBigInt
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamp(0)
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade, map: "connections_user_id_foreign")
+
+  @@index([userId], map: "connections_user_id_foreign")
+  @@map("connections")
+}
+
+model User {
+  id          BigInt       @id @default(autoincrement()) @db.UnsignedBigInt
+  name        String       @db.VarChar(255)
+  avatar      String       @db.VarChar(255)
+  whatsapp    String       @db.VarChar(255)
+  bio         String       @db.VarChar(255)
+  classes     Class[]
+  connections Connection[]
+
+  @@map("users")
+}

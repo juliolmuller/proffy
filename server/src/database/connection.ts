@@ -1,7 +1,8 @@
+import { PrismaClient } from '@prisma/client';
 import knex from 'knex';
 
 import * as config from '../app/config';
 
-const connection = knex(config);
+export const knexClient = knex(config);
 
-export default connection;
+export const prismaClient = new PrismaClient();

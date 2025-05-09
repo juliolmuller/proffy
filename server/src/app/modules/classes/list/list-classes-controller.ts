@@ -10,7 +10,7 @@ interface QueryFilters {
   weekday?: string;
 }
 
-export const listClassSchedulesController: Controller = async (request, response) => {
+export const listClassesController: Controller = async (request, response) => {
   const filters: QueryFilters = request.query;
   const timeInMinutes = parseTimeIntoMinutes(filters.time as string);
 

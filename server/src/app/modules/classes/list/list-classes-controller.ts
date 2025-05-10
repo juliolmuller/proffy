@@ -53,7 +53,7 @@ export const listClassesController: Controller = async (request, response) => {
       classes.map((clazz) => ({
         id: clazz.id,
         subject: clazz.subject,
-        price: clazz.price,
+        price: Number(clazz.price),
         user_id: clazz.userId,
         name: clazz.user.name,
         avatar: clazz.user.avatar,

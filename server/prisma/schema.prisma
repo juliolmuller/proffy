@@ -3,50 +3,47 @@ generator client {
 }
 
 datasource db {
-  provider = "mysql"
+  provider = "sqlite"
   url      = env("DATABASE_URL")
 }
 
 model ClassSchedule {
-  id      BigInt @id @default(autoincrement()) @db.UnsignedBigInt
+  id      String @id @default(cuid())
   weekday Int
   from    Int
   to      Int
-  classId BigInt @map("class_id") @db.UnsignedBigInt
-  classes Class  @relation(fields: [classId], references: [id], onDelete: Cascade, map: "class_schedules_class_id_foreign")
+  classId String @map("class_id")
+  classes Class  @relation(fields: [classId], references: [id], onDelete: Cascade)
 
-  @@index([classId], map: "class_schedules_class_id_foreign")
   @@map("class_schedules")
 }
 
 model Class {
-  id             BigInt          @id @default(autoincrement()) @db.UnsignedBigInt
-  subject        String          @db.VarChar(255)
-  price          Decimal         @db.Decimal(8, 2)
-  userId         BigInt          @map("user_id") @db.UnsignedBigInt
+  id             String          @id @default(cuid())
+  subject        String
+  price          Decimal
+  userId         String          @map("user_id")
   classSchedules ClassSchedule[]
-  user           User            @relation(fields: [userId], references: [id], onDelete: Cascade, map: "classes_user_id_foreign")
+  user           User            @relation(fields: [userId], references: [id], onDelete: Cascade)
 
-  @@index([userId], map: "classes_user_id_foreign")
   @@map("classes")
 }
 
 model Connection {
-  id        BigInt   @id @default(autoincrement()) @db.UnsignedBigInt
-  userId    BigInt   @map("user_id") @db.UnsignedBigInt
-  createdAt DateTime @default(now()) @map("created_at") @db.Timestamp(0)
-  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade, map: "connections_user_id_foreign")
+  id        String   @id @default(cuid())
+  userId    String   @map("user_id")
+  createdAt DateTime @default(now()) @map("created_at")
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 
-  @@index([userId], map: "connections_user_id_foreign")
   @@map("connections")
 }
 
 model User {
-  id          BigInt       @id @default(autoincrement()) @db.UnsignedBigInt
-  name        String       @db.VarChar(255)
-  avatar      String       @db.VarChar(255)
-  whatsapp    String       @db.VarChar(255)
-  bio         String       @db.VarChar(255)
+  id          String       @id @default(cuid())
+  name        String
+  avatar      String
+  whatsapp    String
+  bio         String
   classes     Class[]
   connections Connection[]
 

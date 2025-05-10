@@ -41,5 +41,5 @@ POST {{BASE_URL}}/connections
 {{CONTENT_TYPE_HEADER}}
 
 {
-  "user": 1
+  "user": "cmahmc94k00030cjv2kxhe9i4"
 }

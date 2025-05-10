@@ -15,4 +15,4 @@ web-build/
 !.env.example
 .eslintcache
 *.log
-*.sqlite
+*.sqlite*

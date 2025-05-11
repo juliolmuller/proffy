@@ -1,43 +1,46 @@
 /* eslint-disable react/jsx-child-element-spacing */
-import { useState } from 'react'
-import { useRouter } from 'next/router'
-import DocumentHead from 'next/head'
-import Header from '~/components/Header'
-import Input from '~/components/Input'
-import Select from '~/components/Select'
-import TextArea from '~/components/TextArea'
-import http from '~/services/http'
-import { ScheduleItem, Teacher } from '~/types'
-import styles from './styles.module.scss'
+import { useState } from 'react';
+import { useRouter } from 'next/router';
+import DocumentHead from 'next/head';
+import Header from '~/components/Header';
+import Input from '~/components/Input';
+import Select from '~/components/Select';
+import TextArea from '~/components/TextArea';
+import http from '~/services/http';
+import { ClassSchedule, Class } from '~/types';
+import styles from './styles.module.scss';
 
 function TeachersFormPage() {
-  const router = useRouter()
+  const router = useRouter();
 
-  const [bio, setBio] = useState('')
-  const [name, setName] = useState('')
-  const [price, setPrice] = useState('')
-  const [avatar, setAvatar] = useState('')
-  const [subject, setSubject] = useState('')
-  const [whatsapp, setWhatsapp] = useState('')
-  const [scheduleItems, setScheduleItems] = useState<ScheduleItem[]>([
+  const [bio, setBio] = useState('');
+  const [name, setName] = useState('');
+  const [price, setPrice] = useState('');
+  const [avatar, setAvatar] = useState('');
+  const [subject, setSubject] = useState('');
+  const [whatsapp, setWhatsapp] = useState('');
+  const [scheduleItems, setScheduleItems] = useState<ClassSchedule[]>([
     { weekday: '', from: '', to: '' },
-  ])
+  ]);
 
   function addScheduleItem() {
-    setScheduleItems([
-      ...scheduleItems,
-      { weekday: '', from: '', to: '' },
-    ])
+    setScheduleItems([...scheduleItems, { weekday: '', from: '', to: '' }]);
   }
 
-  function onScheduleItemChange(position: number, field: keyof ScheduleItem, value: string) {
-    setScheduleItems(scheduleItems.map((schItem, index) => {
-      if (index === position) {
-        return { ...schItem, [field]: value }
-      }
+  function onScheduleItemChange(
+    position: number,
+    field: keyof ClassSchedule,
+    value: string,
+  ) {
+    setScheduleItems(
+      scheduleItems.map((schItem, index) => {
+        if (index === position) {
+          return { ...schItem, [field]: value };
+        }
 
-      return schItem
-    }))
+        return schItem;
+      }),
+    );
   }
 
   async function handleFormSubmit() {
@@ -47,12 +50,16 @@ function TeachersFormPage() {
       whatsapp,
       bio,
       subject,
-      price,
-      schedule: scheduleItems,
-    } as unknown as Partial<Teacher>)
+      price: Number(price),
+      schedule: scheduleItems.map(({ weekday, to, from }) => ({
+        weekday: Number(weekday),
+        from,
+        to,
+      })),
+    } as unknown as Partial<Class>);
 
-    alert('Cadastrado com sucesso!')
-    router.replace('/')
+    alert('Cadastrado com sucesso!');
+    router.replace('/');
   }
 
   return (
@@ -135,7 +142,9 @@ function TeachersFormPage() {
                   name="weekday"
                   label="Dia da Semana"
                   value={schItem.weekday}
-                  onChange={(ev) => onScheduleItemChange(index, 'weekday', ev.target.value)}
+                  onChange={(ev) =>
+                    onScheduleItemChange(index, 'weekday', ev.target.value)
+                  }
                   options={[
                     { value: '0', label: 'Domingo' },
                     { value: '1', label: 'Segunda-feira' },
@@ -150,13 +159,17 @@ function TeachersFormPage() {
                   name={`from${index}`}
                   label="Das"
                   type="time"
-                  onChange={(ev) => onScheduleItemChange(index, 'from', ev.target.value)}
+                  onChange={(ev) =>
+                    onScheduleItemChange(index, 'from', ev.target.value)
+                  }
                 />
                 <Input
                   name={`to${index}`}
                   label="Até"
                   type="time"
-                  onChange={(ev) => onScheduleItemChange(index, 'to', ev.target.value)}
+                  onChange={(ev) =>
+                    onScheduleItemChange(index, 'to', ev.target.value)
+                  }
                 />
               </div>
             ))}
@@ -165,7 +178,7 @@ function TeachersFormPage() {
           <footer>
             <p>
               <img src="/icons/warning.svg" alt="Alerta" />
-              Importante! <br/>
+              Importante! <br />
               Preencha todos os dados.
             </p>
             <button type="button" onClick={handleFormSubmit}>
@@ -175,7 +188,7 @@ function TeachersFormPage() {
         </form>
       </main>
     </div>
-  )
+  );
 }
 
-export default TeachersFormPage
+export default TeachersFormPage;

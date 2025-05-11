@@ -6,3 +6,5 @@ onlyBuiltDependencies:
   - '@parcel/watcher'
   - core-js
   - esbuild
+  - sharp
+  - unrs-resolver

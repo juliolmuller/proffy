@@ -1,10 +1,9 @@
-import { TextareaHTMLAttributes } from 'react'
-import styles from './styles.module.scss'
+import styles from './styles.module.scss';
 
-interface TextAreaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
-  name: string
-  label: string
-}
+type TextAreaProps = JSX.IntrinsicElements['textarea'] & {
+  name: string;
+  label: string;
+};
 
 function TextArea({ name, label, ...attr }: TextAreaProps) {
   return (
@@ -12,7 +11,7 @@ function TextArea({ name, label, ...attr }: TextAreaProps) {
       <label htmlFor={name}>{label}</label>
       <textarea id={name} {...attr} />
     </div>
-  )
+  );
 }
 
-export default TextArea
+export default TextArea;

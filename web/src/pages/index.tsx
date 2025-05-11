@@ -1,11 +1,11 @@
-import { GetStaticProps } from 'next'
-import DocumentHead from 'next/head'
-import Link from 'next/link'
-import http from '~/services/http'
-import styles from './styles.module.scss'
+import { GetStaticProps } from 'next';
+import DocumentHead from 'next/head';
+import Link from 'next/link';
+import http from '~/services/http';
+import styles from './styles.module.scss';
 
 interface LandingPageProps {
-  totalConnections: number
+  totalConnections: number;
 }
 
 function LandingPage({ totalConnections = 0 }: LandingPageProps) {
@@ -28,15 +28,12 @@ function LandingPage({ totalConnections = 0 }: LandingPageProps) {
         />
 
         <div className={styles.buttonsGroup}>
-          <Link href="/study">
-            <a className={styles.studyRoute}>
-              <img src="/icons/study.svg" alt="ícone de estudo" /> Estudar
-            </a>
+          <Link href="/study" className={styles.studyRoute}>
+            <img src="/icons/study.svg" alt="ícone de estudo" /> Estudar
           </Link>
-          <Link href="/teach">
-            <a className={styles.teachRoute}>
-              <img src="/icons/teach.svg" alt="ícone de ensino" /> Lecionar
-            </a>
+
+          <Link href="/teach" className={styles.teachRoute}>
+            <img src="/icons/teach.svg" alt="ícone de ensino" /> Lecionar
           </Link>
         </div>
 
@@ -46,21 +43,18 @@ function LandingPage({ totalConnections = 0 }: LandingPageProps) {
         </span>
       </div>
     </div>
-  )
+  );
 }
 
 const getStaticProps: GetStaticProps<LandingPageProps> = async () => {
-  const { data } = await http.get('/connections')
+  const { data } = await http.get('/connections');
 
   return {
     revalidate: 300, // revalidate every 300 seconds (5 minutes)
     props: {
       totalConnections: Number(data.total) || 0,
     },
-  }
-}
+  };
+};
 
-export {
-  LandingPage as default,
-  getStaticProps,
-}
+export { LandingPage as default, getStaticProps };

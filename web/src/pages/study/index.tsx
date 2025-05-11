@@ -1,26 +1,28 @@
-import { useEffect, useState } from 'react'
-import DocumentHead from 'next/head'
-import Header from '~/components/Header'
-import Input from '~/components/Input'
-import Select from '~/components/Select'
-import TeacherCard from '~/components/TeacherCard'
-import http from '~/services/http'
-import { Teacher } from '~/types'
-import styles from './styles.module.scss'
+import { useEffect, useState } from 'react';
+import DocumentHead from 'next/head';
+import Header from '~/components/Header';
+import Input from '~/components/Input';
+import Select from '~/components/Select';
+import TeacherCard from '~/components/TeacherCard';
+import http from '~/services/http';
+import { Class } from '~/types';
+import styles from './styles.module.scss';
 
 function TeachersSearchPage() {
-  const [time, setTime] = useState('')
-  const [weekday, setWeekday] = useState('')
-  const [subject, setSubject] = useState('')
-  const [teachersList, setTeachersList] = useState<Teacher[]>([])
+  const [time, setTime] = useState('');
+  const [weekday, setWeekday] = useState('');
+  const [subject, setSubject] = useState('');
+  const [classesList, setClassesList] = useState<Class[]>([]);
 
   useEffect(() => {
     if (subject && weekday && time) {
-      http.get('/classes', {
-        params: { subject, weekday, time },
-      }).then(({ data }) => setTeachersList(data))
+      http
+        .get('/classes', {
+          params: { subject, weekday, time },
+        })
+        .then(({ data }) => setClassesList(data));
     }
-  }, [subject, weekday, time])
+  }, [subject, weekday, time]);
 
   return (
     <div className={styles.pageWrapper}>
@@ -46,6 +48,7 @@ function TeachersSearchPage() {
               { value: 'Química', label: 'Química' },
             ]}
           />
+
           <Select
             name="weekday"
             label="Dia da Semana"
@@ -61,6 +64,7 @@ function TeachersSearchPage() {
               { value: '6', label: 'Sábado' },
             ]}
           />
+
           <Input
             type="time"
             name="time"
@@ -71,15 +75,12 @@ function TeachersSearchPage() {
       </Header>
 
       <main>
-        {teachersList.map((teacher) => (
-          <TeacherCard
-            key={teacher.id}
-            teacher={teacher}
-          />
+        {classesList.map((clazz) => (
+          <TeacherCard key={clazz.id} clazz={clazz} />
         ))}
       </main>
     </div>
-  )
+  );
 }
 
-export default TeachersSearchPage
+export default TeachersSearchPage;

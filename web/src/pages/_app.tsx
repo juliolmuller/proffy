@@ -1,14 +1,12 @@
-import NextApp from 'next/app'
-import '~/global-styles.scss'
+import NextApp from 'next/app';
+import '~/global-styles.scss';
 
 class App extends NextApp {
   render() {
-    const { Component, pageProps } = this.props
+    const { Component, pageProps } = this.props;
 
-    return (
-      <Component {...pageProps} />
-    )
+    return <Component {...pageProps} />;
   }
 }
 
-export default App
+export default App;

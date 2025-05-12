@@ -1,15 +1,15 @@
-import { ReactNode } from 'react'
-import { useRouter } from 'next/router'
-import styles from './styles.module.scss'
+import { useRouter } from 'next/router';
+
+import styles from './styles.module.scss';
 
 interface PageHeaderProps {
-  title: string
-  children?: ReactNode
-  description?: string
+  children?: any;
+  description?: string;
+  title: string;
 }
 
 function Header({ title, description, children }: PageHeaderProps) {
-  const router = useRouter()
+  const router = useRouter();
 
   return (
     <header className={styles.pageHeader}>
@@ -23,13 +23,13 @@ function Header({ title, description, children }: PageHeaderProps) {
 
       <div className={styles.content}>
         <h2>{title}</h2>
+
         {description && <p>{description}</p>}
-        <div>
-          {children}
-        </div>
+
+        <div>{children}</div>
       </div>
     </header>
-  )
+  );
 }
 
-export default Header
+export default Header;

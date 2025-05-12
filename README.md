@@ -53,7 +53,7 @@ Application developed during the second edition of the [Next Level Week](https:/
 **Backend:**
 - [Node.js](https://nodejs.org/en/)
 - [SQLite 3](https://www.sqlite.org/)
-- [Knex.js](http://knexjs.org/) (SQL Query Builder)
+- [Prisma](https://www.prisma.io/) (ORM)
 
 **Development:**
 - TypeScript
@@ -113,7 +113,7 @@ Besides, both v1.0 and v2.0 have their layouts available at **[Figma](http://fig
   - [x] Create screen to list classes marked as favorite by the user;
 - Server
   - [x] Create project with *Express*, *SQLite3* and *Knex*;
-  - [x] COnfigure *Knex* and setup migrations;
+  - [x] Configure *Knex* and setup migrations;
   - [x] Create REST API to retrieving and storing data;
 
 ### Version 2.0
@@ -150,7 +150,9 @@ Besides, both v1.0 and v2.0 have their layouts available at **[Figma](http://fig
   - [x] Set up linting tools;
   - [ ] Forms data validation;
   - [x] ~~ Switch from SQLite to PostgreSQL~~;
-  - [x] Switch from SQLite to MySQL, due to Heroku restrictions;
+  - [x] ~~Switch from SQLite to MySQL, due to Heroku restrictions;~~
+  - [x] Switch from MySQL to SQLite, due to [Render](https://render.com/) free-plan restrictions;
+  - [x] Switch from Knex to Prisma;
   - [ ] Create authentication system;
   - [ ] Implement file upload system;
   - [ ] Automated tests;

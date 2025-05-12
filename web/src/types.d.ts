@@ -1,17 +1,17 @@
-
-export interface ScheduleItem {
-  weekday: string
-  from: string
-  to: string
+export interface ClassSchedule {
+  from: string;
+  to: string;
+  weekday: string;
 }
 
-export interface Teacher {
-  id: number
-  name: string
-  avatar: string
-  bio: string
-  whatsapp: string
-  subject: string
-  price: number
-  schedule: ScheduleItem[]
+export interface Class {
+  avatar: string;
+  bio: string;
+  id: string;
+  name: string;
+  price: number;
+  schedule: ClassSchedule[];
+  subject: string;
+  user_id: string;
+  whatsapp: string;
 }

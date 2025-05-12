@@ -1,10 +1,11 @@
-import { InputHTMLAttributes } from 'react'
-import styles from './styles.module.scss'
+import { type JSX } from 'react';
 
-interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
-  label: string
-  name: string
-}
+import styles from './styles.module.scss';
+
+type InputProps = {
+  label: string;
+  name: string;
+} & JSX.IntrinsicElements['input'];
 
 function Input({ name, label, ...attr }: InputProps) {
   return (
@@ -12,7 +13,7 @@ function Input({ name, label, ...attr }: InputProps) {
       <label htmlFor={name}>{label}</label>
       <input id={name} {...attr} />
     </div>
-  )
+  );
 }
 
-export default Input
+export default Input;

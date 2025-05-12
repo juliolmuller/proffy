@@ -1,0 +1,51 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model ClassSchedule {
+  id      String @id @default(cuid())
+  weekday Int
+  from    Int
+  to      Int
+  classId String @map("class_id")
+  classes Class  @relation(fields: [classId], references: [id], onDelete: Cascade)
+
+  @@map("class_schedules")
+}
+
+model Class {
+  id             String          @id @default(cuid())
+  subject        String
+  price          Decimal
+  userId         String          @map("user_id")
+  classSchedules ClassSchedule[]
+  user           User            @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("classes")
+}
+
+model Connection {
+  id        String   @id @default(cuid())
+  userId    String   @map("user_id")
+  createdAt DateTime @default(now()) @map("created_at")
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("connections")
+}
+
+model User {
+  id          String       @id @default(cuid())
+  name        String
+  avatar      String
+  whatsapp    String
+  bio         String
+  classes     Class[]
+  connections Connection[]
+
+  @@map("users")
+}

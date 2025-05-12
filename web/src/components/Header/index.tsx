@@ -1,9 +1,10 @@
 import { useRouter } from 'next/router';
+import { type ReactNode } from 'react';
 
 import styles from './styles.module.scss';
 
 interface PageHeaderProps {
-  children?: any;
+  children?: ReactNode;
   description?: string;
   title: string;
 }

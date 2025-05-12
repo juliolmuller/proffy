@@ -1,11 +1,11 @@
-import { type JSX } from 'react';
+import { type InputHTMLAttributes } from 'react';
 
 import styles from './styles.module.scss';
 
 type InputProps = {
   label: string;
   name: string;
-} & JSX.IntrinsicElements['input'];
+} & InputHTMLAttributes<HTMLInputElement>;
 
 function Input({ name, label, ...attr }: InputProps) {
   return (

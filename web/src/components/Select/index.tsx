@@ -1,4 +1,4 @@
-import { type JSX } from 'react';
+import { type SelectHTMLAttributes } from 'react';
 
 import styles from './styles.module.scss';
 
@@ -9,7 +9,7 @@ type SelectProps = {
     label: string;
     value: string;
   }[];
-} & JSX.IntrinsicElements['select'];
+} & SelectHTMLAttributes<HTMLSelectElement>;
 
 function Select({ name, label, options, ...attr }: SelectProps) {
   return (

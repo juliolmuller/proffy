@@ -1,11 +1,13 @@
-import { useEffect, useState } from 'react';
 import DocumentHead from 'next/head';
+import { useEffect, useState } from 'react';
+
 import Header from '~/components/Header';
 import Input from '~/components/Input';
 import Select from '~/components/Select';
 import TeacherCard from '~/components/TeacherCard';
 import http from '~/services/http';
-import { Class } from '~/types';
+import { type Class } from '~/types';
+
 import styles from './styles.module.scss';
 
 function TeachersSearchPage() {

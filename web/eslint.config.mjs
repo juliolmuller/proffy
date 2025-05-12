@@ -6,11 +6,13 @@ export default defineConfig([
   ...anyConfig.react,
   {
     ...nextPlugin.flatConfig.coreWebVitals,
-    files: ['**/*.{js,ts,tsx}'],
+    files: ['**/*.{js,jsx,ts,tsx}'],
   },
   {
     rules: {
       '@next/next/no-img-element': 'off',
+      '@typescript-eslint/explicit-function-return-type': 'off',
+      '@typescript-eslint/no-explicit-any': 'off',
       camelcase: [
         'error',
         {

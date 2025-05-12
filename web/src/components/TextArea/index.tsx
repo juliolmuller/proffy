@@ -1,9 +1,11 @@
+import { type JSX } from 'react';
+
 import styles from './styles.module.scss';
 
-type TextAreaProps = JSX.IntrinsicElements['textarea'] & {
-  name: string;
+type TextAreaProps = {
   label: string;
-};
+  name: string;
+} & JSX.IntrinsicElements['textarea'];
 
 function TextArea({ name, label, ...attr }: TextAreaProps) {
   return (

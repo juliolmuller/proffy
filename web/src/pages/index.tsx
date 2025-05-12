@@ -1,7 +1,9 @@
-import { GetStaticProps } from 'next';
+import { type GetStaticProps } from 'next';
 import DocumentHead from 'next/head';
 import Link from 'next/link';
+
 import http from '~/services/http';
+
 import styles from './styles.module.scss';
 
 interface LandingPageProps {
@@ -21,11 +23,7 @@ function LandingPage({ totalConnections = 0 }: LandingPageProps) {
           <h2>Sua plataforma de estudos online.</h2>
         </div>
 
-        <img
-          src="/img/landing.svg"
-          alt="Capa do sistema Proffy"
-          className={styles.heroImage}
-        />
+        <img src="/img/landing.svg" alt="Capa do sistema Proffy" className={styles.heroImage} />
 
         <div className={styles.buttonsGroup}>
           <Link href="/study" className={styles.studyRoute}>

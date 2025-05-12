@@ -1,5 +1,6 @@
 import http from '~/services/http';
-import { Class } from '~/types';
+import { type Class } from '~/types';
+
 import styles from './styles.module.scss';
 
 interface TeacherCardProps {

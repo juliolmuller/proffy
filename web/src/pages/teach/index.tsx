@@ -1,13 +1,14 @@
-/* eslint-disable react/jsx-child-element-spacing */
-import { useState } from 'react';
-import { useRouter } from 'next/router';
 import DocumentHead from 'next/head';
+import { useRouter } from 'next/router';
+import { useState } from 'react';
+
 import Header from '~/components/Header';
 import Input from '~/components/Input';
 import Select from '~/components/Select';
 import TextArea from '~/components/TextArea';
 import http from '~/services/http';
-import { ClassSchedule, Class } from '~/types';
+import { type Class, type ClassSchedule } from '~/types';
+
 import styles from './styles.module.scss';
 
 function TeachersFormPage() {
@@ -27,11 +28,7 @@ function TeachersFormPage() {
     setScheduleItems([...scheduleItems, { weekday: '', from: '', to: '' }]);
   }
 
-  function onScheduleItemChange(
-    position: number,
-    field: keyof ClassSchedule,
-    value: string,
-  ) {
+  function onScheduleItemChange(position: number, field: keyof ClassSchedule, value: string) {
     setScheduleItems(
       scheduleItems.map((schItem, index) => {
         if (index === position) {
@@ -95,11 +92,7 @@ function TeachersFormPage() {
               label="WhatsApp"
               onChange={(ev) => setWhatsapp(ev.target.value)}
             />
-            <TextArea
-              name="bio"
-              label="Biografia"
-              onChange={(ev) => setBio(ev.target.value)}
-            />
+            <TextArea name="bio" label="Biografia" onChange={(ev) => setBio(ev.target.value)} />
           </fieldset>
 
           <fieldset>
@@ -142,9 +135,7 @@ function TeachersFormPage() {
                   name="weekday"
                   label="Dia da Semana"
                   value={schItem.weekday}
-                  onChange={(ev) =>
-                    onScheduleItemChange(index, 'weekday', ev.target.value)
-                  }
+                  onChange={(ev) => onScheduleItemChange(index, 'weekday', ev.target.value)}
                   options={[
                     { value: '0', label: 'Domingo' },
                     { value: '1', label: 'Segunda-feira' },
@@ -159,17 +150,13 @@ function TeachersFormPage() {
                   name={`from${index}`}
                   label="Das"
                   type="time"
-                  onChange={(ev) =>
-                    onScheduleItemChange(index, 'from', ev.target.value)
-                  }
+                  onChange={(ev) => onScheduleItemChange(index, 'from', ev.target.value)}
                 />
                 <Input
                   name={`to${index}`}
                   label="Até"
                   type="time"
-                  onChange={(ev) =>
-                    onScheduleItemChange(index, 'to', ev.target.value)
-                  }
+                  onChange={(ev) => onScheduleItemChange(index, 'to', ev.target.value)}
                 />
               </div>
             ))}

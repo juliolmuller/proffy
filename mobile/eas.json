@@ -13,11 +13,10 @@
       "distribution": "internal"
     },
     "production": {
+      "node": "22.15.0",
+      "pnpm": "10.10.0",
       "android": {
         "buildType": "apk"
-      },
-      "env": {
-        "EXPO_USE_PNPM": "1"
       }
     }
   }

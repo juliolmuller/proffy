@@ -7,7 +7,7 @@
     "RocketSeat",
     "Julio L. Muller"
   ],
-  "main": "src/main.js",
+  "main": "src/main.ts",
   "scripts": {
     "postinstall": "node -e \"require('fs').existsSync('.env') || require('fs').copyFileSync('.env.example', '.env')\"",
     "commit": "cd .. && pnpm run commit",

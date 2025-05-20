@@ -83,9 +83,6 @@ importers:
       expo-build-properties:
         specifier: ~0.14.6
         version: 0.14.6(expo@53.0.9(@babel/core@7.27.1)(graphql@15.8.0)(react-native@0.79.2(@babel/core@7.27.1)(@react-native-community/cli@13.6.9(encoding@0.1.13))(@types/react@19.0.14)(react@19.0.0))(react@19.0.0))
-      expo-constants:
-        specifier: ~17.1.6
-        version: 17.1.6(expo@53.0.9(@babel/core@7.27.1)(graphql@15.8.0)(react-native@0.79.2(@babel/core@7.27.1)(@react-native-community/cli@13.6.9(encoding@0.1.13))(@types/react@19.0.14)(react@19.0.0))(react@19.0.0))(react-native@0.79.2(@babel/core@7.27.1)(@react-native-community/cli@13.6.9(encoding@0.1.13))(@types/react@19.0.14)(react@19.0.0))
       expo-font:
         specifier: ~13.3.1
         version: 13.3.1(expo@53.0.9(@babel/core@7.27.1)(graphql@15.8.0)(react-native@0.79.2(@babel/core@7.27.1)(@react-native-community/cli@13.6.9(encoding@0.1.13))(@types/react@19.0.14)(react@19.0.0))(react@19.0.0))(react@19.0.0)
@@ -123,15 +120,12 @@ importers:
       cross-env:
         specifier: ^7.0.3
         version: 7.0.3
-      dotenv-flow:
-        specifier: ^4.1.0
-        version: 4.1.0
       eslint:
-        specifier: ^9.26.0
-        version: 9.26.0(jiti@2.4.2)
+        specifier: ^9.27.0
+        version: 9.27.0(jiti@2.4.2)
       eslint-config-any:
         specifier: ^1.1.0
-        version: 1.1.0(@typescript-eslint/parser@8.31.1(eslint@9.27.0(jiti@2.4.2))(typescript@5.8.3))(eslint@9.26.0(jiti@2.4.2))(prettier@3.5.3)(typescript@5.8.3)
+        version: 1.1.0(@typescript-eslint/parser@8.31.1(eslint@9.27.0(jiti@2.4.2))(typescript@5.8.3))(eslint@9.27.0(jiti@2.4.2))(prettier@3.5.3)(typescript@5.8.3)
       prettier:
         specifier: ^3.5.3
         version: 3.5.3

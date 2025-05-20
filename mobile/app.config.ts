@@ -1,12 +1,5 @@
-import dotenv from 'dotenv-flow';
-import { ExpoConfig } from 'expo/config';
+import { type ExpoConfig } from 'expo/config';
 import npmConfig from './package.json';
-
-const envVars = dotenv.config({ purge_dotenv: true });
-
-if (envVars.error) {
-  throw envVars.error;
-}
 
 const config: ExpoConfig = {
   name: 'Proffy',
@@ -37,7 +30,6 @@ const config: ExpoConfig = {
     eas: {
       projectId: '0b3c46ed-4e75-4294-a66c-3c9320d05e4a',
     },
-    ...envVars.parsed,
   },
   android: {
     package: 'com.juliolmuller.proffy',

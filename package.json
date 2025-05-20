@@ -2,9 +2,9 @@
   "name": "@proffy/monorepo",
   "private": true,
   "homepage": "https://jlm-proffy.vercel.app/",
-  "packageManager": "pnpm@10.6.0",
+  "packageManager": "pnpm@10.11.0",
   "scripts": {
-    "prepare": "husky || true",
+    "prepare": "husky",
     "commit": "commit",
     "config": "node config.js",
     "mobile": "pnpm --filter ./mobile/ run dev",

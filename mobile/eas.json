@@ -15,6 +15,9 @@
     "production": {
       "android": {
         "buildType": "apk"
+      },
+      "env": {
+        "EXPO_USE_PNPM": "1"
       }
     }
   }

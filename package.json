@@ -18,16 +18,16 @@
     "lint:web": "pnpm --filter ./web/ run lint"
   },
   "devDependencies": {
-    "@commitlint/cli": "^19.6.1",
-    "@commitlint/config-conventional": "^19.6.0",
-    "@commitlint/config-workspace-scopes": "^19.8.0",
-    "@commitlint/prompt-cli": "^19.8.0",
+    "@commitlint/cli": "^19.8.1",
+    "@commitlint/config-conventional": "^19.8.1",
+    "@commitlint/config-workspace-scopes": "^19.8.1",
+    "@commitlint/prompt-cli": "^19.8.1",
     "colors": "^1.4.0",
     "envfile": "^7.1.0",
-    "eslint": "^9.25.1",
+    "eslint": "^9.27.0",
     "eslint-config-any": "^1.1.0",
     "husky": "^9.1.7",
-    "lint-staged": "^15.4.3",
+    "lint-staged": "^16.0.0",
     "prettier": "^3.5.3",
     "prompts": "^2.4.2",
     "typescript": "^5.8.3"

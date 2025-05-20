@@ -10,10 +10,10 @@
   "scripts": {
     "postinstall": "node -e \"require('fs').existsSync('.env') || require('fs').copyFileSync('.env.example', '.env')\"",
     "commit": "cd .. && pnpm run commit",
-    "development": "next dev --port 8080",
+    "development": "next dev",
     "dev": "pnpm run development",
     "build": "next build",
-    "production": "next start --port 8080",
+    "production": "next start",
     "prod": "pnpm run production",
     "start": "pnpm run production",
     "lint": "next lint --fix"

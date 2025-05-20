@@ -10,14 +10,13 @@
   "main": "src/main.js",
   "scripts": {
     "postinstall": "node -e \"require('fs').existsSync('.env') || require('fs').copyFileSync('.env.example', '.env')\"",
-    "commit": "cd .. && npm run commit",
-    "dev": "expo start",
-    "development": "npm run dev",
-    "build": "npm run build:android && npm run build:ios",
-    "build:android": "cross-env NODE_ENV=production expo build:android --type apk",
-    "build:ios": "cross-env NODE_ENV=production expo build:ios",
-    "eject": "expo eject",
-    "lint": "eslint src/ --fix"
+    "commit": "cd .. && pnpm run commit",
+    "development": "expo start",
+    "dev": "npm run development",
+    "build:dev": "eas build -e development -p android",
+    "build:stage": "eas build -e preview -p android",
+    "build": "eas build -p android",
+    "lint": "eslint --fix src/"
   },
   "dependencies": {
     "@expo-google-fonts/archivo": "~0.3.0",
@@ -31,6 +30,7 @@
     "axios": "^1.9.0",
     "expo": "^53.0.9",
     "expo-build-properties": "~0.14.6",
+    "expo-dev-client": "~5.1.8",
     "expo-font": "~13.3.1",
     "expo-splash-screen": "~0.30.8",
     "expo-status-bar": "~2.2.3",

@@ -1,19 +1,19 @@
-import React, { ReactNode } from 'react'
-import { Image, Text, View } from 'react-native'
-import { BorderlessButton } from 'react-native-gesture-handler'
-import { useNavigation } from '@react-navigation/native'
-import backIcon from '~/assets/icons/back.png'
-import logoImage from '~/assets/img/logo.png'
-import styles from './styles'
+import { useNavigation } from '@react-navigation/native';
+import { ReactNode } from 'react';
+import { Image, Text, View } from 'react-native';
+import { BorderlessButton } from 'react-native-gesture-handler';
+import backIcon from '~/assets/icons/back.png';
+import logoImage from '~/assets/img/logo.png';
+import styles from './styles';
 
 interface PageHeaderProps {
-  headerRight?: ReactNode
-  children?: ReactNode
-  title: string
+  headerRight?: ReactNode;
+  children?: ReactNode;
+  title: string;
 }
 
-function PageHeader({ title, headerRight, children }: PageHeaderProps) {
-  const { navigate } = useNavigation()
+export function PageHeader({ title, headerRight, children }: PageHeaderProps) {
+  const { navigate } = useNavigation();
 
   return (
     <View style={styles.container}>
@@ -32,7 +32,5 @@ function PageHeader({ title, headerRight, children }: PageHeaderProps) {
 
       {children}
     </View>
-  )
+  );
 }
-
-export default PageHeader

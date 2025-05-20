@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react'
+import { useNavigation } from '@react-navigation/native'
+import { useEffect, useState } from 'react'
 import { Image, Text, View } from 'react-native'
 import { RectButton } from 'react-native-gesture-handler'
-import { useNavigation } from '@react-navigation/native'
 import landingImage from '~/assets/img/landing.png'
 import teachIcon from '~/assets/icons/give-classes.png'
 import studyIcon from '~/assets/icons/study.png'
@@ -9,7 +9,7 @@ import heartIcon from '~/assets/icons/heart.png'
 import http from '~/services/http'
 import styles from './styles'
 
-function LandingScreen() {
+export function LandingScreen() {
   const { navigate } = useNavigation()
   const [connectionsCount, setConnectionsCount] = useState(0)
 
@@ -50,5 +50,3 @@ function LandingScreen() {
     </View>
   )
 }
-
-export default LandingScreen

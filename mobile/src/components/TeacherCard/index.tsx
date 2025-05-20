@@ -1,41 +1,43 @@
-import React, { useState } from 'react'
-import { Linking, Image, Text, View } from 'react-native'
-import { RectButton } from 'react-native-gesture-handler'
-import AsyncStorage from '@react-native-async-storage/async-storage'
-import http from '~/services/http'
-import heartOutlineIcon from '~/assets/icons/heart-outline.png'
-import unfavoriteIcon from '~/assets/icons/unfavorite.png'
-import whatsappIcon from '~/assets/icons/whatsapp.png'
-import styles from './styles'
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useState } from 'react';
+import { Linking, Image, Text, View } from 'react-native';
+import { RectButton } from 'react-native-gesture-handler';
+import http from '~/services/http';
+import heartOutlineIcon from '~/assets/icons/heart-outline.png';
+import unfavoriteIcon from '~/assets/icons/unfavorite.png';
+import whatsappIcon from '~/assets/icons/whatsapp.png';
+import styles from './styles';
 
 interface TeacherCardProps {
-  teacher: Teacher
-  favorite: boolean
+  teacher: Teacher;
+  favorite: boolean;
 }
 
-function TeacherCard({ teacher, favorite }: TeacherCardProps) {
-  const [favoriteState, favoriteStateSetter] = useState(favorite)
+export function TeacherCard({ teacher, favorite }: TeacherCardProps) {
+  const [favoriteState, favoriteStateSetter] = useState(favorite);
 
   function handleLinkToWhatsApp() {
-    http.post('/connections', { user: teacher.id })
-    Linking.openURL(`whatsapp://send?phone=${teacher.whatsapp}`)
+    http.post('/connections', { user: teacher.id });
+    Linking.openURL(`whatsapp://send?phone=${teacher.whatsapp}`);
   }
 
   async function handleToggleFavorite() {
-    const storage = await AsyncStorage.getItem('favorites') || '[]'
-    const favorites: Teacher[] = JSON.parse(storage)
+    const storage = (await AsyncStorage.getItem('favorites')) || '[]';
+    const favorites: Teacher[] = JSON.parse(storage);
 
     if (favoriteState) {
-      const index = favorites.findIndex((item: Teacher) => item.id === teacher.id)
+      const index = favorites.findIndex(
+        (item: Teacher) => item.id === teacher.id,
+      );
 
-      favorites.splice(index, 1)
-      favoriteStateSetter(false)
+      favorites.splice(index, 1);
+      favoriteStateSetter(false);
     } else {
-      favorites.push(teacher)
-      favoriteStateSetter(true)
+      favorites.push(teacher);
+      favoriteStateSetter(true);
     }
 
-    AsyncStorage.setItem('favorites', JSON.stringify(favorites))
+    AsyncStorage.setItem('favorites', JSON.stringify(favorites));
   }
 
   return (
@@ -48,9 +50,7 @@ function TeacherCard({ teacher, favorite }: TeacherCardProps) {
           <Text style={styles.subject}>{teacher.subject}</Text>
         </View>
       </View>
-      <Text style={styles.bio}>
-        {teacher.bio.replace('\n', '\n\n')}
-      </Text>
+      <Text style={styles.bio}>{teacher.bio.replace('\n', '\n\n')}</Text>
 
       <View style={styles.cardFooter}>
         <Text style={styles.price}>
@@ -61,7 +61,10 @@ function TeacherCard({ teacher, favorite }: TeacherCardProps) {
         <View style={styles.buttonGroup}>
           <RectButton
             onPress={handleToggleFavorite}
-            style={[styles.favoriteButton, favoriteState ? styles.favoriteButtonSelected : {}]}
+            style={[
+              styles.favoriteButton,
+              favoriteState ? styles.favoriteButtonSelected : {},
+            ]}
           >
             {favoriteState ? (
               <Image source={unfavoriteIcon} />
@@ -70,14 +73,15 @@ function TeacherCard({ teacher, favorite }: TeacherCardProps) {
             )}
           </RectButton>
 
-          <RectButton onPress={handleLinkToWhatsApp} style={styles.contactButton}>
+          <RectButton
+            onPress={handleLinkToWhatsApp}
+            style={styles.contactButton}
+          >
             <Image source={whatsappIcon} />
             <Text style={styles.buttonText}>Entrar em contato</Text>
           </RectButton>
         </View>
       </View>
     </View>
-  )
+  );
 }
-
-export default TeacherCard

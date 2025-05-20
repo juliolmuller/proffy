@@ -1,22 +1,19 @@
-import React from 'react'
-import { NavigationContainer } from '@react-navigation/native'
-import { createStackNavigator } from '@react-navigation/stack'
-import Landing from '~/screens/Landing'
-import TeacherForm from '~/screens/TeacherForm'
-import StudyTabs from './StudyTabs'
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import { LandingScreen } from '~/screens';
+import { TeacherFormScreen } from '~/screens';
+import { StudyTabsNavigation } from './StudyTabs';
 
-const { Navigator, Screen } = createStackNavigator()
+const { Navigator, Screen } = createStackNavigator();
 
-function AppStack() {
+export function AppStackNavigation() {
   return (
     <NavigationContainer>
       <Navigator screenOptions={{ headerShown: false }}>
-        <Screen name="Landing" component={Landing} />
-        <Screen name="TeacherForm" component={TeacherForm} />
-        <Screen name="Study" component={StudyTabs} />
+        <Screen name="Landing" component={LandingScreen} />
+        <Screen name="TeacherForm" component={TeacherFormScreen} />
+        <Screen name="Study" component={StudyTabsNavigation} />
       </Navigator>
     </NavigationContainer>
-  )
+  );
 }
-
-export default AppStack

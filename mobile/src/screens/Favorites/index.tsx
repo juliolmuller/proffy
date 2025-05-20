@@ -1,23 +1,23 @@
-import React, { useState } from 'react'
-import { ScrollView, View } from 'react-native'
-import { useFocusEffect } from '@react-navigation/native'
-import AsyncStorage from '@react-native-async-storage/async-storage'
-import PageHeader from '~/components/PageHeader'
-import TeacherCard from '~/components/TeacherCard'
-import styles from './styles'
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useFocusEffect } from '@react-navigation/native';
+import { useState } from 'react';
+import { ScrollView, View } from 'react-native';
+import { PageHeader } from '~/components';
+import { TeacherCard } from '~/components';
+import styles from './styles';
 
-function Favorites() {
-  const [favoritesString, setFavoritesString] = useState('[]')
-  const favorites: Teacher[] = JSON.parse(favoritesString)
+export function FavoritesScreen() {
+  const [favoritesString, setFavoritesString] = useState('[]');
+  const favorites: Teacher[] = JSON.parse(favoritesString);
 
   async function restoreStorage() {
-    const storage = await AsyncStorage.getItem('favorites')
-    storage && setFavoritesString(storage)
+    const storage = await AsyncStorage.getItem('favorites');
+    storage && setFavoritesString(storage);
   }
 
   useFocusEffect(() => {
-    restoreStorage()
-  })
+    restoreStorage();
+  });
 
   return (
     <ScrollView style={styles.screenWrapper}>
@@ -29,7 +29,5 @@ function Favorites() {
         ))}
       </View>
     </ScrollView>
-  )
+  );
 }
-
-export default Favorites

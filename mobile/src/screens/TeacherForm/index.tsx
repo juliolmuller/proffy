@@ -1,10 +1,9 @@
-import React from 'react'
 import { ImageBackground, Linking, Text, View } from 'react-native'
 import { RectButton } from 'react-native-gesture-handler'
 import giveClassesBackground from '~/assets/img/give-classes-background.png'
 import styles from './styles'
 
-function TeacherForm() {
+export function TeacherFormScreen() {
   return (
     <View style={styles.screenWrapper}>
       <ImageBackground
@@ -26,5 +25,3 @@ function TeacherForm() {
     </View>
   )
 }
-
-export default TeacherForm

@@ -1,60 +1,60 @@
-import React, { useEffect, useState } from 'react'
-import { ScrollView, Text, View } from 'react-native'
-import { BorderlessButton } from 'react-native-gesture-handler'
-import { Picker } from '@react-native-picker/picker'
-import AsyncStorage from '@react-native-async-storage/async-storage'
-import { Feather } from '@expo/vector-icons'
-import PageHeader from '~/components/PageHeader'
-import TeacherCard from '~/components/TeacherCard'
-import http from '~/services/http'
-import formData from './form-data'
-import styles from './styles'
+import { Feather } from '@expo/vector-icons';
+import { Picker } from '@react-native-picker/picker';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useEffect, useState } from 'react';
+import { ScrollView, Text, View } from 'react-native';
+import { BorderlessButton } from 'react-native-gesture-handler';
+import { PageHeader } from '~/components';
+import { TeacherCard } from '~/components';
+import http from '~/services/http';
+import formData from './form-data';
+import styles from './styles';
 
-function TeachersList() {
-  const [isFiltering, setFiltering] = useState(true)
-  const [subject, setSubject] = useState('')
-  const [weekday, setWeekday] = useState('')
-  const [time, setTime] = useState('')
-  const [teachersList, setTeachersList] = useState([])
-  const [favorites, setFavorites] = useState<Teacher[]>([])
+export function TeachersListScreen() {
+  const [isFiltering, setFiltering] = useState(true);
+  const [subject, setSubject] = useState('');
+  const [weekday, setWeekday] = useState('');
+  const [time, setTime] = useState('');
+  const [teachersList, setTeachersList] = useState([]);
+  const [favorites, setFavorites] = useState<Teacher[]>([]);
 
   function isFavorite(teacher: Teacher) {
-    return !!favorites.find((favorite) => favorite.id === teacher.id)
+    return !!favorites.find((favorite) => favorite.id === teacher.id);
   }
 
   async function handleFilers() {
     try {
-      const params = { subject, weekday, time }
+      const params = { subject, weekday, time };
       const [response, storage] = await Promise.all([
         http.get('/classes', { params }),
         AsyncStorage.getItem('favorites'),
-      ])
+      ]);
 
-      storage && setFavorites(JSON.parse(storage))
-      response.data.length && setFiltering(false)
-      setTeachersList(response.data)
+      storage && setFavorites(JSON.parse(storage));
+      response.data.length && setFiltering(false);
+      setTeachersList(response.data);
     } catch {
-      setTeachersList([])
+      setTeachersList([]);
     }
   }
 
   useEffect(() => {
     if (subject && weekday && time) {
-      handleFilers()
+      handleFilers();
     }
-  }, [subject, weekday, time]) // eslint-disable-line react-hooks/exhaustive-deps
+  }, [subject, weekday, time]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <ScrollView style={styles.screenWrapper}>
       <PageHeader
         title="Proffys disponíveis"
-        headerRight={(
+        headerRight={
           <BorderlessButton onPress={() => setFiltering(!isFiltering)}>
             <Feather name="filter" size={20} color="#fff" />
           </BorderlessButton>
-        )}
+        }
       >
-        { isFiltering && (
+        {isFiltering && (
           <View style={styles.searchForm}>
             <Text style={styles.label}>Matéria:</Text>
             <View style={styles.input}>
@@ -112,11 +112,13 @@ function TeachersList() {
 
       <View style={styles.teachersDeck}>
         {teachersList.map((teacher: Teacher) => (
-          <TeacherCard key={teacher.id} teacher={teacher} favorite={isFavorite(teacher)} />
+          <TeacherCard
+            key={teacher.id}
+            teacher={teacher}
+            favorite={isFavorite(teacher)}
+          />
         ))}
       </View>
     </ScrollView>
-  )
+  );
 }
-
-export default TeachersList

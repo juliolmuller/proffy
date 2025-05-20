@@ -1,64 +1,68 @@
-/* eslint-disable react/display-name */
-import React from 'react'
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
-import { Ionicons } from '@expo/vector-icons'
-import TeachersList from '~/screens/TeachersList'
-import Favorites from '~/screens/Favorites'
+import { Ionicons } from '@expo/vector-icons';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { TeachersListScreen } from '~/screens';
+import { FavoritesScreen } from '~/screens';
 
-const { Navigator, Screen } = createBottomTabNavigator()
+const { Navigator, Screen } = createBottomTabNavigator();
 
-function StudyTabs() {
+export function StudyTabsNavigation() {
   return (
     <Navigator
-      tabBarOptions={{
-        style: {
+      screenOptions={{
+        tabBarStyle: {
           elevation: 0,
           shadowOpacity: 0,
           height: 64,
         },
-        tabStyle: {
+        tabBarItemStyle: {
           flexDirection: 'row',
           alignItems: 'center',
           justifyContent: 'center',
         },
-        iconStyle: {
-          flexGrow: 0,
-          height: 20,
-          width: 20,
-        },
-        labelStyle: {
+        tabBarLabelStyle: {
           marginLeft: 24,
           fontFamily: 'Archivo700',
           fontSize: 13,
         },
-        inactiveBackgroundColor: '#fafafc',
-        activeBackgroundColor: '#ebebf5',
-        inactiveTintColor: '#c1bccc',
-        activeTintColor: '#32264d',
+        tabBarIconStyle: {
+          flexGrow: 0,
+          height: 20,
+          width: 20,
+        },
+        tabBarActiveBackgroundColor: '#ebebf5',
+        tabBarActiveTintColor: '#32264d',
+        tabBarInactiveBackgroundColor: '#fafafc',
+        tabBarInactiveTintColor: '#c1bccc',
       }}
     >
       <Screen
         name="TeachersList"
-        component={TeachersList}
+        component={TeachersListScreen}
         options={{
           tabBarLabel: 'Proffys',
           tabBarIcon: ({ size, color, focused }) => (
-            <Ionicons name="ios-easel" size={size} color={focused ? '#8257e5' : color} />
+            <Ionicons
+              name="easel"
+              size={size}
+              color={focused ? '#8257e5' : color}
+            />
           ),
         }}
       />
       <Screen
         name="Favorites"
-        component={Favorites}
+        component={FavoritesScreen}
         options={{
           tabBarLabel: 'Favoritos',
           tabBarIcon: ({ size, color, focused }) => (
-            <Ionicons name="ios-heart" size={size} color={focused ? '#8257e5' : color} />
+            <Ionicons
+              name="heart"
+              size={size}
+              color={focused ? '#8257e5' : color}
+            />
           ),
         }}
       />
     </Navigator>
-  )
+  );
 }
-
-export default StudyTabs

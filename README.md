@@ -1,5 +1,5 @@
 <h1 align="center">
-  <img src="./.github/logo.svg" alt="Proffy" title="Proffy" />
+  <img src="https://github.com/user-attachments/assets/73372471-c136-4b7c-97d5-842b593c2df0" alt="Proffy" title="Proffy" />
 </h1>
 
 <p align="center">
@@ -21,7 +21,7 @@
 
 <br />
 <p align="center">
-  <img src="./.github/overview.png" alt="Application Overview" width="100%">
+  <img src="https://github.com/user-attachments/assets/96a4ea3b-8ede-461d-b9b4-edaf4f4106a3" alt="Application Overview" width="100%">
 </p>
 <br />
 

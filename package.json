@@ -2,6 +2,7 @@
   "name": "@proffy/monorepo",
   "private": true,
   "homepage": "https://jlm-proffy.vercel.app/",
+  "packageManager": "pnpm@10.11.0",
   "scripts": {
     "prepare": "husky",
     "commit": "commit",

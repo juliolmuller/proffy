@@ -34,7 +34,7 @@ const config: ExpoConfig = {
   android: {
     package: 'com.juliolmuller.proffy',
     adaptiveIcon: {
-      foregroundImage: './src/assets/adaptive-icon.png',
+      foregroundImage: './src/assets/icons/favicon.png',
       backgroundColor: '#ffffff',
     },
   },

@@ -9,6 +9,7 @@
     "knexfile",
     "lecionar",
     "linebreak",
+    "pnpx",
     "postgres",
     "postgresql",
     "proffy",

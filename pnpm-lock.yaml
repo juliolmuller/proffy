@@ -20,12 +20,6 @@ importers:
       '@commitlint/prompt-cli':
         specifier: ^19.8.1
         version: 19.8.1(@types/node@22.15.19)(typescript@5.8.3)
-      colors:
-        specifier: ^1.4.0
-        version: 1.4.0
-      envfile:
-        specifier: ^7.1.0
-        version: 7.1.0
       eslint:
         specifier: ^9.27.0
         version: 9.27.0(jiti@2.4.2)
@@ -41,9 +35,6 @@ importers:
       prettier:
         specifier: ^3.5.3
         version: 3.5.3
-      prompts:
-        specifier: ^2.4.2
-        version: 2.4.2
       typescript:
         specifier: ^5.8.3
         version: 5.8.3
@@ -2431,10 +2422,6 @@ packages:
   colorette@2.0.20:
     resolution: {integrity: sha512-IfEDxwoWIjkeXL1eXcDiow4UbKjhLdq6/EuSVR9GMN7KVH3r9gQ83e73hsz1Nd1T3ijd5xv1wcWRYO+D6kCI2w==}
 
-  colors@1.4.0:
-    resolution: {integrity: sha512-a+UqTh4kgZg/SlGvfbzDHpgRu7AAQOmmqRHJnxhRZICKFUT91brVhNNt58CMWU9PsBbv3PDCZUHbVxuDiH2mtA==}
-    engines: {node: '>=0.1.90'}
-
   combined-stream@1.0.8:
     resolution: {integrity: sha512-FQN4MRfuJeHf7cBbBMJFXhKSDq+2kAArBlmRBvcvFE5BB1HZKXtSFASDhdlz9zOYwxh8lDdnvmMOe/+5cdoEdg==}
     engines: {node: '>= 0.8'}
@@ -2803,11 +2790,6 @@ packages:
   env-paths@2.2.1:
     resolution: {integrity: sha512-+h1lkLKhZMTYjog1VEpJNG7NZJWcuc2DDk/qsqSTRRCOXiLjeQ1d1/udrUGhqMxUgAlwKNZ0cf2uqan5GLuS2A==}
     engines: {node: '>=6'}
-
-  envfile@7.1.0:
-    resolution: {integrity: sha512-dyH4QnnZsArCLhPASr29eqBWDvKpq0GggQFTmysTT/S9TTmt1JrEKNvTBc09Cd7ujVZQful2HBGRMe2agu7Krg==}
-    engines: {node: '>=8'}
-    hasBin: true
 
   envinfo@7.14.0:
     resolution: {integrity: sha512-CO40UI41xDQzhLB1hWyqUKgFhs250pNcGbyGKe1l/e4FSaI/+YE4IMG76GDt0In67WLPACIITC+sOi08x4wIvg==}
@@ -8563,8 +8545,6 @@ snapshots:
 
   colorette@2.0.20: {}
 
-  colors@1.4.0: {}
-
   combined-stream@1.0.8:
     dependencies:
       delayed-stream: 1.0.0
@@ -8898,8 +8878,6 @@ snapshots:
   env-editor@0.4.2: {}
 
   env-paths@2.2.1: {}
-
-  envfile@7.1.0: {}
 
   envinfo@7.14.0:
     optional: true

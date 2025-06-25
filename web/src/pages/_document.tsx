@@ -1,7 +1,7 @@
 import NextDocument, { Head, Html, Main, NextScript } from 'next/document';
 
 class Document extends NextDocument {
-  render() {
+  public render() {
     return (
       <Html lang="pt-BR">
         <Head>

@@ -27,7 +27,7 @@
   "devDependencies": {
     "@next/eslint-plugin-next": "^15.3.4",
     "@types/node": "^22.15.33",
-    "@types/react": "^19.1.8",
+    "@types/react": "~19.0.14",
     "eslint": "^9.29.0",
     "eslint-config-any": "^2.1.0",
     "prettier": "^3.6.1",

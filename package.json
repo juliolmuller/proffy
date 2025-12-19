@@ -1,5 +1,6 @@
 {
-  "name": "@proffy/monorepo",
+  "name": "proffy",
+  "version": "auto",
   "private": true,
   "homepage": "https://jlm-proffy.vercel.app/",
   "scripts": {
@@ -26,12 +27,12 @@
     "@semantic-release/git": "^10.0.1",
     "@semantic-release/github": "^12.0.2",
     "@semantic-release/release-notes-generator": "^14.1.0",
-    "eslint": "^9.29.0",
-    "eslint-config-any": "^2.1.0",
+    "eslint": "^9.39.2",
+    "eslint-config-any": "^2.2.1",
     "husky": "^9.1.7",
-    "lint-staged": "^16.1.2",
-    "prettier": "^3.6.1",
+    "lint-staged": "^16.2.7",
+    "prettier": "^3.7.4",
     "semantic-release": "^25.0.2",
-    "typescript": "^5.8.3"
+    "typescript": "^5.9.3"
   }
 }

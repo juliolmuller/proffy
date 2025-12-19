@@ -5,6 +5,7 @@
   "scripts": {
     "prepare": "husky",
     "commit": "commit",
+    "release": "semantic-release",
     "mobile": "pnpm --filter ./mobile/ run dev",
     "server": "pnpm --filter ./server/ run dev",
     "web": "pnpm --filter ./web/ run dev",
@@ -15,16 +16,22 @@
     "lint:server": "pnpm --filter ./server/ run lint",
     "lint:web": "pnpm --filter ./web/ run lint"
   },
+  "packageManager": "pnpm@10.26.1+sha512.664074abc367d2c9324fdc18037097ce0a8f126034160f709928e9e9f95d98714347044e5c3164d65bd5da6c59c6be362b107546292a8eecb7999196e5ce58fa",
   "devDependencies": {
     "@commitlint/cli": "^19.8.1",
     "@commitlint/config-conventional": "^19.8.1",
     "@commitlint/config-workspace-scopes": "^19.8.1",
     "@commitlint/prompt-cli": "^19.8.1",
+    "@semantic-release/commit-analyzer": "^13.0.1",
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/github": "^12.0.2",
+    "@semantic-release/release-notes-generator": "^14.1.0",
     "eslint": "^9.29.0",
     "eslint-config-any": "^2.1.0",
     "husky": "^9.1.7",
     "lint-staged": "^16.1.2",
     "prettier": "^3.6.1",
+    "semantic-release": "^25.0.2",
     "typescript": "^5.8.3"
   }
 }

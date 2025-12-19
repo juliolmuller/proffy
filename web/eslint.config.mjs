@@ -2,11 +2,18 @@ import nextPlugin from '@next/eslint-plugin-next';
 import anyConfig from 'eslint-config-any';
 import { defineConfig } from 'eslint/config';
 
+const serverFilePatterns = ['server.cjs'];
+const baseFilesPatterns = ['**/*.{js,ts,tsx}'];
+
 export default defineConfig([
   ...anyConfig.react,
+  ...[...anyConfig.node, ...anyConfig.commonjs].map((config) => ({
+    ...config,
+    files: serverFilePatterns,
+  })),
   {
-    ...nextPlugin.flatConfig.coreWebVitals,
-    files: ['**/*.{js,jsx,ts,tsx}'],
+    ...nextPlugin.configs['core-web-vitals'],
+    files: baseFilesPatterns,
   },
   {
     rules: {

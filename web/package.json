@@ -10,24 +10,23 @@
   "scripts": {
     "postinstall": "node -e \"require('fs').existsSync('.env') || require('fs').copyFileSync('.env.example', '.env')\"",
     "commit": "cd .. && pnpm run commit",
-    "development": "next dev",
-    "dev": "pnpm run development",
+    "development": "next dev --port 30303",
+    "dev": "bun run development",
+    "production": "next start --port 30303",
+    "prod": "bun run production",
     "build": "next build",
-    "production": "next start",
-    "prod": "pnpm run production",
-    "start": "pnpm run production",
-    "lint": "next lint --fix"
+    "lint": "eslint --fix src/ eslint.config.mjs"
   },
   "dependencies": {
     "axios": "^1.13.2",
-    "next": "^15.5.9",
+    "next": "^16.1.0",
     "react": "^19.2.3",
     "react-dom": "^19.2.3"
   },
   "devDependencies": {
-    "@next/eslint-plugin-next": "^15.5.9",
+    "@next/eslint-plugin-next": "^16.1.0",
     "@types/node": "^22.19.3",
-    "@types/react": "~19.0.14",
+    "@types/react": "~19.2.7",
     "eslint": "^9.39.2",
     "eslint-config-any": "^2.2.1",
     "prettier": "^3.7.4",

@@ -1,12 +1,10 @@
-type RootStackParamList = {
-  Landing: undefined;
-  TeacherForm: undefined;
-  Study: undefined;
-};
-
 declare global {
   namespace ReactNavigation {
-    interface RootParamList extends RootStackParamList {}
+    interface RootParamList {
+      Landing: undefined;
+      Study: undefined;
+      TeacherForm: undefined;
+    }
   }
 }
 

@@ -11,6 +11,7 @@ import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
 import { useCallback } from 'react';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
+
 import { RootNavigation } from './navigation';
 
 SplashScreen.preventAutoHideAsync();

@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native'
+import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
   screenWrapper: {
@@ -10,4 +10,4 @@ export default StyleSheet.create({
     marginTop: -40,
     paddingHorizontal: 16,
   },
-})
+});

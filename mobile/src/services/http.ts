@@ -1,6 +1,6 @@
-import axios from 'axios';
+import { create } from 'axios';
 
-const http = axios.create({
+const http = create({
   baseURL: process.env.EXPO_PUBLIC_API_URL,
 });
 

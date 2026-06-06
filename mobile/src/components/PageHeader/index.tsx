@@ -1,14 +1,16 @@
 import { useNavigation } from '@react-navigation/native';
-import { ReactNode } from 'react';
+import { type ReactNode } from 'react';
 import { Image, Text, View } from 'react-native';
 import { BorderlessButton } from 'react-native-gesture-handler';
+
 import backIcon from '~/assets/icons/back.png';
 import logoImage from '~/assets/img/logo.png';
+
 import styles from './styles';
 
 interface PageHeaderProps {
-  headerRight?: ReactNode;
   children?: ReactNode;
+  headerRight?: ReactNode;
   title: string;
 }
 

@@ -1,18 +1,18 @@
-declare module '*.png'
+declare module '*.png';
 
 declare interface ScheduleItem {
-  weekday: string
-  from: string
-  to: string
+  from: string;
+  to: string;
+  weekday: string;
 }
 
 declare interface Teacher {
-  id: number
-  name: string
-  avatar: string
-  bio: string
-  whatsapp: string
-  subject: string
-  price: number
-  schedule: ScheduleItem[]
+  avatar: string;
+  bio: string;
+  id: number;
+  name: string;
+  price: number;
+  schedule: ScheduleItem[];
+  subject: string;
+  whatsapp: string;
 }

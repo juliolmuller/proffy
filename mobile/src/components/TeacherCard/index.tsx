@@ -1,16 +1,18 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useState } from 'react';
-import { Linking, Image, Text, View } from 'react-native';
+import { Image, Linking, Text, View } from 'react-native';
 import { RectButton } from 'react-native-gesture-handler';
-import http from '~/services/http';
+
 import heartOutlineIcon from '~/assets/icons/heart-outline.png';
 import unfavoriteIcon from '~/assets/icons/unfavorite.png';
 import whatsappIcon from '~/assets/icons/whatsapp.png';
+import http from '~/services/http';
+
 import styles from './styles';
 
 interface TeacherCardProps {
-  teacher: Teacher;
   favorite: boolean;
+  teacher: Teacher;
 }
 
 export function TeacherCard({ teacher, favorite }: TeacherCardProps) {
@@ -26,9 +28,7 @@ export function TeacherCard({ teacher, favorite }: TeacherCardProps) {
     const favorites: Teacher[] = JSON.parse(storage);
 
     if (favoriteState) {
-      const index = favorites.findIndex(
-        (item: Teacher) => item.id === teacher.id,
-      );
+      const index = favorites.findIndex((item: Teacher) => item.id === teacher.id);
 
       favorites.splice(index, 1);
       favoriteStateSetter(false);
@@ -61,10 +61,7 @@ export function TeacherCard({ teacher, favorite }: TeacherCardProps) {
         <View style={styles.buttonGroup}>
           <RectButton
             onPress={handleToggleFavorite}
-            style={[
-              styles.favoriteButton,
-              favoriteState ? styles.favoriteButtonSelected : {},
-            ]}
+            style={[styles.favoriteButton, favoriteState ? styles.favoriteButtonSelected : {}]}
           >
             {favoriteState ? (
               <Image source={unfavoriteIcon} />
@@ -73,10 +70,7 @@ export function TeacherCard({ teacher, favorite }: TeacherCardProps) {
             )}
           </RectButton>
 
-          <RectButton
-            onPress={handleLinkToWhatsApp}
-            style={styles.contactButton}
-          >
+          <RectButton onPress={handleLinkToWhatsApp} style={styles.contactButton}>
             <Image source={whatsappIcon} />
             <Text style={styles.buttonText}>Entrar em contato</Text>
           </RectButton>

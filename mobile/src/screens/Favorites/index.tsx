@@ -2,8 +2,9 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useFocusEffect } from '@react-navigation/native';
 import { useState } from 'react';
 import { ScrollView, View } from 'react-native';
-import { PageHeader } from '~/components';
-import { TeacherCard } from '~/components';
+
+import { PageHeader, TeacherCard } from '~/components';
+
 import styles from './styles';
 
 export function FavoritesScreen() {
@@ -12,7 +13,10 @@ export function FavoritesScreen() {
 
   async function restoreStorage() {
     const storage = await AsyncStorage.getItem('favorites');
-    storage && setFavoritesString(storage);
+
+    if (storage) {
+      setFavoritesString(storage);
+    }
   }
 
   useFocusEffect(() => {

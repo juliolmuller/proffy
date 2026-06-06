@@ -1,14 +1,21 @@
 import { Feather } from '@expo/vector-icons';
-import { Picker } from '@react-native-picker/picker';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { useEffect, useState } from 'react';
+import { Picker } from '@react-native-picker/picker';
+import { useState } from 'react';
 import { ScrollView, Text, View } from 'react-native';
 import { BorderlessButton } from 'react-native-gesture-handler';
-import { PageHeader } from '~/components';
-import { TeacherCard } from '~/components';
+
+import { PageHeader, TeacherCard } from '~/components';
 import http from '~/services/http';
+
 import formData from './form-data';
 import styles from './styles';
+
+interface Filters {
+  subject: string;
+  time: string;
+  weekday: string;
+}
 
 export function TeachersListScreen() {
   const [isFiltering, setFiltering] = useState(true);
@@ -22,27 +29,42 @@ export function TeachersListScreen() {
     return !!favorites.find((favorite) => favorite.id === teacher.id);
   }
 
-  async function handleFilers() {
+  async function fetchTeachers(filters: Filters) {
     try {
-      const params = { subject, weekday, time };
       const [response, storage] = await Promise.all([
-        http.get('/classes', { params }),
+        http.get('/classes', { params: filters }),
         AsyncStorage.getItem('favorites'),
       ]);
 
-      storage && setFavorites(JSON.parse(storage));
-      response.data.length && setFiltering(false);
+      if (storage) {
+        setFavorites(JSON.parse(storage));
+      }
+      if (response.data.length) {
+        setFiltering(false);
+      }
+
       setTeachersList(response.data);
     } catch {
       setTeachersList([]);
     }
   }
 
-  useEffect(() => {
-    if (subject && weekday && time) {
-      handleFilers();
+  function handleFilterChange(field: keyof Filters, value: string) {
+    const nextFilters = {
+      subject,
+      weekday,
+      time,
+      [field]: value,
+    };
+
+    if (field === 'subject') setSubject(value);
+    if (field === 'weekday') setWeekday(value);
+    if (field === 'time') setTime(value);
+
+    if (nextFilters.subject && nextFilters.weekday && nextFilters.time) {
+      void fetchTeachers(nextFilters);
     }
-  }, [subject, weekday, time]); // eslint-disable-line react-hooks/exhaustive-deps
+  }
 
   return (
     <ScrollView style={styles.screenWrapper}>
@@ -60,15 +82,11 @@ export function TeachersListScreen() {
             <View style={styles.input}>
               <Picker
                 selectedValue={subject}
-                onValueChange={(value) => setSubject(value.toString())}
+                onValueChange={(value) => handleFilterChange('subject', value.toString())}
               >
                 <Picker.Item label="Selecione..." value="" color="#c1bccc" />
                 {formData.subjects.map((subjectItem, index) => (
-                  <Picker.Item
-                    key={index}
-                    label={subjectItem.label}
-                    value={subjectItem.value}
-                  />
+                  <Picker.Item key={index} label={subjectItem.label} value={subjectItem.value} />
                 ))}
               </Picker>
             </View>
@@ -77,15 +95,11 @@ export function TeachersListScreen() {
             <View style={styles.input}>
               <Picker
                 selectedValue={weekday}
-                onValueChange={(value) => setWeekday(value.toString())}
+                onValueChange={(value) => handleFilterChange('weekday', value.toString())}
               >
                 <Picker.Item label="Selecione..." value="" color="#c1bccc" />
                 {formData.weekdays.map((weekdayItem, index) => (
-                  <Picker.Item
-                    key={index}
-                    label={weekdayItem.label}
-                    value={weekdayItem.value}
-                  />
+                  <Picker.Item key={index} label={weekdayItem.label} value={weekdayItem.value} />
                 ))}
               </Picker>
             </View>
@@ -94,15 +108,11 @@ export function TeachersListScreen() {
             <View style={styles.input}>
               <Picker
                 selectedValue={time}
-                onValueChange={(value) => setTime(value.toString())}
+                onValueChange={(value) => handleFilterChange('time', value.toString())}
               >
                 <Picker.Item label="Selecione..." value="" color="#c1bccc" />
                 {formData.times.map((timeItem, index) => (
-                  <Picker.Item
-                    key={index}
-                    label={timeItem.label}
-                    value={timeItem.value}
-                  />
+                  <Picker.Item key={index} label={timeItem.label} value={timeItem.value} />
                 ))}
               </Picker>
             </View>
@@ -112,11 +122,7 @@ export function TeachersListScreen() {
 
       <View style={styles.teachersDeck}>
         {teachersList.map((teacher: Teacher) => (
-          <TeacherCard
-            key={teacher.id}
-            teacher={teacher}
-            favorite={isFavorite(teacher)}
-          />
+          <TeacherCard key={teacher.id} teacher={teacher} favorite={isFavorite(teacher)} />
         ))}
       </View>
     </ScrollView>

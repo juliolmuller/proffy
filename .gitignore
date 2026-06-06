@@ -16,3 +16,5 @@ web-build/
 .eslintcache
 *.log
 *.sqlite*
+
+web/next-env.d.ts

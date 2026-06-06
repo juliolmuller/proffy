@@ -1,6 +1,6 @@
 import HttpStatus from 'http-status-codes';
 
-import { prismaClient as prisma } from '../../../../database/connection';
+import { prismaClient as prisma } from '../../../../database';
 import { parseTimeIntoMinutes } from '../../../../utils';
 import { type Controller } from '../../../http';
 

@@ -1,6 +1,9 @@
 import anyConfig from 'eslint-config-any';
 
 export default [
+  {
+    ignores: ['src/database/prisma/generated/**'],
+  },
   ...anyConfig.node,
   {
     files: ['**/*.{test,spec}.*'],
@@ -14,7 +17,7 @@ export default [
       camelcase: [
         'error',
         {
-          allow: ['purge_dotenv', 'user_id', 'class_id'],
+          allow: ['user_id', 'class_id'],
         },
       ],
     },

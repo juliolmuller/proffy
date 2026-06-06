@@ -1,7 +1,9 @@
+/* eslint-disable @eslint-community/eslint-comments/disable-enable-pair, camelcase */
 import { type ExpoConfig } from 'expo/config';
-import npmConfig from './package.json';
 
-const config: ExpoConfig = {
+import npmConfig from './package.json' with { type: 'json' };
+
+export default {
   name: 'Proffy',
   slug: 'proffy',
   scheme: 'proffy',
@@ -10,13 +12,18 @@ const config: ExpoConfig = {
   orientation: 'portrait',
   icon: './src/assets/icons/favicon.png',
   userInterfaceStyle: 'light',
-  splash: {
-    backgroundColor: '#9871F5',
-    image: './src/assets/img/splash.png',
-    resizeMode: 'cover',
-  },
   assetBundlePatterns: ['**/*'],
   plugins: [
+    'expo-font',
+    [
+      'expo-splash-screen',
+      {
+        backgroundColor: '#9871F5',
+        image: './src/assets/img/splash.png',
+        resizeMode: 'cover',
+        enableFullScreenImage_legacy: true,
+      },
+    ],
     [
       'expo-build-properties',
       {
@@ -45,6 +52,4 @@ const config: ExpoConfig = {
   web: {
     favicon: './src/assets/icons/favicon.png',
   },
-};
-
-export default config;
+} satisfies ExpoConfig;

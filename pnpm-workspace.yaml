@@ -3,6 +3,8 @@ packages:
   - server/
   - web/
 
+minimumReleaseAge: 720
+
 allowBuilds:
   '@parcel/watcher': false
   '@prisma/client': true
@@ -13,23 +15,6 @@ allowBuilds:
   prisma: true
   sharp: true
 
-minimumReleaseAgeExclude:
-  - '@expo/cli@56.1.14'
-  - '@expo/fingerprint@0.19.4'
-  - '@expo/inline-modules@0.0.11'
-  - '@expo/prebuild-config@56.0.15'
-  - '@expo/router-server@56.0.13'
-  - expo-asset@56.0.16
-  - expo-constants@56.0.17
-  - expo-modules-autolinking@56.0.15
-  - expo-modules-core@56.0.15
-  - expo-modules-jsi@56.0.8
-  - expo-server@56.0.5
-  - expo@56.0.9
-  - expo-build-properties@56.0.17
-  - expo-dev-client@56.0.19
-  - expo-dev-launcher@56.0.19
-
 onlyBuiltDependencies:
   - '@parcel/watcher'
   - '@prisma/client'
@@ -39,4 +24,8 @@ onlyBuiltDependencies:
   - esbuild
   - prisma
   - sharp
-  - unrs-resolver
+
+overrides:
+  '@hono/node-server@<1.19.13': ^1.19.13
+  'postcss@<8.5.10': ^8.5.10
+  'uuid@<11.1.1': ^11.1.1

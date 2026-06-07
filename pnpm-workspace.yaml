@@ -15,16 +15,6 @@ allowBuilds:
   prisma: true
   sharp: true
 
-onlyBuiltDependencies:
-  - '@parcel/watcher'
-  - '@prisma/client'
-  - '@prisma/engines'
-  - better-sqlite3
-  - core-js
-  - esbuild
-  - prisma
-  - sharp
-
 overrides:
   '@hono/node-server@<1.19.13': ^1.19.13
   'postcss@<8.5.10': ^8.5.10
